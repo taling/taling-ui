@@ -15,7 +15,7 @@ export function TextSkeletonComponent({
 
   return (
     <p
-      className={`${loadingClass} ${className}`}
+      className={`${loadingClass} ${className ?? ""}`}
       style={{
         width: isLoading ? expectedWidth : "auto",
       }}
