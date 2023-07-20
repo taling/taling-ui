@@ -20,7 +20,7 @@ export function TextSkeletonComponent({
         width: isLoading ? expectedWidth : "auto",
       }}
     >
-      {text ?? "."}
+      {text ?? (isLoading ? "." : "")}
     </p>
   );
 }
