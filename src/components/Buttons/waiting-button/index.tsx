@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 export default function WaitingButton({
   render: { normal, waiting, failed },
   passData,
+  className,
   onClick,
 }: {
   render: {
@@ -11,6 +12,7 @@ export default function WaitingButton({
     failed?: React.ReactNode;
   };
   passData?: any;
+  className?: string;
   onClick: (passData?: any) => Promise<boolean>;
 }) {
   const [currentRender, setCurrentRender] = useState<React.ReactNode>(normal);
@@ -25,5 +27,9 @@ export default function WaitingButton({
     setCurrentRender(result ? normal : failed || normal);
   }, [failed, isLoading, normal, onClick, passData, waiting]);
 
-  return <div onClick={_internalOnClick}>{currentRender}</div>;
+  return (
+    <div className={className} onClick={_internalOnClick}>
+      {currentRender}
+    </div>
+  );
 }
