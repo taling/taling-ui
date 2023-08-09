@@ -1,12 +1,19 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface ToggleAnimateProps {
   initial: any;
   animate: any;
   exit: any;
+}
+
+export interface AnimatedToggleButtonComponentRenderProps {
+  on: React.ReactNode;
+  off: React.ReactNode;
+  loading: React.ReactNode;
+  error?: React.ReactNode;
 }
 
 const _DefaultToggleAnimateProps = {
@@ -21,18 +28,17 @@ export default function AnimatedToggleButtonComponent({
   onToggle,
 }: {
   isOn: boolean;
-  render: {
-    on: React.ReactNode;
-    off: React.ReactNode;
-    loading: React.ReactNode;
-    error?: React.ReactNode;
-  };
+  render: AnimatedToggleButtonComponentRenderProps;
   onToggle: () => Promise<{
     toggleSuccess: boolean;
   }>;
 }) {
   const [isUpdating, setIsUpdating] = useState(false);
-  const [showErrorRender, setShowErrorRender] = useState(false);
+  const [showErrorRender, setShowErrorRender] = useState<boolean>(false);
+
+  useEffect(() => {
+    console.log(`showErrorRender`, showErrorRender);
+  }, [showErrorRender]);
 
   return (
     <AnimatePresence>
@@ -42,8 +48,9 @@ export default function AnimatedToggleButtonComponent({
           key="button"
           onClick={(e: any) => {
             e.stopPropagation();
+            if (isUpdating) return;
             setIsUpdating(true);
-            onToggle().then((toggleSuccess) => {
+            onToggle().then(({ toggleSuccess }) => {
               setIsUpdating(false);
               setShowErrorRender(!toggleSuccess);
             });
@@ -55,7 +62,7 @@ export default function AnimatedToggleButtonComponent({
             </motion.div>
           ) : (
             <motion.div {..._DefaultToggleAnimateProps} key="button-on-on">
-              {showErrorRender ? render.error : render.on}
+              {showErrorRender ? render.error ?? render.on : render.on}
             </motion.div>
           )}
         </motion.div>
@@ -66,8 +73,9 @@ export default function AnimatedToggleButtonComponent({
           key="button"
           onClick={(e: any) => {
             e.stopPropagation();
+            if (isUpdating) return;
             setIsUpdating(true);
-            onToggle().then((toggleSuccess) => {
+            onToggle().then(({ toggleSuccess }) => {
               setIsUpdating(false);
               setShowErrorRender(!toggleSuccess);
             });
@@ -79,7 +87,7 @@ export default function AnimatedToggleButtonComponent({
             </motion.div>
           ) : (
             <motion.div {..._DefaultToggleAnimateProps} key="button-off-off">
-              {showErrorRender ? render.error : render.off}
+              {showErrorRender ? render.error ?? render.off : render.off}
             </motion.div>
           )}
         </motion.div>
