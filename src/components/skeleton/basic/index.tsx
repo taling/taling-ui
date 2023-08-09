@@ -18,7 +18,7 @@ export default function BasicSkeletonComponent({
 }) {
   return (
     <div
-      className={`w-full ${height} bg-taling-gray-50 rounded-md animate-pulse`}
+      className={`w-full ${height} bg-taling-gray-100 rounded-md animate-pulse`}
     ></div>
   );
 }

@@ -10,7 +10,7 @@ export function TextSkeletonComponent({
   text?: string;
 }) {
   const loadingClass = isLoading
-    ? "animate-pulse bg-taling-gray-200 text-transparent rounded-lg"
+    ? "animate-pulse bg-taling-gray-100 text-transparent rounded-lg"
     : "";
 
   return (
