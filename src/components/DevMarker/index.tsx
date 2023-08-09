@@ -20,15 +20,17 @@ const DevMarker = () => {
 
   if (isDev && !hideSession) {
     return (
-      <div className="flex h-6 w-full items-center bg-taling-pink-50 border-b-2 border-b-taling-pink-400">
-        <div className="mx-auto text-xs font-bold">🤖 {devMsag}</div>
-        <div
-          className="absolute right-0 text-xs px-2 sm:px-8"
-          onClick={() => {
-            setHideSession(true);
-          }}
-        >
-          이 세션에서 그만 보기
+      <div className="w-full bg-taling-pink-50 border-b-2 border-b-taling-pink-400">
+        <div className="flex h-6 items-center relative mx-auto max-w-7xl w-full">
+          <div className="mx-auto text-xs font-bold">🤖 {devMsag}</div>
+          <div
+            className="absolute right-0 text-xs px-2 sm:px-8 cursor-pointer underline"
+            onClick={() => {
+              setHideSession(true);
+            }}
+          >
+            이 세션에서 그만 보기
+          </div>
         </div>
       </div>
     );
