@@ -19,11 +19,11 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
+      "@taling-ui/util/*": [
+        "./src/util/*"
+      ],
       "@taling-ui/*": [
         "./src/components/*"
-      ],
-      "@taling-ui/util": [
-        "./src/util/*"
       ]
     }
   },
