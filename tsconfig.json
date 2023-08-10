@@ -21,6 +21,9 @@
     "paths": {
       "@taling-ui/*": [
         "./src/components/*"
+      ],
+      "@taling-ui/util": [
+        "./src/util/*"
       ]
     }
   },
