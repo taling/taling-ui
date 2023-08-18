@@ -16,7 +16,7 @@ export interface AnimatedToggleButtonComponentRenderProps {
   error?: React.ReactNode;
 }
 
-const _DefaultToggleAnimateProps = {
+const _DefaultToggleAnimateProps: ToggleAnimateProps = {
   initial: { opacity: 0, scale: 0.0 },
   animate: { opacity: 1, scale: 1 },
   exit: { opacity: 0, scale: 0.0 },
