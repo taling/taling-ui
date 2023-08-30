@@ -17,7 +17,15 @@ export function ImageSkeletonComponent({
   }
   return (
     <div className={...className}>
-      {imageUrl ? <img src={imageUrl} alt={imageAlt} /> : placeholder}
+      {imageUrl ? (
+        <img
+          className={"w-full h-full object-cover"}
+          src={imageUrl}
+          alt={imageAlt}
+        />
+      ) : (
+        placeholder
+      )}
     </div>
   );
 }
