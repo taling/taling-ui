@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface ToggleAnimateProps {
   initial: any;
@@ -35,10 +35,6 @@ export default function AnimatedToggleButtonComponent({
 }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [showErrorRender, setShowErrorRender] = useState<boolean>(false);
-
-  useEffect(() => {
-    console.log(`showErrorRender`, showErrorRender);
-  }, [showErrorRender]);
 
   return (
     <AnimatePresence>
