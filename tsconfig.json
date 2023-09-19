@@ -19,6 +19,9 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
+      "@taling-ui/constants/*": [
+        "./src/constants/*"
+      ],
       "@taling-ui/util/*": [
         "./src/util/*"
       ],
