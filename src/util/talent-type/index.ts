@@ -1,4 +1,4 @@
-import { TalentCategory } from "@taling-ui/constants/talent-category";
+import { TalentCategory } from "../../constants/talent-category";
 
 export const TalentType = {
   /**
