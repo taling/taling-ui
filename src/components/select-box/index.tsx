@@ -46,7 +46,7 @@ export default function SelectBox({
       {({ open }) => (
         <>
           <div className="relative mt-2">
-            <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-taling-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-taling-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-taling-pink-400 sm:text-sm sm:leading-6">
               <span className="block truncate">
                 {selected?.name ?? "선택해주세요"}
               </span>
@@ -92,7 +92,7 @@ export default function SelectBox({
                         {selected ? (
                           <span
                             className={classNames(
-                              active ? "text-white" : "text-indigo-600",
+                              active ? "text-white" : "text-taling-pink-400",
                               "absolute inset-y-0 right-0 flex items-center pr-4",
                             )}
                           >
