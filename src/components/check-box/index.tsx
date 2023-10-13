@@ -13,18 +13,19 @@ export default function CheckBox({
   };
 
   return (
-    <div className="flex items-center cursor-pointer text-taling-gray-800 gap-2 ">
+    <div className="flex items-center cursor-pointer text-taling-gray-800 gap-2 py-2 focus:bg-taling-gray-100"  onClick={(e)=>{
+      toggleChecked()
+    }}>
       <input
         id={label}
         name={label}
         type="checkbox"
-        
-        checked={checked ?? false}
-        onChange={toggleChecked}
-        className="h-4 w-4 rounded border-gray-300 text-taling-pink-400 focus:ring-taling-pink-500"
+        checked={checked}
+        readOnly
+        className="h-4 w-4 rounded border-gray-300 text-taling-pink-400 focus:ring-transparent "
       />
       <label
-        htmlFor={label}
+
         className="min-w-fit cursor-pointer"
       >
         {label}
