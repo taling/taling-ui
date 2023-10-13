@@ -19,7 +19,7 @@ export default function RadioButton({
         id={label}
         name={label}
         type="radio"
-        className="form-radio h-3 w-3 text-taling-pink-400 focus:ring-1 focus:ring-red-500 focus:outline-none"
+        className="form-radio h-3 w-3 text-taling-pink-400 focus:ring-transparent focus:ring-0 focus:outline-none"
         checked={checked}
         readOnly
       />

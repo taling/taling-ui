@@ -22,7 +22,7 @@ export default function CheckBox({
         type="checkbox"
         checked={checked}
         readOnly
-        className="h-4 w-4 rounded border-gray-300 text-taling-pink-400 focus:ring-transparent "
+        className="h-4 w-4 rounded border-gray-300 text-taling-pink-400 focus:ring-transparent focus:ring-0 focus:outline-none "
       />
       <label
 
