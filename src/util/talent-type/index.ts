@@ -22,11 +22,11 @@ export const TalentType = {
     );
   },
   /**
-   * Talent가 전자책인지 검사
+   * Talent가 VOD인지 검사
    * @param talent
    * @returns boolean
    */
   isVod: (talent: any) => {
-    return talent.mCategory === TalentCategory.VOD || talent.isVod === 1;
+    return talent?.mCategory === TalentCategory.VOD || talent?.isVod === 1;
   },
 };
