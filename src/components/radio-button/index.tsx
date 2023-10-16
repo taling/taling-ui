@@ -19,11 +19,11 @@ export default function RadioButton({
         id={label}
         name={label}
         type="radio"
-        className="form-radio h-3 w-3 text-taling-pink-400 focus:ring-transparent focus:ring-0 focus:outline-none"
+        className="form-radio h-3 w-3 text-taling-pink-400 focus:ring-transparent focus:ring-0 focus:outline-none focus:ring-transparent"
         checked={checked}
         readOnly
       />
-      <label htmlFor={label} className="text-taling-gray-800 cursor-pointer ">{label}</label>
+      <label className="text-taling-gray-800 cursor-pointer ">{label}</label>
     </div>
   );
 }
