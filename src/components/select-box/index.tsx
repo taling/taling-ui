@@ -12,14 +12,28 @@ export default function SelectBox({
   list,
   enabled,
   onSelected,
+  defaultSelection,
 }: {
   list: ISelectBoxItem[];
   enabled: boolean;
   onSelected: (item: ISelectBoxItem | null) => void;
+  defaultSelection: ISelectBoxItem | null;
 }) {
   const [_internaList, setInternalList] = useState<ISelectBoxItem[]>(list);
   const [selected, setSelected] = useState<ISelectBoxItem | null>(null);
 
+  /**
+   * defaultSelection이 변경되었을때, 셀렉트박스를 선택해줍니다.
+   * 기존 선택값과 같거나, 이미 선택된 경우에는 무시
+   */
+  const onSelectionPropChanged = useCallback(() => {
+    if (selected === defaultSelection || selected) return;
+    setSelected(defaultSelection);
+  }, [defaultSelection, selected, setSelected]);
+
+  /**
+   * 리스트가 업데이트 되고, 이미 선택된 값이 리스트에 없으면 선택을 초기화 합니다.
+   */
   const onListChanged = useCallback(
     (newList: ISelectBoxItem[]) => {
       if (newList === _internaList) return;
@@ -38,8 +52,9 @@ export default function SelectBox({
 
   useEffect(() => {
     onListChanged(list);
+    onSelectionPropChanged();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [list]);
+  }, [defaultSelection, list]);
 
   return (
     <Listbox value={selected} onChange={setSelected}>
