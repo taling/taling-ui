@@ -19,22 +19,22 @@ export default function SelectBox({
   onSelected: (item: ISelectBoxItem | null) => void;
   defaultSelection: ISelectBoxItem | null;
 }) {
-  const [_internaList, setInternalList] = useState<ISelectBoxItem[]>(list);
+  const [_internaList, setInternalList] = useState<ISelectBoxItem[]>();
   const [selected, setSelected] = useState<ISelectBoxItem | null>(null);
+  const [_hydrated, setHydrated] = useState<boolean>(false); // glitch 제거
 
   /**
    * 리스트가 업데이트 되고, 이미 선택된 값이 리스트에 없으면 선택을 초기화 합니다.
    */
   const onListChanged = useCallback(
     (newList: ISelectBoxItem[]) => {
-      if (newList === _internaList) return;
-      setInternalList(newList);
-      if (
-        !newList.find(
-          (item) =>
-            item?.id === selected?.id || item?.id === defaultSelection?.id,
-        )
-      ) {
+      // 먼저 선택상황을 편집하고,
+      const found = newList.find(
+        (item) =>
+          item?.id === selected?.id || item?.id === defaultSelection?.id,
+      );
+
+      if (!found) {
         setSelected(null);
         return;
       }
@@ -42,6 +42,10 @@ export default function SelectBox({
       if (!selected) {
         setSelected(defaultSelection);
       }
+
+      // 리스트를 초기화
+      if (newList === _internaList) return;
+      setInternalList(newList);
     },
     [_internaList, defaultSelection, selected],
   );
@@ -53,9 +57,16 @@ export default function SelectBox({
   }, [selected]);
 
   useEffect(() => {
+    setHydrated(true);
     onListChanged(list);
+    return () => {
+      setHydrated(false);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultSelection, list]);
+
+  if (list.length === 0 && defaultSelection === null) return;
+  if (!_hydrated) return;
 
   return (
     <Listbox value={selected} onChange={setSelected}>
