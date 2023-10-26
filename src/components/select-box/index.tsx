@@ -65,6 +65,10 @@ export default function SelectBox({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultSelection, list]);
 
+  useEffect(() => {
+    setSelected(defaultSelection);
+  }, [defaultSelection]);
+
   if (list.length === 0 && defaultSelection === null) return;
   if (!_hydrated) return;
 
