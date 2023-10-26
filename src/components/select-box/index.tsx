@@ -50,11 +50,11 @@ export default function SelectBox({
     [_internaList, defaultSelection, selected],
   );
 
-  useEffect(() => {
-    console.log(`onSelected`, selected?.name);
-    onSelected(selected);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selected]);
+  // useEffect(() => {
+  //   console.log(`onSelected`, selected?.name);
+  //   onSelected(selected);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [selected]);
 
   useEffect(() => {
     setHydrated(true);
@@ -69,7 +69,13 @@ export default function SelectBox({
   if (!_hydrated) return;
 
   return (
-    <Listbox value={selected} onChange={setSelected}>
+    <Listbox
+      value={selected}
+      onChange={(value) => {
+        setSelected(value);
+        onSelected(value);
+      }}
+    >
       {({ open }) => (
         <>
           <div className="relative">
