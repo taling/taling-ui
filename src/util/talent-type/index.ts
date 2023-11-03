@@ -29,4 +29,13 @@ export const TalentType = {
   isVod: (talent: any) => {
     return talent?.mCategory === TalentCategory.VOD || talent?.isVod === 1;
   },
+
+  /**
+   * Talent가 원데이 클래스인지 검사
+   * @param talent
+   * @returns
+   */
+  isOneDayClass: (talent: any) => {
+    return talent?.totalTimes === 1;
+  },
 };
