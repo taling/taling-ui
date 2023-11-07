@@ -5,3 +5,7 @@ export enum TalentCategory {
   P2P_EBOOK = 4,
   VOD = 5,
 }
+
+export enum TalentSpecialRegion {
+  ONLINE_LIVE = 64, // 온라인 라이브의 경우 region = 64의 특수값을 가짐
+}
