@@ -27,8 +27,15 @@ export default function WaitingButton({
     setCurrentRender(result ? normal : failed || normal);
   }, [failed, isLoading, normal, onClick, passData, waiting]);
 
+  const updateNormalButton = useCallback(() => {
+    if (!isLoading) {
+      setCurrentRender(normal);
+    }
+  }, [isLoading, normal]);
+
   useEffect(() => {
-    setCurrentRender(normal);
+    updateNormalButton();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [normal]);
 
   return (
