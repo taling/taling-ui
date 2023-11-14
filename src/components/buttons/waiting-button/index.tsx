@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function WaitingButton({
   render: { normal, waiting, failed },
@@ -26,6 +26,10 @@ export default function WaitingButton({
     setIsLoading(false);
     setCurrentRender(result ? normal : failed || normal);
   }, [failed, isLoading, normal, onClick, passData, waiting]);
+
+  useEffect(() => {
+    setCurrentRender(normal);
+  }, [normal]);
 
   return (
     <div className={className} onClick={_internalOnClick}>
