@@ -44,6 +44,8 @@ const TailwindCalendarComponent = forwardRef(
       mainColor = "purple",
       useViewMode = true,
       useHeaderDecoration = false,
+      defaultSelectedYear,
+      defaultSelectedMonth,
     }: {
       eventSource: (
         source: CalendarEventSource,
@@ -67,6 +69,8 @@ const TailwindCalendarComponent = forwardRef(
       mainColor?: SelectableColorType;
       useViewMode?: boolean;
       useHeaderDecoration?: boolean;
+      defaultSelectedYear?: number;
+      defaultSelectedMonth?: number;
     },
     ref: any,
   ) => {
@@ -82,9 +86,11 @@ const TailwindCalendarComponent = forwardRef(
     );
 
     // selected year and month and week
-    const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+    const [selectedYear, setSelectedYear] = useState(
+      defaultSelectedYear ? defaultSelectedYear : new Date().getFullYear(),
+    );
     const [selectedMonth, setSelectedMonth] = useState(
-      new Date().getMonth() + 1,
+      defaultSelectedMonth ? defaultSelectedMonth : new Date().getMonth() + 1,
     );
     const [selectedWeekInYear, setSelectedWeekInYear] = useState(
       DateSource.getWeekInYear(new Date()),
@@ -156,6 +162,16 @@ const TailwindCalendarComponent = forwardRef(
         setSelectedMonth(12);
       }
     }, [selectedMonth]);
+
+    useEffect(() => {
+      if (!defaultSelectedMonth) return;
+      setSelectedMonth(defaultSelectedMonth);
+    }, [defaultSelectedMonth]);
+
+    useEffect(() => {
+      if (!defaultSelectedYear) return;
+      setSelectedYear(defaultSelectedYear);
+    }, [defaultSelectedYear]);
 
     useEffect(() => {
       loadDaysInMonth();
