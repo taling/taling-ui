@@ -38,4 +38,14 @@ export const TalentType = {
   isOneDayClass: (talent: any) => {
     return talent?.totalTimes === 1;
   },
+
+  getTalentType: (talent: any) => {
+    if (TalentType.isVod(talent)) {
+      return "VOD";
+    } else if (TalentType.isEbook(talent)) {
+      return "EBOOK";
+    } else {
+      return "P2P";
+    }
+  },
 };
