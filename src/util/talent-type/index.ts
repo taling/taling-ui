@@ -1,4 +1,5 @@
 import { TalentCategory } from "../../constants/talent-category";
+import { TalentStatusEnum } from "../../../../src/types/talent";
 
 export const TalentType = {
   /**
@@ -47,5 +48,19 @@ export const TalentType = {
     } else {
       return "P2P";
     }
+  },
+};
+
+export const TalentStatus = {
+  isSoldOut: (talent: any) => {
+    return talent?.isSoldOut === 1;
+  },
+
+  isPublicClass: (talent: any) => {
+    return (
+      talent.status == TalentStatusEnum.OPENED &&
+      talent.testYn == "N" &&
+      talent.isPrivateClass == false
+    );
   },
 };
