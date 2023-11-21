@@ -25,6 +25,9 @@
       "@taling-ui/util/*": [
         "./src/util/*"
       ],
+      "@taling-ui/hooks/*": [
+        "./src/hooks/*"
+      ],
       "@taling-ui/*": [
         "./src/components/*"
       ]
