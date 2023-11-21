@@ -1,5 +1,5 @@
 import { TalentCategory } from "../../constants/talent-category";
-import { TalentStatusEnum } from "../../../../src/types/talent";
+import { TalentStatusEnum } from "../../constants/talent-status";
 
 export const TalentType = {
   /**
