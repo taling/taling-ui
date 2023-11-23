@@ -19,6 +19,9 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
+      "@taling-ui/hooks": [
+        "./src/hooks/*"
+      ],
       "@taling-ui/constants/*": [
         "./src/constants/*"
       ],
