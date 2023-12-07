@@ -15,7 +15,7 @@ const DevMarker = () => {
 
   useEffect(() => {
     if (!window) return;
-    const devDomains = ["local", "dev", "test", "vercel.app"];
+    const devDomains = ["local", "dev", "test", "vercel.app", "172."];
     const domain = window.location.hostname;
     if (domain.match(new RegExp(devDomains.join("|")))) {
       setIsDev(true);
