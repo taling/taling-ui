@@ -1,13 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { devMarkerStore } from "../../store/devMarkerStore";
+import { TalingAppContext } from "../app-context-wrapper";
 
 const DevMarker = () => {
   const [isShowing, setIsShowing] = useState<boolean>(false);
+  const appContext = useContext(TalingAppContext);
   const [isDev, setIsDev] = useState<boolean>(false);
-  const [devMsag, setDevMsg] = useState<string>("개발/테스트 모드에용");
+  const [devMsag, setDevMsg] = useState<string>(
+    `개발/테스트 모드에용 - ${appContext ? "APP" : "WEB"}`,
+  );
   const { hideSession, setHideSession } = devMarkerStore();
+
   useEffect(() => {
     if (!window) return;
     const devDomains = ["local", "dev", "test", "vercel.app"];
