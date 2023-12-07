@@ -2,7 +2,7 @@
 
 import { useContext, useEffect, useState } from "react";
 import { devMarkerStore } from "../../store/devMarkerStore";
-import { TalingAppContext } from "../app-context-wrapper";
+import { TalingAppContext } from "../app-context";
 
 const DevMarker = () => {
   const [isShowing, setIsShowing] = useState<boolean>(false);
