@@ -1,6 +1,6 @@
 import { TalentCategory } from "../../constants/talent-category";
 import { TalentStatusEnum } from "../../constants/talent-status";
-import { GROUP_CLASS, MULTI_DAY_CLASS } from "@taling-ui/constants/talent-type";
+import { GROUP_CLASS, MULTI_DAY_CLASS조 } from "../../constants/talent-type";
 
 export const TalentType = {
   /**
