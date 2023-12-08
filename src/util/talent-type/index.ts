@@ -1,5 +1,6 @@
 import { TalentCategory } from "../../constants/talent-category";
 import { TalentStatusEnum } from "../../constants/talent-status";
+import { GROUP_CLASS, MULTI_DAY_CLASS } from "@taling-ui/constants/talent-type";
 
 export const TalentType = {
   /**
@@ -38,6 +39,16 @@ export const TalentType = {
    */
   isOneDayClass: (talent: any) => {
     return talent?.totalTimes === 1;
+  },
+
+  /**
+   * Talent가 그룹 클래스인지 검사
+   * @param talent
+   * @returns
+   */
+  isGroupClass: (talent: any) => {
+    const groupAvailable = talent?.groupAvailable;
+    return GROUP_CLASS.includes(groupAvailable);
   },
 
   getTalentType: (talent: any) => {
