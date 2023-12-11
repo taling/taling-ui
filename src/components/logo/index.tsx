@@ -3,7 +3,7 @@
  */
 const LogoComponent = ({ size = "sm" }: { size?: "sm" | "md" | "lg" }) => {
   const sizeMap = {
-    sm: "h-6 w-12 sm:h-6 sm:w-12",
+    sm: "h-6 w-12 sm:h-8 sm:w-12",
     md: "h-10 w-16 sm:h-10 sm:w-16",
     lg: "h-12 w-20 sm:h-12 sm:w-20",
   };
