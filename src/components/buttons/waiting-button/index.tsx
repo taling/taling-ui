@@ -1,3 +1,4 @@
+import { Button } from "@taling-ui/ui/button";
 import { useCallback, useEffect, useState } from "react";
 
 export default function WaitingButton({
@@ -39,8 +40,8 @@ export default function WaitingButton({
   }, [normal]);
 
   return (
-    <div className={className} onClick={_internalOnClick}>
+    <Button className={className} onClick={_internalOnClick}>
       {currentRender}
-    </div>
+    </Button>
   );
 }
