@@ -40,8 +40,8 @@ export default function WaitingButton({
   }, [normal]);
 
   return (
-    <Button className={className} onClick={_internalOnClick}>
+    <div className={className} onClick={_internalOnClick}>
       {currentRender}
-    </Button>
+    </div>
   );
 }
