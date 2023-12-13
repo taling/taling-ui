@@ -1,9 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  content: [
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-	],
+  content: ["./src/components/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     container: {
       center: true,
@@ -20,7 +18,7 @@ module.exports = {
         background: "white",
         foreground: "#111111",
         primary: {
-          DEFAULT:  "#FF0045",
+          DEFAULT: "#FF0045",
           foreground: "white",
         },
         secondary: {
@@ -32,7 +30,7 @@ module.exports = {
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
+          DEFAULT: "#666666",
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
@@ -65,4 +63,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
