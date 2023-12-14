@@ -63,10 +63,15 @@ export const TalentType = {
 };
 
 export const TalentStatus = {
+  isDraft: (talent: any) => {
+    return talent?.status === TalentStatusEnum.DRAFT;
+  },
+  isRejected: (talent: any) => {
+    return talent?.status === TalentStatusEnum.REJECTED;
+  },
   isSoldOut: (talent: any) => {
     return talent?.isSoldOut === 1;
   },
-
   isPublicClass: (talent: any) => {
     return (
       talent.status == TalentStatusEnum.OPENED &&

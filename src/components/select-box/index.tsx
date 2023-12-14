@@ -83,7 +83,14 @@ export default function SelectBox({
       {({ open }) => (
         <>
           <div className="relative">
-            <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-taling-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-taling-pink-400 sm:text-sm sm:leading-6">
+            <Listbox.Button
+              className={classNames(
+                "relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-taling-gray-900 shadow-sm ring-1 ring-inset ring-gray-300  sm:text-sm sm:leading-6",
+                enabled
+                  ? "focus:outline-none focus:ring-2 focus:ring-taling-pink-400 "
+                  : "!bg-taling-gray-300 !cursor-not-allowed !text-taling-gray-800 opacity-50 ",
+              )}
+            >
               <span className="block truncate">
                 {selected?.name ?? "선택해주세요"}
               </span>
