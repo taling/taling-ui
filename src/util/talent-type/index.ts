@@ -79,4 +79,12 @@ export const TalentStatus = {
       talent.isPrivateClass == false
     );
   },
+  //심사 완료 된 클래스인지
+  isReviewComplete: (talent: any) => {
+    return (
+      talent?.status === TalentStatusEnum.SUSPENDED ||
+      talent?.status === TalentStatusEnum.OPENED ||
+      talent?.status === TalentStatusEnum.WAITING_FOR_TERMS_AGREEMENT
+    );
+  },
 };
