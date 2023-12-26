@@ -72,6 +72,9 @@ export const TalentStatus = {
   isSoldOut: (talent: any) => {
     return talent?.isSoldOut === 1;
   },
+  isOpened: (talent: any) => {
+    return talent?.status === TalentStatusEnum.OPENED;
+  },
   isPublicClass: (talent: any) => {
     return (
       talent.status == TalentStatusEnum.OPENED &&
