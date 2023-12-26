@@ -11,11 +11,13 @@ export default function ImageFallback({
   alt,
   className = "",
   fallback,
+  loading = "lazy",
 }: {
   src: string;
   alt: string;
   className: string;
   fallback: React.ReactNode | string;
+  loading?: "eager" | "lazy" | undefined;
 }) {
   const [showFallback, setShowFallback] = useState<boolean>(false);
 
@@ -27,6 +29,7 @@ export default function ImageFallback({
       src={src}
       alt={alt}
       className={className}
+      loading={loading}
       onError={() => {
         setShowFallback(true);
       }}
