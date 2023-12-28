@@ -1,11 +1,15 @@
+import { classNames } from "../../util/tailwind-util/class-names";
+
 const PrimaryButton = ({
   children,
   size = "md",
   showLoadingState = false,
+  isEnabled = true,
 }: {
   children: React.ReactNode;
   size?: "sm" | "md" | "lg";
   showLoadingState?: boolean;
+  isEnabled?: boolean;
 }): JSX.Element => {
   const pad = function () {
     switch (size) {
@@ -19,10 +23,13 @@ const PrimaryButton = ({
   };
   return (
     <div
-      className={
-        "bg-taling-pink-400 text-white text-center px-2 py-1.5 rounded-md drop-shadow-sm cursor-pointer" +
-        pad()
-      }
+      className={classNames(
+        " text-white text-center px-2 py-1.5 rounded-md drop-shadow-sm cursor-pointer",
+        isEnabled
+          ? "bg-taling-pink-400"
+          : "bg-taling-gray-400 cursor-not-allowed",
+        pad(),
+      )}
     >
       {showLoadingState ? (
         <div className="flex w-full h-full justify-center items-center gap-2">
