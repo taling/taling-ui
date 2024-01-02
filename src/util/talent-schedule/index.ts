@@ -7,7 +7,7 @@ const TalentSchedule = {
    * @returns
    */
   isOfflineRegion: (schedule: any) => {
-    return !(schedule?.region === TalentSpecialRegion.ONLINE_LIVE);
+    return !(schedule?.region === TalentSpecialRegion.ONLINE);
   },
 };
 

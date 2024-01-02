@@ -7,5 +7,5 @@ export enum TalentCategory {
 }
 
 export enum TalentSpecialRegion {
-  ONLINE_LIVE = 64, // 온라인 라이브의 경우 region = 64의 특수값을 가짐
+  ONLINE = 64, // 온라인 라이브의 경우 region = 64의 특수값을 가짐
 }
