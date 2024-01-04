@@ -13,6 +13,7 @@ export default function ImageFallback({
   fallback,
   loading = "lazy",
   nextImageOption,
+  useDefaultImg
 }: {
   src: string;
   alt: string;
@@ -23,11 +24,30 @@ export default function ImageFallback({
     width:number;
     height:number;
   }
-  
+  useDefaultImg?:boolean
 }) {
   const [showFallback, setShowFallback] = useState<boolean>(false);
 
   if (showFallback) {
+    if(useDefaultImg){
+      const defaultSrc = "//img.taling.me/Content/Images/placeholders/profile-default.thumb.jpg"
+      return(
+        nextImageOption ? <Image
+        src={defaultSrc}
+        alt={alt}
+        className={className}
+        width={nextImageOption.width}
+        height={nextImageOption.height}
+        loading={loading}
+      /> :
+      <img
+        src={defaultSrc}
+        alt={alt}
+        className={className}
+        loading={loading}
+      />
+      )
+    }
     return <div className={className}>{fallback}</div>;
   }
   
