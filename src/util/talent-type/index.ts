@@ -76,11 +76,7 @@ export const TalentStatus = {
     return talent?.status === TalentStatusEnum.OPENED;
   },
   isPublicClass: (talent: any) => {
-    return (
-      talent.status == TalentStatusEnum.OPENED &&
-      talent.testYn == "N" &&
-      talent.isPrivateClass == false
-    );
+    return talent.status == TalentStatusEnum.OPENED && talent.testYn == "N";
   },
   //심사 완료 된 클래스인지
   isReviewComplete: (talent: any) => {
