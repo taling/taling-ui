@@ -33,24 +33,24 @@ export default function ImageFallback({
       const defaultSrc = "//img.taling.me/Content/Images/placeholders/profile-default.thumb.jpg"
       return(
         nextImageOption ? <Image
-        src={defaultSrc}
-        alt={alt}
-        className={className}
-        width={nextImageOption.width}
-        height={nextImageOption.height}
-        loading={loading}
+          src={defaultSrc}
+          alt={alt}
+          className={className}
+          width={nextImageOption.width}
+          height={nextImageOption.height}
+          loading={loading}
       /> :
-      <img
-        src={defaultSrc}
-        alt={alt}
-        className={className}
-        loading={loading}
-      />
+        <img
+          src={defaultSrc}
+          alt={alt}
+          className={className}
+          loading={loading}
+        />
       )
     }
     return <div className={className}>{fallback}</div>;
   }
-  
+
   const protocolCheck = (src:string) => {
     if (src.startsWith('//')) {
       return 'https:' + src;
@@ -60,8 +60,9 @@ export default function ImageFallback({
     }
     return src;
   }
-  
+
   const domainCheck = (src:string) => {
+    if (!src) return false;
     if (src.includes('taling.me')) {
       return true;
     }
