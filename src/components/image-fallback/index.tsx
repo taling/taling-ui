@@ -10,19 +10,21 @@ export default function ImageFallback({
   src,
   alt,
   className = "",
-  fallback,
+  fallback = <div className="h-full bg-taling-gray-300 blur-sm "></div>
+  ,
   loading = "lazy",
   nextImageOption,
   useDefaultImg,
 }: {
   src: string;
   alt: string;
-  className: string;
-  fallback: React.ReactNode | string;
+  className?: string;
+  fallback?: React.ReactNode | string;
   loading?: "eager" | "lazy" | undefined;
   nextImageOption?: {
-    width: number;
-    height: number;
+    width?: number;
+    height?: number;
+    fill?: boolean;
   };
   useDefaultImg?: boolean;
 }) {
@@ -39,6 +41,7 @@ export default function ImageFallback({
           className={className}
           width={nextImageOption.width}
           height={nextImageOption.height}
+          fill={nextImageOption.fill}
           loading={loading}
         />
       ) : (
@@ -77,6 +80,9 @@ export default function ImageFallback({
       className={className}
       width={nextImageOption.width}
       height={nextImageOption.height}
+      fill={nextImageOption.fill}
+      placeholder="blur"
+      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8Ww8AAj8BXkQ+xPEAAAAASUVORK5CYII="
       loading={loading}
       onError={() => {
         setShowFallback(true);
