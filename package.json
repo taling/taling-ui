@@ -45,9 +45,11 @@
     "@radix-ui/react-toggle": "^1.0.3",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@types/node": "^20.2.5",
+    "@types/qs": "^6.9.11",
     "@types/uuid": "^9.0.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "qs": "^6.11.2",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7"
   },
