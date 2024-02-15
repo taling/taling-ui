@@ -60,6 +60,16 @@ export const TalentType = {
       return "P2P";
     }
   },
+
+  getTalentTypeString: (talent: any) => {
+    if (TalentType.isVod(talent)) {
+      return "VOD";
+    } else if (TalentType.isEbook(talent)) {
+      return "전자책";
+    } else {
+      return "온/오프라인";
+    }
+  },
 };
 
 export const TalentStatus = {
