@@ -6,6 +6,7 @@ import { Fragment, useCallback, useEffect, useState } from "react";
 export interface ISelectBoxItem {
   id: number;
   name: string;
+  display?: boolean;
 }
 
 export default function SelectBox({
@@ -13,11 +14,13 @@ export default function SelectBox({
   enabled,
   onSelected,
   defaultSelection,
+  isToday,
 }: {
   list: ISelectBoxItem[];
   enabled: boolean;
   onSelected: (item: ISelectBoxItem | null) => void;
   defaultSelection: ISelectBoxItem | null;
+  isToday?: boolean;
 }) {
   const [_internaList, setInternalList] = useState<ISelectBoxItem[]>();
   const [selected, setSelected] = useState<ISelectBoxItem | null>(null);
@@ -94,9 +97,9 @@ export default function SelectBox({
               <span className="block truncate">
                 {selected?.name ?? "선택해주세요"}
               </span>
-              <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+              <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                 <ChevronUpDownIcon
-                  className="h-5 w-5 text-taling-gray-400"
+                  className="w-5 h-5 text-taling-gray-400"
                   aria-hidden="true"
                 />
               </span>
@@ -108,14 +111,16 @@ export default function SelectBox({
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="no-scrollbar absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+              <Listbox.Options className="absolute z-10 w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg no-scrollbar max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                 {list.map((item) => {
                   const internalSelected = selected?.id === item.id;
+                  const excludeToday = isToday && !item.display;
                   return (
                     <Listbox.Option
                       key={item.id}
                       className={({ active }) =>
                         classNames(
+                          excludeToday ? "hidden" : "",
                           active || internalSelected
                             ? "bg-taling-pink-400 text-white"
                             : "text-taling-gray-900",
@@ -147,7 +152,7 @@ export default function SelectBox({
                               )}
                             >
                               <CheckIcon
-                                className="h-5 w-5"
+                                className="w-5 h-5"
                                 aria-hidden="true"
                               />
                             </span>
