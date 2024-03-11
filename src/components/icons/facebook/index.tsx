@@ -1,9 +1,8 @@
-import { classNames } from "@taling-ui/util/tailwind-util/class-names";
 
 export default function FacebookIcon(props: any) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg"className={classNames(props.className)} viewBox="0 0 20 20" fill="currentColor">
-      <path d="M16.94 12H13.77V23.5H9V12H6.625V8.03497H9V5.65503C9 2.42503 10.34 0.5 14.15 0.5H17.32V4.46503H15.32C13.82 4.46503 13.74 5.01999 13.74 6.04999V8.04999H17.33L16.94 12Z"></path>
+    <svg className={props.className} viewBox="0 0 134 250" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M124.96 139.563L131.847 94.6602H88.7643V65.5209C88.7643 53.2364 94.7822 41.2621 114.079 41.2621H133.667V3.03398C133.667 3.03398 115.89 0 98.8947 0C63.4117 0 40.2206 21.5049 40.2206 60.4369V94.6602H0.778809V139.563H40.2206V248.113C48.1292 249.354 56.2351 250 64.4924 250C72.7497 250 80.8556 249.354 88.7643 248.113V139.563H124.96Z" fill="white"/>
     </svg>
   );
 }
