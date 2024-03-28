@@ -1,6 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
+
+interface ImageFallbackProps {
+  src: string;
+  alt: string;
+  className?: string;
+  fallback?: React.ReactNode | string;
+  loading?: "eager" | "lazy" | undefined;
+  nextImageOption?: {
+    width?: number;
+    height?: number;
+    fill?: boolean;
+  };
+  useDefaultImg?: boolean;
+  onClick?: () => void
+}
 /**
  * 이미지 로드에 실패하면 fallback 컴포넌트를 표시합니다.
  * @param param0
@@ -15,19 +30,8 @@ export default function ImageFallback({
   loading = "lazy",
   nextImageOption,
   useDefaultImg,
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-  fallback?: React.ReactNode | string;
-  loading?: "eager" | "lazy" | undefined;
-  nextImageOption?: {
-    width?: number;
-    height?: number;
-    fill?: boolean;
-  };
-  useDefaultImg?: boolean;
-}) {
+  onClick
+}:ImageFallbackProps) {
   const [showFallback, setShowFallback] = useState<boolean>(false);
 
   if (showFallback || !src) {
@@ -43,6 +47,7 @@ export default function ImageFallback({
           height={nextImageOption.height}
           fill={nextImageOption.fill}
           loading={loading}
+          onClick={onClick}
         />
       ) : (
         <img
@@ -50,6 +55,7 @@ export default function ImageFallback({
           alt={alt}
           className={className}
           loading={loading}
+          onClick={onClick}
         />
       );
     }
@@ -87,6 +93,7 @@ export default function ImageFallback({
       onError={() => {
         setShowFallback(true);
       }}
+      onClick={onClick}
     />
   ) : (
     <img
@@ -97,6 +104,7 @@ export default function ImageFallback({
       onError={() => {
         setShowFallback(true);
       }}
+      onClick={onClick}
     />
   );
 }
