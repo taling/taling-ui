@@ -191,6 +191,8 @@ const TailwindCalendarComponent = forwardRef(
 
     useEffect(() => {
       loadDaysInMonth();
+      onMonthChange &&
+        onMonthChange({ year: selectedYear, month: selectedMonth });
     }, [selectedMonth, selectedYear]);
 
     return (
