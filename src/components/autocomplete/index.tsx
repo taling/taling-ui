@@ -51,9 +51,7 @@ export default function Autocomplete({
               "w-full border-none py-1.5 pl-3 pr-10 text-sm leading-5 text-taling-gray-900 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:outline-none focus:ring-2 focus:ring-taling-pink-400",
               round(rounded),
             )}
-            displayValue={(category: IAutocompleteItem | null) =>
-              category?.name || ""
-            }
+            displayValue={(item: IAutocompleteItem | null) => item?.name || ""}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="항목을 검색해주세요."
           />
@@ -82,30 +80,30 @@ export default function Autocomplete({
                 검색 결과가 없습니다.
               </div>
             ) : (
-              filteredList.map((category) => (
+              filteredList.map((item) => (
                 <Combobox.Option
-                  key={category.id}
+                  key={item.id}
                   className={({ selected, active }) =>
                     classNames(
                       "relative cursor-default select-none pr-4 text-taling-gray-900",
-                      category.type === "header" ? "pl-4 py-1" : "pl-10 py-2",
+                      item.type === "header" ? "pl-4 py-1" : "pl-10 py-2",
                       active || selected ? "bg-taling-gray-150" : "",
                     )
                   }
-                  disabled={category.type === "header"}
-                  value={category}
+                  disabled={item.type === "header"}
+                  value={item}
                 >
                   {({ selected }) => (
                     <>
                       <span
                         className={classNames(
                           "block truncate",
-                          category.type === "header"
+                          item.type === "header"
                             ? "font-bold text-taling-gray-700"
                             : "font-normal",
                         )}
                       >
-                        {category.name}
+                        {item.name}
                       </span>
                       {selected ? (
                         <span
