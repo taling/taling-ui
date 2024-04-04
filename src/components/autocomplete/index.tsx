@@ -1,25 +1,29 @@
 import { Combobox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
-export type IAutocompleteItem = {
+export interface IAutocompleteItem {
   id: number | string;
   name: string;
   type?: "header" | "child";
   headerId?: number;
-};
+}
 
 interface AutoCompleteProps {
+  defaultSelection: IAutocompleteItem | null;
   list: IAutocompleteItem[];
   onSelected: (item: IAutocompleteItem | null) => void;
   rounded?: "sm" | "md" | "lg";
+  enabled?: boolean;
 }
 
 export default function Autocomplete({
+  defaultSelection,
   list,
   onSelected,
   rounded = "md",
+  enabled = true,
 }: AutoCompleteProps) {
   const [selected, setSelected] = useState<IAutocompleteItem | null>(null);
   const [search, setSearch] = useState("");
@@ -35,6 +39,10 @@ export default function Autocomplete({
             .includes(search.toLowerCase().replace(/\s+/g, ""));
         });
 
+  useEffect(() => {
+    setSelected(defaultSelection);
+  }, [defaultSelection]);
+
   return (
     <Combobox
       value={selected}
@@ -43,19 +51,32 @@ export default function Autocomplete({
         setSelected(value);
         onSelected(value);
       }}
+      disabled={!enabled}
     >
       <div className="relative">
-        <div className="relative w-full cursor-default bg-white text-left shadow-sm">
+        <div
+          className={classNames(
+            "relative w-full cursor-default bg-white text-left shadow-sm",
+          )}
+        >
           <Combobox.Input
             className={classNames(
-              "w-full border-none py-1.5 pl-3 pr-10 text-sm leading-5 text-taling-gray-900 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6 focus:outline-none focus:ring-2 focus:ring-taling-pink-400",
+              "w-full border-none py-1.5 pl-3 pr-10 text-sm leading-5 text-taling-gray-900 sm:text-sm sm:leading-6 ring-1 ring-inset ring-gray-300",
+              enabled
+                ? "focus:outline-none focus:ring-2 focus:ring-taling-pink-400"
+                : "!bg-taling-gray-300 !cursor-not-allowed !text-taling-gray-800 opacity-50 ",
               round(rounded),
             )}
             displayValue={(item: IAutocompleteItem | null) => item?.name || ""}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="항목을 검색해주세요."
           />
-          <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
+          <Combobox.Button
+            className={classNames(
+              "absolute inset-y-0 right-0 flex items-center pr-2",
+              enabled ? "" : "!cursor-not-allowed",
+            )}
+          >
             <ChevronUpDownIcon
               className="h-5 w-5 text-gray-400"
               aria-hidden="true"
