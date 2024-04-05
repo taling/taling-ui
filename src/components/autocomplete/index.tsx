@@ -4,16 +4,23 @@ import { classNames } from "@taling-ui/util/tailwind-util/class-names";
 import { Fragment, useEffect, useState } from "react";
 
 export interface IAutocompleteItem {
-  id: number | string;
+  id: number;
   name: string;
-  type?: "header" | "child";
-  headerId?: number;
+  children?: IAutocompleteChild[];
+  isAvailable: boolean;
+}
+
+export interface IAutocompleteChild {
+  id: number;
+  name: string;
+  parentId: number;
+  [key: string]: any;
 }
 
 interface AutoCompleteProps {
-  defaultSelection: IAutocompleteItem | null;
+  defaultSelection: IAutocompleteItem | IAutocompleteChild | null;
   list: IAutocompleteItem[];
-  onSelected: (item: IAutocompleteItem | null) => void;
+  onSelected: (item: IAutocompleteItem | IAutocompleteChild | null) => void;
   rounded?: "sm" | "md" | "lg";
   enabled?: boolean;
 }
@@ -25,19 +32,40 @@ export default function Autocomplete({
   rounded = "md",
   enabled = true,
 }: AutoCompleteProps) {
-  const [selected, setSelected] = useState<IAutocompleteItem | null>(null);
+  const [selected, setSelected] = useState<
+    IAutocompleteItem | IAutocompleteChild | null
+  >(null);
   const [search, setSearch] = useState("");
+
+  const checkSearch = (item: string, searchVal: string) => {
+    return item
+      .toLowerCase()
+      .replace(/\s+/g, "")
+      .includes(searchVal.toLowerCase().replace(/\s+/g, ""));
+  };
 
   const filteredList =
     search === ""
       ? list
-      : list.filter((item) => {
-          if (item.type === "header") return;
-          return item.name
-            .toLowerCase()
-            .replace(/\s+/g, "")
-            .includes(search.toLowerCase().replace(/\s+/g, ""));
-        });
+      : list.reduce(
+          (
+            searchResult: (IAutocompleteItem | IAutocompleteChild)[],
+            parent: IAutocompleteItem,
+          ) => {
+            if (checkSearch(parent.name, search)) searchResult.push(parent);
+            else {
+              const childResult = parent.children?.filter((child) =>
+                checkSearch(child.name, search),
+              );
+              if (childResult && childResult.length > 0) {
+                searchResult.push(parent);
+              }
+            }
+            return searchResult;
+          },
+          [],
+        );
+  console.log(filteredList);
 
   useEffect(() => {
     setSelected(defaultSelection);
@@ -101,38 +129,73 @@ export default function Autocomplete({
                 검색 결과가 없습니다.
               </div>
             ) : (
-              filteredList.map((item) => (
+              filteredList.map((parent) => (
                 <Combobox.Option
-                  key={item.id}
+                  key={parent.id}
                   className={({ selected, active }) =>
                     classNames(
-                      "relative cursor-default select-none pr-4 text-taling-gray-900",
-                      item.type === "header" ? "pl-4 py-1" : "pl-10 py-2",
+                      "relative cursor-default select-none text-taling-gray-900 pl-5 py-2",
                       active || selected ? "bg-taling-gray-150" : "",
                     )
                   }
-                  disabled={item.type === "header"}
-                  value={item}
+                  disabled={!parent.isAvailable}
+                  value={parent}
                 >
                   {({ selected }) => (
                     <>
                       <span
                         className={classNames(
                           "block truncate",
-                          item.type === "header"
+                          !parent.isAvailable
                             ? "font-bold text-taling-gray-700"
                             : "font-normal",
                         )}
                       >
-                        {item.name}
+                        {parent.name}
                       </span>
                       {selected ? (
                         <span
-                          className={`absolute inset-y-0 left-0 flex items-center pl-3 text-taling-pink-400`}
+                          className={`absolute inset-y-0 left-0 flex items-center text-taling-pink-400`}
                         >
                           <CheckIcon className="h-5 w-5" aria-hidden="true" />
                         </span>
                       ) : null}
+                      {parent.children && (
+                        <ul>
+                          {parent.children.map((child: IAutocompleteChild) => (
+                            <Combobox.Option
+                              key={child.id}
+                              className={({ selected, active }) =>
+                                classNames(
+                                  "relative cursor-default select-none pr-4 text-taling-gray-900 -ml-5 pl-8 py-2",
+                                  active || selected
+                                    ? "bg-taling-gray-150"
+                                    : "",
+                                )
+                              }
+                              value={child}
+                            >
+                              {({ selected }) => (
+                                <>
+                                  <span className={"block truncate"}>
+                                    {child.name}
+                                  </span>
+                                  {selected ? (
+                                    <span
+                                      className={`absolute inset-y-0 left-2 flex items-center text-taling-pink-400`}
+                                    >
+                                      <CheckIcon
+                                        className="h-5 w-5"
+                                        aria-hidden="true"
+                                      />
+                                    </span>
+                                  ) : null}
+                                </>
+                              )}
+                            </Combobox.Option>
+                          ))}
+                        </ul>
+                      )}
                     </>
                   )}
                 </Combobox.Option>
