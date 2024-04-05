@@ -65,7 +65,6 @@ export default function Autocomplete({
           },
           [],
         );
-  console.log(filteredList);
 
   useEffect(() => {
     setSelected(defaultSelection);
@@ -134,7 +133,7 @@ export default function Autocomplete({
                   key={parent.id}
                   className={({ selected, active }) =>
                     classNames(
-                      "relative cursor-default select-none text-taling-gray-900 pl-5 py-2",
+                      "relative cursor-default select-none text-taling-gray-900 pl-5",
                       active || selected ? "bg-taling-gray-150" : "",
                     )
                   }
@@ -145,8 +144,8 @@ export default function Autocomplete({
                     <>
                       <span
                         className={classNames(
-                          "block truncate",
-                          !parent.isAvailable
+                          "pt-2 pb-1 block truncate",
+                          parent.children
                             ? "font-bold text-taling-gray-700"
                             : "font-normal",
                         )}
@@ -155,7 +154,7 @@ export default function Autocomplete({
                       </span>
                       {selected ? (
                         <span
-                          className={`absolute inset-y-0 left-0 flex items-center text-taling-pink-400`}
+                          className={`absolute top-1.5 left-0 flex items-center text-taling-pink-400`}
                         >
                           <CheckIcon className="h-5 w-5" aria-hidden="true" />
                         </span>
