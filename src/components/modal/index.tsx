@@ -7,13 +7,13 @@ const widthMap = {
   md: "max-w-[520px]",
   lg: "max-w-[800px]",
 };
-export type ModalWidthType = keyof typeof widthMap;
+type ModalWidthType = keyof typeof widthMap;
 
 const backdropOpacityMap = {
   normal: "opacity-15",
   darker: "opacity-70",
 };
-export type BackdropOpacityType = keyof typeof backdropOpacityMap;
+type BackdropOpacityType = keyof typeof backdropOpacityMap;
 
 interface ModalProps {
   isOpen: boolean;
@@ -76,7 +76,7 @@ function Modal({
               <Dialog.Panel
                 ref={initRef}
                 className={classNames(
-                  "relative w-full overflow-y-auto align-middle transition-all transform bg-white shadow-modal",
+                  "relative w-full overflow-y-auto align-middle transition-all transform bg-white shadow-elevation-32",
                   widthMap[width],
                   isRound ? "rounded-2xl" : "rounded-none",
                 )}
@@ -149,7 +149,7 @@ const modalFooterAlignMap = {
   end: "justify-end gap-3",
   column: "flex-col gap-2",
 };
-export type ModalFooterAlignType = keyof typeof modalFooterAlignMap;
+type ModalFooterAlignType = keyof typeof modalFooterAlignMap;
 
 interface ModalFooterProps extends React.ComponentPropsWithoutRef<"footer"> {
   children: React.ReactNode;
@@ -176,4 +176,12 @@ function ModalFooter({
   );
 }
 
-export { Modal, ModalBody, ModalFooter, ModalHeader };
+export {
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  type BackdropOpacityType,
+  type ModalFooterAlignType,
+  type ModalWidthType,
+};
