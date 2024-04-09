@@ -90,7 +90,7 @@ function Modal({
 
 interface ModalHeaderProps extends React.ComponentPropsWithoutRef<"h3"> {
   children: React.ReactNode;
-  setIsOpen: (arg: boolean) => void;
+  setIsOpen?: (arg: boolean) => void;
 }
 
 function ModalHeader({
