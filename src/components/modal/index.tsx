@@ -123,7 +123,6 @@ function ModalHeader({
     </header>
   );
 }
-
 interface ModalBodyProps extends React.ComponentPropsWithoutRef<"section"> {
   children: React.ReactNode;
 }
@@ -142,13 +141,33 @@ function ModalBody({ children, className, ...props }: ModalBodyProps) {
   );
 }
 
+const modalFooterAlignMap = {
+  between: "justify-between gap-3",
+  end: "justify-end gap-3",
+  column: "flex-col gap-2",
+};
+export type ModalFooterAlignType = keyof typeof modalFooterAlignMap;
+
 interface ModalFooterProps extends React.ComponentPropsWithoutRef<"footer"> {
   children: React.ReactNode;
+  align?: ModalFooterAlignType;
 }
 
-function ModalFooter({ children, className, ...props }: ModalFooterProps) {
+function ModalFooter({
+  children,
+  align = "between",
+  className,
+  ...props
+}: ModalFooterProps) {
   return (
-    <footer className={classNames("px-5 py-4", className)} {...props}>
+    <footer
+      className={classNames(
+        "flex px-5 py-4",
+        modalFooterAlignMap[align],
+        className,
+      )}
+      {...props}
+    >
       {children}
     </footer>
   );
