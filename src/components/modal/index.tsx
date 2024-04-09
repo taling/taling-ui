@@ -21,6 +21,7 @@ interface ModalProps {
   isBackdropClickable?: boolean;
   width?: ModalWidthType;
   backdropOpacity?: BackdropOpacityType;
+  isRound?: boolean;
   children: React.ReactNode;
 }
 
@@ -30,6 +31,7 @@ function Modal({
   isBackdropClickable = true,
   width = "md",
   backdropOpacity = "normal",
+  isRound = true,
   children,
 }: ModalProps) {
   const initRef = useRef(null);
@@ -74,8 +76,9 @@ function Modal({
               <Dialog.Panel
                 ref={initRef}
                 className={classNames(
-                  "relative w-full overflow-y-auto align-middle transition-all transform bg-white shadow-modal rounded-2xl",
+                  "relative w-full overflow-y-auto align-middle transition-all transform bg-white shadow-modal",
                   widthMap[width],
+                  isRound ? "rounded-2xl" : "rounded-none",
                 )}
               >
                 <div className="flex flex-col">{children}</div>
