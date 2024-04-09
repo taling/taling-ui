@@ -1,5 +1,4 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
 import { Fragment, useRef } from "react";
 
@@ -40,7 +39,7 @@ function Modal({
       <Dialog
         initialFocus={initRef}
         as="div"
-        className="relative z-30"
+        className="relative z-50"
         onClose={() => {
           isBackdropClickable && setIsOpen(false);
         }}
@@ -75,11 +74,11 @@ function Modal({
               <Dialog.Panel
                 ref={initRef}
                 className={classNames(
-                  "relative w-full overflow-y-auto align-middle transition-all transform bg-white shadow-modal",
+                  "relative w-full overflow-y-auto align-middle transition-all transform bg-white shadow-modal rounded-2xl",
                   widthMap[width],
                 )}
               >
-                <div className="flex flex-col gap-4">{children}</div>
+                <div className="flex flex-col">{children}</div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -101,7 +100,7 @@ function ModalHeader({
   ...props
 }: ModalHeaderProps) {
   return (
-    <header className="flex justify-between px-8 pt-8">
+    <header className="flex justify-between px-8 pt-8 pb-4">
       <Dialog.Title
         as="h3"
         className={classNames(
@@ -112,7 +111,7 @@ function ModalHeader({
       >
         {children}
       </Dialog.Title>
-      <button
+      {/* <button
         type="button"
         className="text-taling-gray-300 hover:text-taling-gray-500"
         onClick={() => {
@@ -120,7 +119,7 @@ function ModalHeader({
         }}
       >
         <XMarkIcon className="w-6 h-6" />
-      </button>
+      </button> */}
     </header>
   );
 }
@@ -133,7 +132,7 @@ function ModalBody({ children, className, ...props }: ModalBodyProps) {
   return (
     <section
       className={classNames(
-        "flex flex-col flex-1 px-8 pb-8 text-start text-base leading-7 text-taling-gray-900",
+        "flex flex-col flex-1 px-8 pb-8 text-start font-normal text-base leading-7 text-taling-gray-900",
         className,
       )}
       {...props}
@@ -149,7 +148,7 @@ interface ModalFooterProps extends React.ComponentPropsWithoutRef<"footer"> {
 
 function ModalFooter({ children, className, ...props }: ModalFooterProps) {
   return (
-    <footer className={classNames("px-4 pb-4", className)} {...props}>
+    <footer className={classNames("px-5 py-4", className)} {...props}>
       {children}
     </footer>
   );
