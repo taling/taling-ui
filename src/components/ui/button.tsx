@@ -5,7 +5,7 @@ import * as React from "react";
 import { cn } from "@taling-ui/util/tailwind-util/utils";
 
 const buttonVariants = cva(
-  "min-w-[100px] inline-flex gap-2 items-center justify-center whitespace-nowrap rounded text-sm font-bold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  "min-w-[100px] inline-flex gap-2 items-center justify-center whitespace-nowrap rounded-md text-sm font-bold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -14,15 +14,15 @@ const buttonVariants = cva(
         secondary:
           "bg-taling-gray-900 text-white hover:bg-taling-gray-dark disabled:bg-taling-gray-200 disabled:text-taling-gray-400",
         outline:
-          "border border-taling-gray-300 bg-white text-primary hover:bg-taling-gray-100 disabled:bg-taling-gray-100 disabled:text-taling-gray-300",
+          "border border-taling-gray-300 bg-white text-taling-gray-700 hover:bg-taling-gray-100 disabled:bg-taling-gray-100 disabled:text-taling-gray-300",
         ghost:
-          "text-taling-gray-600 hover:bg-accent hover:text-accent-foreground",
+          "text-taling-gray-600 hover:bg-taling-gray-900/4 hover:text-accent-foreground",
         underline: "underline hover:text-foreground text-muted ",
       },
       size: {
-        sm: "h-10 text-xs px-4 py-2.5 leading-5",
-        default: "h-12 text-sm px-4 py-3 leading-6",
-        lg: "h-14 text-base px-4 py-3.5 leading-7",
+        sm: "h-10 text-xs px-4 leading-5",
+        default: "h-12 text-sm px-4 leading-6",
+        lg: "h-14 text-base px-4 leading-7",
       },
     },
     defaultVariants: {
