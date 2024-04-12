@@ -17,10 +17,18 @@ export interface IAutocompleteChild {
   [key: string]: any;
 }
 
+export interface ParsedItemType {
+  id: string;
+  name: string;
+  children?: ParsedItemType[] | null;
+  parentId?: number;
+  isAvailable?: boolean;
+}
+
 interface AutoCompleteProps {
   defaultSelection: IAutocompleteItem | IAutocompleteChild | null;
   list: IAutocompleteItem[];
-  onSelected: (item: IAutocompleteItem | IAutocompleteChild | null) => void;
+  onSelected: (item: ParsedItemType | null) => void;
   rounded?: "sm" | "md" | "lg";
   enabled?: boolean;
 }
@@ -32,9 +40,7 @@ export default function Autocomplete({
   rounded = "md",
   enabled = true,
 }: AutoCompleteProps) {
-  const [selected, setSelected] = useState<
-    IAutocompleteItem | IAutocompleteChild | null
-  >(null);
+  const [selected, setSelected] = useState<ParsedItemType | null>(null);
   const [search, setSearch] = useState("");
 
   const checkSearch = (item: string, searchVal: string) => {
@@ -44,14 +50,26 @@ export default function Autocomplete({
       .includes(searchVal.toLowerCase().replace(/\s+/g, ""));
   };
 
+  const parsedList = list.map((item) => {
+    return {
+      id: "p" + item.id,
+      name: item.name,
+      children: item.children
+        ? item.children.map((child) => ({
+            id: "c" + child.id,
+            name: child.name,
+            parentId: child.parentId,
+          }))
+        : null,
+      isAvailable: item.isAvailable,
+    };
+  });
+
   const filteredList =
     search === ""
-      ? list
-      : list.reduce(
-          (
-            searchResult: (IAutocompleteItem | IAutocompleteChild)[],
-            parent: IAutocompleteItem,
-          ) => {
+      ? parsedList
+      : parsedList.reduce(
+          (searchResult: ParsedItemType[], parent: ParsedItemType) => {
             if (checkSearch(parent.name, search)) searchResult.push(parent);
             else {
               const childResult = parent.children?.filter((child) =>
@@ -67,16 +85,36 @@ export default function Autocomplete({
         );
 
   useEffect(() => {
-    setSelected(defaultSelection);
+    const parsedDefaultSelection = {
+      ...defaultSelection,
+      id: defaultSelection?.children
+        ? "p" + defaultSelection.id
+        : "c" + defaultSelection?.id,
+    } as ParsedItemType;
+    setSelected(parsedDefaultSelection);
   }, [defaultSelection]);
 
   return (
     <Combobox
       value={selected}
       by="id"
-      onChange={(value: IAutocompleteItem) => {
+      onChange={(value) => {
+        if (value === null) return;
+        if (Object.prototype.hasOwnProperty.call(value, "parentId")) {
+          const parsedValue = {
+            id: value.id.slice(1),
+            name: value.name,
+            parentId: value.parentId,
+          };
+          onSelected(parsedValue);
+        } else {
+          const parsedValue = {
+            id: value.id.slice(1),
+            name: value.name,
+          };
+          onSelected(parsedValue);
+        }
         setSelected(value);
-        onSelected(value);
       }}
       disabled={!enabled}
     >
@@ -94,7 +132,7 @@ export default function Autocomplete({
                 : "!bg-taling-gray-300 !cursor-not-allowed !text-taling-gray-800 opacity-50 ",
               round(rounded),
             )}
-            displayValue={(item: IAutocompleteItem | null) => item?.name || ""}
+            displayValue={(item: ParsedItemType | null) => item?.name || ""}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="항목을 검색해주세요."
           />
@@ -161,12 +199,12 @@ export default function Autocomplete({
                       ) : null}
                       {parent.children && (
                         <ul>
-                          {parent.children.map((child: IAutocompleteChild) => (
+                          {parent.children.map((child) => (
                             <Combobox.Option
                               key={child.id}
                               className={({ selected, active }) =>
                                 classNames(
-                                  "relative cursor-default select-none pr-4 text-taling-gray-900 -ml-5 pl-8 py-2",
+                                  "relative cursor-pointer select-none pr-4 text-taling-gray-900 -ml-5 pl-8 py-2",
                                   active || selected
                                     ? "bg-taling-gray-150"
                                     : "",
