@@ -17,10 +17,23 @@ export interface IAutocompleteChild {
   [key: string]: any;
 }
 
+export interface ParsedItemType {
+  id: string;
+  name: string;
+  children: ParsedChildType[] | null;
+  isAvailable: boolean;
+}
+
+export interface ParsedChildType {
+  id: string;
+  name: string;
+  parentId: number;
+}
+
 interface AutoCompleteProps {
   defaultSelection: IAutocompleteItem | IAutocompleteChild | null;
   list: IAutocompleteItem[];
-  onSelected: (item: IAutocompleteItem | IAutocompleteChild | null) => void;
+  onSelected: (item: ParsedItemType | ParsedChildType | null) => void;
   rounded?: "sm" | "md" | "lg";
   enabled?: boolean;
 }
@@ -33,7 +46,7 @@ export default function Autocomplete({
   enabled = true,
 }: AutoCompleteProps) {
   const [selected, setSelected] = useState<
-    IAutocompleteItem | IAutocompleteChild | null
+    ParsedItemType | ParsedChildType | null
   >(null);
   const [search, setSearch] = useState("");
 
@@ -44,19 +57,31 @@ export default function Autocomplete({
       .includes(searchVal.toLowerCase().replace(/\s+/g, ""));
   };
 
+  const parsedList = list.map((item) => {
+    return {
+      id: "p" + item.id,
+      name: item.name,
+      children: item.children
+        ? item.children.map((child) => ({
+            id: "c" + child.id,
+            name: child.name,
+            parentId: child.parentId,
+          }))
+        : null,
+      isAvailable: item.isAvailable,
+    };
+  });
+
   const filteredList =
     search === ""
-      ? list
-      : list.reduce(
-          (
-            searchResult: (IAutocompleteItem | IAutocompleteChild)[],
-            parent: IAutocompleteItem,
-          ) => {
+      ? parsedList
+      : parsedList.reduce(
+          (searchResult: ParsedItemType[], parent: ParsedItemType) => {
             if (checkSearch(parent.name, search)) searchResult.push(parent);
             else {
-              const childResult = parent.children?.filter((child) =>
-                checkSearch(child.name, search),
-              );
+              const childResult = parent.children?.filter((child) => {
+                return checkSearch(child.name, search);
+              });
               if (childResult && childResult.length > 0) {
                 searchResult.push(parent);
               }
@@ -67,15 +92,33 @@ export default function Autocomplete({
         );
 
   useEffect(() => {
-    setSelected(defaultSelection);
+    const parsedDefaultSelection = {
+      ...defaultSelection,
+      id: defaultSelection?.children
+        ? "p" + defaultSelection.id
+        : "c" + defaultSelection?.id,
+    };
+    setSelected(parsedDefaultSelection as ParsedItemType | ParsedChildType);
   }, [defaultSelection]);
+
+  console.log(selected);
 
   return (
     <Combobox
       value={selected}
       by="id"
-      onChange={(value: IAutocompleteItem) => {
-        setSelected(value);
+      onChange={(value) => {
+        if (value === null) return;
+        if (typeof value === ParsedItemType) setSelected(value);
+        if (Object.keys(value).find((el) => el === "parentId")) {
+          const parsedValue = {
+            id: value.id.slice(1),
+            name: value.name,
+            parentId: value.parentId,
+          };
+          onSelected(parsedValue);
+        }
+
         onSelected(value);
       }}
       disabled={!enabled}
@@ -94,7 +137,7 @@ export default function Autocomplete({
                 : "!bg-taling-gray-300 !cursor-not-allowed !text-taling-gray-800 opacity-50 ",
               round(rounded),
             )}
-            displayValue={(item: IAutocompleteItem | null) => item?.name || ""}
+            displayValue={(item: ParsedItemType | null) => item?.name || ""}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="항목을 검색해주세요."
           />
@@ -161,7 +204,7 @@ export default function Autocomplete({
                       ) : null}
                       {parent.children && (
                         <ul>
-                          {parent.children.map((child: IAutocompleteChild) => (
+                          {parent.children.map((child) => (
                             <Combobox.Option
                               key={child.id}
                               className={({ selected, active }) =>
