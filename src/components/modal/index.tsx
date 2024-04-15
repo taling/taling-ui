@@ -76,7 +76,7 @@ function Modal({
               <Dialog.Panel
                 ref={initRef}
                 className={classNames(
-                  "relative w-full overflow-y-auto align-middle transition-all transform bg-white shadow-elevation-32",
+                  "relative w-full align-middle transition-all transform bg-white shadow-elevation-32",
                   widthMap[width],
                   isRound ? "rounded-2xl" : "rounded-none",
                 )}
