@@ -20,6 +20,7 @@ export default function useCrossDomainCookies() {
   };
 
   const getCrossDomainAuthCookie = () => {
+    if('undefined' === typeof document) return null;
     const key = AppCookieConstants.crossDoaminUserAuth;
     const cookies = document.cookie.split("; ");
     const cookie = cookies.find((cookie) => cookie.startsWith(key));
