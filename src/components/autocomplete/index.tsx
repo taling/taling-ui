@@ -100,21 +100,16 @@ export default function Autocomplete({
       by="id"
       onChange={(value) => {
         if (value === null) return;
-        if (Object.prototype.hasOwnProperty.call(value, "parentId")) {
-          const parsedValue = {
-            id: value.id.slice(1),
-            name: value.name,
-            parentId: value.parentId,
-          };
-          onSelected(parsedValue);
-        } else {
-          const parsedValue = {
-            id: value.id.slice(1),
-            name: value.name,
-          };
-          onSelected(parsedValue);
-        }
         setSelected(value);
+        const parsedValue = {
+          id: value.id.slice(1),
+          name: value.name,
+          ...(Object.prototype.hasOwnProperty.call(value, "parentId") && {
+            parentId: value.parentId,
+          }),
+        };
+
+        onSelected(parsedValue);
       }}
       disabled={!enabled}
     >
