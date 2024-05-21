@@ -8,7 +8,7 @@ export default function LoadingSpinner({ className }: { className?: string }) {
     <div className={className}>
       <svg
         aria-hidden="true"
-        className="text-taling-gray-300 animate-spin fill-taling-pink-400"
+        className="text-taling-gray-300 animate-spin fill-taling-pink"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

@@ -12,14 +12,17 @@ export default function RadioButton({
   };
 
   return (
-    <div className="flex items-center cursor-pointer gap-1 py-2 md:py-0 focus:bg-taling-gray-100 " onClick={(e)=>{
-      toggleChecked()
-    }}>
+    <div
+      className="flex items-center cursor-pointer gap-1 py-2 md:py-0 focus:bg-taling-gray-100 "
+      onClick={(e) => {
+        toggleChecked();
+      }}
+    >
       <input
         id={label}
         name={label}
         type="radio"
-        className="form-radio h-3 w-3 text-taling-pink-400 focus:ring-transparent focus:ring-0 focus:outline-none focus:ring-transparent"
+        className="form-radio h-3 w-3 text-taling-pink focus:ring-transparent focus:ring-0 focus:outline-none focus:ring-transparent"
         checked={checked}
         readOnly
       />

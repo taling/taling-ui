@@ -90,7 +90,7 @@ export default function SelectBox({
               className={classNames(
                 "relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-taling-gray-900 shadow-sm ring-1 ring-inset ring-gray-300  sm:text-sm sm:leading-6",
                 enabled
-                  ? "focus:outline-none focus:ring-2 focus:ring-taling-pink-400 "
+                  ? "focus:outline-none focus:ring-2 focus:ring-taling-pink "
                   : "!bg-taling-gray-300 !cursor-not-allowed !text-taling-gray-800 opacity-50 ",
               )}
             >
@@ -122,7 +122,7 @@ export default function SelectBox({
                         classNames(
                           excludeToday ? "hidden" : "",
                           active || internalSelected
-                            ? "bg-taling-pink-400 text-white"
+                            ? "bg-taling-pink text-white"
                             : "text-taling-gray-900",
                           "relative cursor-default select-none py-2 pl-3 pr-9",
                         )
@@ -147,7 +147,7 @@ export default function SelectBox({
                               className={classNames(
                                 active || internalSelected
                                   ? "text-white"
-                                  : "text-taling-pink-400",
+                                  : "text-taling-pink",
                                 "absolute inset-y-0 right-0 flex items-center pr-4",
                               )}
                             >

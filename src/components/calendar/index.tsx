@@ -199,7 +199,7 @@ const TailwindCalendarComponent = forwardRef(
       <MainColorContext.Provider value={mainColor}>
         <div className="w-full bg-white">
           {useHeaderDecoration && (
-            <div className=" relative h-2 w-full bg-taling-pink-400"></div>
+            <div className=" relative h-2 w-full bg-taling-pink"></div>
           )}
           <div className="flex h-full flex-col">
             <CalendarHeader
