@@ -111,39 +111,39 @@ module.exports = {
           800: "rgb(var(--taling-purple-800) / <alpha-value>)",
           900: "rgb(var(--taling-purple-900) / <alpha-value>)",
         },
-        border: "#CCCCCC",
-        input: "#CCCCCC",
-        ring: "hsl(var(--ring))",
-        background: "white",
-        foreground: "#111111",
-        pink: {
-          DEFAULT: "#FF1058",
-          foreground: "white",
-        },
-        secondary: {
-          DEFAULT: "#EEF0F4",
-          foreground: "#111111",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "#666666",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "#F2F2F2",
-          foreground: "#111111",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
+        // border: "#CCCCCC",
+        // input: "#CCCCCC",
+        // ring: "hsl(var(--ring))",
+        // background: "white",
+        // foreground: "#111111",
+        // pink: {
+        //   DEFAULT: "#FF1058",
+        //   foreground: "white",
+        // },
+        // secondary: {
+        //   DEFAULT: "#EEF0F4",
+        //   foreground: "#111111",
+        // },
+        // destructive: {
+        //   DEFAULT: "hsl(var(--destructive))",
+        //   foreground: "hsl(var(--destructive-foreground))",
+        // },
+        // muted: {
+        //   DEFAULT: "#666666",
+        //   foreground: "hsl(var(--muted-foreground))",
+        // },
+        // accent: {
+        //   DEFAULT: "#F2F2F2",
+        //   foreground: "#111111",
+        // },
+        // popover: {
+        //   DEFAULT: "hsl(var(--popover))",
+        //   foreground: "hsl(var(--popover-foreground))",
+        // },
+        // card: {
+        //   DEFAULT: "hsl(var(--card))",
+        //   foreground: "hsl(var(--card-foreground))",
+        // },
       },
       keyframes: {
         "accordion-down": {
