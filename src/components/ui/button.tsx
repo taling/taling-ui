@@ -10,13 +10,13 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-taling-pink text-taling-pink-foreground shadow hover:bg-taling-pink/80 disabled:bg-taling-gray-400",
+          "bg-taling-pink text-taling-white shadow hover:bg-taling-pink/80 disabled:bg-taling-gray-400",
         outline:
-          "border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground",
+          "border border-taling-gray-400 bg-transparent shadow-sm hover:bg-taling-gray-100 hover:text-taling-gray-900",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/70",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        underline: "underline hover:text-foreground text-muted ",
+          "bg-taling-gray-100 text-taling-gray-900 shadow-sm hover:bg-taling-gray-100/70",
+        ghost: "hover:bg-taling-gray-100 hover:text-taling-gray-900",
+        underline: "underline hover:text-taling-gray-900 text-taling-gray-600 ",
       },
       size: {
         default: "h-9 px-4 py-2",
