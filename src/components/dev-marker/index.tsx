@@ -25,7 +25,7 @@ const DevMarker = () => {
 
   if (isDev && !hideSession) {
     return (
-      <div className="w-full bg-taling-pink-50 border-b-2 border-b-taling-pink-400">
+      <div className="w-full bg-taling-pink-50 border-b-2 border-b-taling-pink">
         <div className="flex h-6 items-center relative mx-auto max-w-7xl w-full">
           <div className="mx-auto text-xs font-bold">🤖 {devMsag}</div>
           <div

@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --taling-pink-50: 255 228 235; /* #FFE4EB */
+    --taling-pink-100: 255 188 205; /* #FFBCCD */
+    --taling-pink-200: 255 144 172; /* #FF90AC */
+    --taling-pink-300: 255 97 139; /* #FF618B */
+    --taling-pink-400: 255 60 113; /* #FF3C71 */
+    --taling-pink-500: 255 16 88; /* #FF1058 */
+    --taling-pink-600: 238 6 86; /* #EE0656 */
+    --taling-pink-700: 216 0 83; /* #D80053 */
+    --taling-pink-800: 196 0 81; /* #C40051 */
+    --taling-pink-900: 161 0 77; /* #A1004D */
+
+    --taling-green-50: 229 250 235; /* #E5FAEB */
+    --taling-green-100: 193 243 205; /* #C1F3CD */
+    --taling-green-200: 149 235 173; /* #95EBAD */
+    --taling-green-300: 93 228 137; /* #5DE489 */
+    --taling-green-400: 11 220 108; /* #0BDC6C */
+    --taling-green-500: 0 212 78; /* #00D44E */
+    --taling-green-600: 0 195 68; /* #00C344 */
+    --taling-green-700: 0 176 54; /* #00B036 */
+    --taling-green-800: 0 158 41; /* #009E29 */
+    --taling-green-900: 0 125 18; /* #007D12 */
+
+    --taling-orange-50: 254 248 227; /* #FEF8E3 */
+    --taling-orange-100: 254 237 183; /* #FEEDB7 */
+    --taling-orange-200: 253 226 137; /* #FDE289 */
+    --taling-orange-300: 253 215 91; /* #FDD75B */
+    --taling-orange-400: 252 205 60; /* #FCCD3C */
+    --taling-orange-500: 252 196 44; /* #FCC42C */
+    --taling-orange-600: 252 183 39; /* #FCB727 */
+    --taling-orange-700: 251 164 35; /* #FBA423 */
+    --taling-orange-800: 250 149 32; /* #FA9520 */
+    --taling-orange-900: 248 119 27; /* #F8771B */
+
+    --taling-red-50: 255 234 239; /* #FFEAEF */
+    --taling-red-100: 255 202 212; /* #FFCAD4 */
+    --taling-red-200: 244 148 155; /* #F4949B */
+    --taling-red-300: 236 105 116; /* #EC6974 */
+    --taling-red-400: 248 62 82; /* #F83E52 */
+    --taling-red-500: 255 29 55; /* #FF1D37 */
+    --taling-red-600: 240 8 55; /* #F00837 */
+    --taling-red-700: 221 0 48; /* #DD0030 */
+    --taling-red-800: 209 0 41; /* #D10029 */
+    --taling-red-900: 195 0 27; /* #C3001B */
+
+    --taling-black: 0 0 0; /* #000000 */
+    --taling-white: 255 255 255; /* #FFFFFF */
+
+    --taling-gray-50: 250 250 250; /* #FAFAFA */
+    --taling-gray-100: 245 245 245; /* #F5F5F5 */
+    --taling-gray-200: 238 238 238; /* #EEEEEE */
+    --taling-gray-300: 224 224 224; /* #E0E0E0 */
+    --taling-gray-400: 190 190 190; /* #BEBEBE */
+    --taling-gray-500: 158 158 158; /* #9E9E9E */
+    --taling-gray-600: 117 117 117; /* #757575 */
+    --taling-gray-700: 97 97 97; /* #616161 */
+    --taling-gray-800: 66 66 66; /* #424242 */
+    --taling-gray-900: 34 34 34; /* #222222 */
+
+    --taling-light-blue-900: 0 76 166; /* #004CA6 */
+    --taling-light-blue-800: 0 106 196; /* #006AC4 */
+    --taling-light-blue-700: 0 123 214; /* #007BD6 */
+    --taling-light-blue-600: 3 141 233; /* #038DE9 */
+    --taling-light-blue-500: 10 155 247; /* #0A9BF7 */
+    --taling-light-blue-400: 60 169 248; /* #3CA9F8 */
+    --taling-light-blue-300: 98 185 248; /* #62B9F8 */
+    --taling-light-blue-200: 143 205 250; /* #8FCFDA */
+    --taling-light-blue-100: 187 224 252; /* #BBE0FC */
+    --taling-light-blue-50: 227 243 253; /* #E3F3FD */
+
+    --taling-violet-900: 0 1 204; /* #0001CC */
+    --taling-violet-800: 0 14 219; /* #000EDB */
+    --taling-violet-700: 0 21 224; /* #0015E0 */
+    --taling-violet-600: 42 29 232; /* #2A1DE8 */
+    --taling-violet-500: 63 33 238; /* #3F21EE */
+    --taling-violet-400: 105 71 242; /* #6947F2 */
+    --taling-violet-300: 137 105 244; /* #8969F4 */
+    --taling-violet-200: 174 150 246; /* #AE96F6 */
+    --taling-violet-100: 207 192 249; /* #CFC0F9 */
+    --taling-violet-50: 237 229 253; /* #EDE5FD */
+
+    --taling-purple-900: 12 0 212; /* #0C00D4 */
+    --taling-purple-800: 98 0 224; /* #6200E0 */
+    --taling-purple-700: 124 0 231; /* #7C00E7 */
+    --taling-purple-600: 152 0 238; /* #9800EE */
+    --taling-purple-500: 172 0 243; /* #AC00F3 */
+    --taling-purple-400: 189 32 254; /* #BD20FE */
+    --taling-purple-300: 202 89 255; /* #CA59FF */
+    --taling-purple-200: 219 141 254; /* #DB8DFE */
+    --taling-purple-100: 233 188 254; /* #E9BCFE */
+    --taling-purple-50: 247 228 255; /* #F7E4FF */
+  }
+}

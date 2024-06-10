@@ -25,9 +25,7 @@ const PrimaryButton = ({
     <div
       className={classNames(
         " text-white text-center px-2 py-1.5 rounded-md drop-shadow-sm cursor-pointer",
-        isEnabled
-          ? "bg-taling-pink-400"
-          : "bg-taling-gray-400 cursor-not-allowed",
+        isEnabled ? "bg-taling-pink" : "bg-taling-gray-400 cursor-not-allowed",
         pad(),
       )}
     >

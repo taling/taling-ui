@@ -123,7 +123,7 @@ export default function Autocomplete({
             className={classNames(
               "w-full border-none py-1.5 pl-3 pr-10 text-sm leading-5 text-taling-gray-900 sm:text-sm sm:leading-6 ring-1 ring-inset ring-gray-300",
               enabled
-                ? "focus:outline-none focus:ring-2 focus:ring-taling-pink-400"
+                ? "focus:outline-none focus:ring-2 focus:ring-taling-pink"
                 : "!bg-taling-gray-300 !cursor-not-allowed !text-taling-gray-800 opacity-50 ",
               round(rounded),
             )}
@@ -167,7 +167,7 @@ export default function Autocomplete({
                   className={({ selected, active }) =>
                     classNames(
                       "relative cursor-default select-none text-taling-gray-900 pl-5",
-                      active || selected ? "bg-taling-gray-150" : "",
+                      active || selected ? "bg-taling-gray-100" : "",
                     )
                   }
                   disabled={!parent.isAvailable}
@@ -187,7 +187,7 @@ export default function Autocomplete({
                       </span>
                       {selected ? (
                         <span
-                          className={`absolute top-1.5 left-0 flex items-center text-taling-pink-400`}
+                          className={`absolute top-1.5 left-0 flex items-center text-taling-pink`}
                         >
                           <CheckIcon className="h-5 w-5" aria-hidden="true" />
                         </span>
@@ -201,7 +201,7 @@ export default function Autocomplete({
                                 classNames(
                                   "relative cursor-pointer select-none pr-4 text-taling-gray-900 -ml-5 pl-8 py-2",
                                   active || selected
-                                    ? "bg-taling-gray-150"
+                                    ? "bg-taling-gray-100"
                                     : "",
                                 )
                               }
@@ -214,7 +214,7 @@ export default function Autocomplete({
                                   </span>
                                   {selected ? (
                                     <span
-                                      className={`absolute inset-y-0 left-2 flex items-center text-taling-pink-400`}
+                                      className={`absolute inset-y-0 left-2 flex items-center text-taling-pink`}
                                     >
                                       <CheckIcon
                                         className="h-5 w-5"

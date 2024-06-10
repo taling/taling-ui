@@ -6,8 +6,8 @@ type ColorPresetsType<T> = {
 
 export const colorPresets: ColorPresetsType<any> = {
   pink: {
-    bg: "bg-taling-pink-400",
-    hoverBg: "hover:bg-taling-pink-500",
+    bg: "bg-taling-pink",
+    hoverBg: "hover:bg-taling-pink-600",
     focusVisible: "focus-visible:outline-taling-pink-600",
   },
   purple: {
