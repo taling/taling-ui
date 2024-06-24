@@ -9,13 +9,20 @@ interface ITalingPixelTrack {
   talentId: number;
   userId: number;
   pathname: string;
+  mktUtm?: string;
 }
 
 export default function useTalingPixel() {
   const talingPixelUrl = process.env.NEXT_PUBLIC_TALING_PIXEL_URL;
   const { getOrCreateTalingPixelSessionId } = useCrossDomainCookies();
 
-  function track({ eventName, talentId, userId, pathname }: ITalingPixelTrack) {
+  function track({
+    eventName,
+    talentId,
+    userId,
+    pathname,
+    mktUtm,
+  }: ITalingPixelTrack) {
     try {
       const sessionId = getOrCreateTalingPixelSessionId();
 
@@ -26,10 +33,11 @@ export default function useTalingPixel() {
           uId: userId,
           sId: sessionId,
           p: pathname,
+          mu: mktUtm,
         },
         {
           skipNulls: true,
-        },
+        }
       );
 
       const trackingUrl = `${talingPixelUrl}/pixel.gif?${queryStr}`;
