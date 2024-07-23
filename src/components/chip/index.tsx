@@ -1,67 +1,36 @@
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
 
-type ChipColorType =
-  | "pink"
-  | "green"
-  | "blue"
-  | "violet"
-  | "orange"
-  | "red"
-  | "gray"
-  | "purple";
-
-type ChipSizeType = "xs" | "sm" | "md" | "lg" | "xl";
+type ChipColorType = "blue" | "violet" | "red" | "gray";
 
 interface ChipProps {
   className?: string;
   color: ChipColorType;
   caption: string;
-  size?: ChipSizeType;
+  icon?: JSX.Element;
 }
 
-export default function Chip({
-  className,
-  caption,
-  color,
-  size = "xs",
-}: ChipProps) {
+export default function Chip({ className, caption, color, icon }: ChipProps) {
   return (
     <div
       className={classNames(
         className,
         generateChipColor(color),
-        generateChipSize(size),
-        "rounded-md ",
+        "flex px-1 items-center justify-between gap-0.5 rounded-[4px] text-caption-title",
       )}
     >
       {caption}
+      {icon && <div className="w-4 h-4">{icon}</div>}
     </div>
   );
 }
 
 function generateChipColor(color: ChipColorType) {
   const chipColorsObject: Record<ChipColorType, string> = {
-    gray: "",
-    green: "",
-    orange: "",
-    pink: "",
-    purple: "",
-    red: "",
-    violet: "",
-    blue: "bg-taling-light-blue-50 text-taling-light-blue-300",
+    red: "bg-taling-pink-50 text-taling-pink",
+    blue: "bg-taling-light-blue-50 text-taling-light-blue-600",
+    violet: "bg-taling-violet-50 text-taling-violet-400",
+    gray: "bg-taling-gray-200 text-taling-gray-600",
   };
 
   return chipColorsObject[color];
-}
-
-function generateChipSize(size: ChipSizeType) {
-  const chipSizeObject: Record<ChipSizeType, string> = {
-    xs: "py-0.5 px-1.5 text-xs",
-    sm: "",
-    md: "",
-    lg: "",
-    xl: "",
-  };
-
-  return chipSizeObject[size];
 }
