@@ -85,13 +85,15 @@ export default function Autocomplete({
         );
 
   useEffect(() => {
-    const parsedDefaultSelection = {
-      ...defaultSelection,
-      id: defaultSelection?.children
-        ? "p" + defaultSelection.id
-        : "c" + defaultSelection?.id,
-    } as ParsedItemType;
-    setSelected(parsedDefaultSelection);
+    if (defaultSelection) {
+      const parsedDefaultSelection = {
+        ...defaultSelection,
+        id: Object.prototype.hasOwnProperty.call(defaultSelection, "parentId")
+          ? "c" + defaultSelection.id
+          : "p" + defaultSelection.id,
+      } as ParsedItemType;
+      setSelected(parsedDefaultSelection);
+    }
   }, [defaultSelection]);
 
   return (
