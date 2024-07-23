@@ -166,6 +166,78 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      fontSize: {
+        "headline-1": [
+          "2.5rem",
+          {
+            lineHeight: "3.75rem",
+            fontWeight: 700,
+          },
+        ],
+        "headline-2": [
+          "2rem",
+          {
+            lineHeight: "3.125rem",
+            fontWeight: 700,
+          },
+        ],
+        "headline-3": [
+          "1.5rem",
+          {
+            lineHeight: "2.25rem",
+            fontWeight: 700,
+          },
+        ],
+        "subtitle-1": [
+          "1.25rem",
+          {
+            lineHeight: "2rem",
+            fontWeight: 700,
+          },
+        ],
+        "subtitle-2": [
+          "1rem",
+          {
+            lineHeight: "1.75rem",
+            fontWeight: 700,
+          },
+        ],
+        "subtitle-3": [
+          "0.875rem",
+          {
+            lineHeight: "1.5rem",
+            fontWeight: 700,
+          },
+        ],
+        "body-1": [
+          "1rem",
+          {
+            lineHeight: "1.75rem",
+            fontWeight: 400,
+          },
+        ],
+        "body-2": [
+          "0.875rem",
+          {
+            lineHeight: "1.5rem",
+            fontWeight: 400,
+          },
+        ],
+        "caption-title": [
+          "0.75rem",
+          {
+            lineHeight: "1.25rem",
+            fontWeight: 700,
+          },
+        ],
+        "caption-body": [
+          "0.75rem",
+          {
+            lineHeight: "1.25rem",
+            fontWeight: 400,
+          },
+        ],
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
