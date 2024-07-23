@@ -15,7 +15,7 @@ export default function Chip({ className, caption, color, icon }: ChipProps) {
       className={classNames(
         className,
         generateChipColor(color),
-        "flex px-1 items-center justify-between gap-0.5 rounded-taling-md text-caption-title",
+        "flex px-1 items-center justify-between gap-0.5 rounded text-caption-title",
       )}
     >
       {caption}
