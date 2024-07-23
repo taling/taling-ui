@@ -10,9 +10,6 @@ module.exports = {
         "2xl": "1400px",
       },
     },
-    borderRadius: {
-      "taling-md": "4px",
-    },
     extend: {
       colors: {
         "taling-pink": {
