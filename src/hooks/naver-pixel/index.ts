@@ -31,6 +31,10 @@ export default function useNaverPixel() {
       console.log(`🍀 naverPixelStore: sendConversion(${value})`);
     }
   }
+  /**
+   * @note 사용 시 [TONE-914] 참고
+   * https://taling.atlassian.net/browse/TONE-914?atlOrigin=eyJpIjoiZTc5NjAzMmQxODFiNDVlNjllMmNiOWM0ODQ2ZTgxYjMiLCJwIjoiaiJ9
+   */
   function sendSignUpFinished() {
     const w = window as any;
     const _nasa = {} as any;

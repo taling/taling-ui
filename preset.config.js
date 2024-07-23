@@ -145,6 +145,13 @@ module.exports = {
         //   foreground: "hsl(var(--card-foreground))",
         // },
       },
+      textColor: {
+        "taling-strong": "rgb(var(--taling-black) / <alpha-value>)",
+        "taling-normal": "rgb(var(--taling-gray-900) / <alpha-value>)",
+        "taling-neutral": "rgb(var(--taling-gray-800) / <alpha-value>)",
+        "taling-high-emphasis": "rgb(var(--taling-gray-600) / <alpha-value>)",
+        "taling-low-emphasis": "rgb(var(--taling-gray-400) / <alpha-value>)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
