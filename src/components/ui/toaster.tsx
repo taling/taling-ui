@@ -29,7 +29,7 @@ export function Toaster() {
               </Toast>
           );
         })}
-        <ToastViewport position={toasts[0].position} />;
+        <ToastViewport position={toasts[0]?.position} />;
       </ToastProvider>
   );
 }
