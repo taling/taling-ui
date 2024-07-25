@@ -73,7 +73,7 @@ export default function Autocomplete({
             if (checkSearch(parent.name, search)) searchResult.push(parent);
             else {
               const childResult = parent.children?.filter((child) =>
-                checkSearch(child.name, search),
+                checkSearch(child.name, search)
               );
               if (childResult && childResult.length > 0) {
                 searchResult.push(parent);
@@ -81,7 +81,7 @@ export default function Autocomplete({
             }
             return searchResult;
           },
-          [],
+          []
         );
 
   useEffect(() => {
@@ -118,25 +118,25 @@ export default function Autocomplete({
       <div className="relative">
         <div
           className={classNames(
-            "relative w-full cursor-default bg-white text-left shadow-sm",
+            "relative w-full cursor-default bg-white text-left shadow-sm"
           )}
         >
           <Combobox.Input
             className={classNames(
-              "w-full border-none py-1.5 pl-3 pr-10 text-sm leading-5 text-taling-gray-900 sm:text-sm sm:leading-6 ring-1 ring-inset ring-gray-300",
+              "w-full border-none py-1.5 pl-3 pr-10 text-sm leading-5 text-taling-gray-900 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6",
               enabled
                 ? "focus:outline-none focus:ring-2 focus:ring-taling-pink"
-                : "!bg-taling-gray-300 !cursor-not-allowed !text-taling-gray-800 opacity-50 ",
-              round(rounded),
+                : "!cursor-not-allowed !bg-taling-gray-300 !text-taling-gray-800 opacity-50 ",
+              round(rounded)
             )}
             displayValue={(item: ParsedItemType | null) => item?.name || ""}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="항목을 검색해주세요."
+            placeholder="카테고리를 검색해 주세요."
           />
           <Combobox.Button
             className={classNames(
               "absolute inset-y-0 right-0 flex items-center pr-2",
-              enabled ? "" : "!cursor-not-allowed",
+              enabled ? "" : "!cursor-not-allowed"
             )}
           >
             <ChevronUpDownIcon
@@ -155,11 +155,11 @@ export default function Autocomplete({
           <Combobox.Options
             className={classNames(
               "absolute z-10 mt-1 max-h-60 w-full overflow-auto bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm",
-              round(rounded),
+              round(rounded)
             )}
           >
             {filteredList.length === 0 && search !== "" ? (
-              <div className="relative cursor-default select-none px-4 py-2 taling-gray-900">
+              <div className="taling-gray-900 relative cursor-default select-none px-4 py-2">
                 검색 결과가 없습니다.
               </div>
             ) : (
@@ -168,8 +168,8 @@ export default function Autocomplete({
                   key={parent.id}
                   className={({ selected, active }) =>
                     classNames(
-                      "relative cursor-default select-none text-taling-gray-900 pl-5",
-                      active || selected ? "bg-taling-gray-100" : "",
+                      "relative cursor-default select-none pl-5 text-taling-gray-900",
+                      active || selected ? "bg-taling-gray-100" : ""
                     )
                   }
                   disabled={!parent.isAvailable}
@@ -179,17 +179,17 @@ export default function Autocomplete({
                     <>
                       <span
                         className={classNames(
-                          "pt-2 pb-1 block truncate",
+                          "block truncate pb-1 pt-2",
                           parent.children
                             ? "font-bold text-taling-gray-700"
-                            : "font-normal",
+                            : "font-normal"
                         )}
                       >
                         {parent.name}
                       </span>
                       {selected ? (
                         <span
-                          className={`absolute top-1.5 left-0 flex items-center text-taling-pink`}
+                          className={`absolute left-0 top-1.5 flex items-center text-taling-pink`}
                         >
                           <CheckIcon className="h-5 w-5" aria-hidden="true" />
                         </span>
@@ -201,10 +201,8 @@ export default function Autocomplete({
                               key={child.id}
                               className={({ selected, active }) =>
                                 classNames(
-                                  "relative cursor-pointer select-none pr-4 text-taling-gray-900 -ml-5 pl-8 py-2",
-                                  active || selected
-                                    ? "bg-taling-gray-100"
-                                    : "",
+                                  "relative -ml-5 cursor-pointer select-none py-2 pl-8 pr-4 text-taling-gray-900",
+                                  active || selected ? "bg-taling-gray-100" : ""
                                 )
                               }
                               value={child}
