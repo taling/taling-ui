@@ -115,7 +115,7 @@ export default function Autocomplete({
       }}
       disabled={!enabled}
     >
-      <div className="relative">
+      <div className="relative z-30">
         <div
           className={classNames(
             "relative w-full cursor-default bg-white text-left shadow-sm"
