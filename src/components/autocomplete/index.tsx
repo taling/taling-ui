@@ -115,7 +115,7 @@ export default function Autocomplete({
       }}
       disabled={!enabled}
     >
-      <div className="relative">
+      <div className="relative z-30">
         <div
           className={classNames(
             "relative w-full cursor-default bg-white text-left shadow-sm",
@@ -131,7 +131,7 @@ export default function Autocomplete({
             )}
             displayValue={(item: ParsedItemType | null) => item?.name || ""}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="항목을 검색해주세요."
+            placeholder="카테고리를 검색해 주세요."
           />
           <Combobox.Button
             className={classNames(
