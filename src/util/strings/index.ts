@@ -8,5 +8,5 @@ export function kebabCaseToCamelCase(input: string): string {
  * @returns
  */
 export function filterKspayForbiddenChar(input: string): string {
-  return input.replace(/["'`~]/g, "");
+  return input.replace(/[^\w\s\d\uAC00-\uD7AFa-zA-Z.-]/g, "");
 }
