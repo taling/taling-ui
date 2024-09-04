@@ -4,6 +4,7 @@ export enum TalentCategory {
   P2P_VIDEO = 3, // 녹화영상
   P2P_EBOOK = 4,
   VOD = 5,
+  SUBSCRIPTION = 6,
 }
 
 export enum TalentSpecialRegion {
