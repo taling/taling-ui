@@ -33,6 +33,15 @@ export const TalentType = {
   },
 
   /**
+   * Talent가 구독 클래스인지 검사
+   * @param talent
+   * @returns boolean
+   */
+  isSubscription: (talent: any) => {
+    return talent?.mCategory === TalentCategory.SUBSCRIPTION;
+  },
+
+  /**
    * Talent가 원데이 클래스인지 검사
    * @param talent
    * @returns
