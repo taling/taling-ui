@@ -33,7 +33,7 @@ export const TalentType = {
   },
 
   /**
-   * Talent가 구독 클래스인지 검사
+   * Talent가 멤버십 클래스인지 검사
    * @param talent
    * @returns boolean
    */
