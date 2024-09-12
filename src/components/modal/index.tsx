@@ -9,18 +9,11 @@ const widthMap = {
 };
 type ModalWidthType = keyof typeof widthMap;
 
-const backdropOpacityMap = {
-  normal: "opacity-15",
-  darker: "opacity-70",
-};
-type BackdropOpacityType = keyof typeof backdropOpacityMap;
-
 interface ModalProps {
   isOpen: boolean;
   setIsOpen: (arg: boolean) => void;
   isBackdropClickable?: boolean;
   width?: ModalWidthType;
-  backdropOpacity?: BackdropOpacityType;
   isRound?: boolean;
   children: React.ReactNode;
 }
@@ -30,7 +23,6 @@ function Modal({
   setIsOpen,
   isBackdropClickable = true,
   width = "md",
-  backdropOpacity = "normal",
   isRound = true,
   children,
 }: ModalProps) {
@@ -55,12 +47,7 @@ function Modal({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div
-            className={classNames(
-              "fixed inset-0 bg-taling-gray-900",
-              backdropOpacityMap[backdropOpacity],
-            )}
-          />
+          <div className={"fixed inset-0 bg-taling-gray-900/70"} />
         </Transition.Child>
         <div className="fixed inset-0 overflow-y-auto">
           <div className="flex items-center justify-center min-h-full text-center p-4">
@@ -181,7 +168,6 @@ export {
   ModalBody,
   ModalFooter,
   ModalHeader,
-  type BackdropOpacityType,
   type ModalFooterAlignType,
   type ModalWidthType,
 };
