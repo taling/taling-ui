@@ -124,7 +124,7 @@ export default function SelectBox({
                           active || internalSelected
                             ? "bg-taling-gray-100"
                             : "text-taling-gray-900",
-                          "relative cursor-default select-none py-2 pl-3 pr-9",
+                          "relative cursor-pointer select-none py-2 pl-3 pr-9",
                         )
                       }
                       value={item}
