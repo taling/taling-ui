@@ -95,7 +95,7 @@ export default function SelectBox({
               )}
             >
               <span className="block truncate">
-                {selected?.name ?? "선택해주세요"}
+                {selected?.name ?? "선택해 주세요"}
               </span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                 <ChevronUpDownIcon
