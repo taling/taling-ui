@@ -122,7 +122,7 @@ export default function SelectBox({
                         classNames(
                           excludeToday ? "hidden" : "",
                           active || internalSelected
-                            ? "bg-taling-pink text-white"
+                            ? "bg-taling-gray-100"
                             : "text-taling-gray-900",
                           "relative cursor-default select-none py-2 pl-3 pr-9",
                         )
@@ -146,7 +146,7 @@ export default function SelectBox({
                             <span
                               className={classNames(
                                 active || internalSelected
-                                  ? "text-white"
+                                  ? "text-taling-black"
                                   : "text-taling-pink",
                                 "absolute inset-y-0 right-0 flex items-center pr-4",
                               )}
