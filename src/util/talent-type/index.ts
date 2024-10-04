@@ -88,6 +88,9 @@ export const TalentStatus = {
   isRejected: (talent: any) => {
     return talent?.status === TalentStatusEnum.REJECTED;
   },
+  isSuspended: (talent: any) => {
+    return talent?.status === TalentStatusEnum.SUSPENDED;
+  },
   isSoldOut: (talent: any) => {
     return talent?.isSoldOut === 1;
   },
