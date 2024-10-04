@@ -65,6 +65,8 @@ export const TalentType = {
       return "VOD";
     } else if (TalentType.isEbook(talent)) {
       return "EBOOK";
+    } else if (TalentType.isSubscription(talent)) {
+      return "SUBSCRIPTION";
     } else {
       return "P2P";
     }
@@ -75,6 +77,8 @@ export const TalentType = {
       return "VOD";
     } else if (TalentType.isEbook(talent)) {
       return "전자책";
+    } else if (TalentType.isSubscription(talent)) {
+      return "멤버십";
     } else {
       return "온/오프라인";
     }
