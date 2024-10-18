@@ -1,5 +1,6 @@
 type SkeletonHeightType =
   | "h-44"
+  | "h-28"
   | "h-20"
   | "h-16"
   | "h-12"
