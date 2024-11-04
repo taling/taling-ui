@@ -15,12 +15,16 @@ export default function SelectBox({
   onSelected,
   defaultSelection,
   isToday,
+  placeholder = "선택해 주세요",
+  width = "w-full",
 }: {
   list: ISelectBoxItem[];
   enabled: boolean;
   onSelected: (item: ISelectBoxItem | null) => void;
   defaultSelection: ISelectBoxItem | null;
   isToday?: boolean;
+  placeholder?: string;
+  width?: string;
 }) {
   const [_internaList, setInternalList] = useState<ISelectBoxItem[]>();
   const [selected, setSelected] = useState<ISelectBoxItem | null>(null);
@@ -33,7 +37,8 @@ export default function SelectBox({
     (newList: ISelectBoxItem[]) => {
       // 먼저 선택상황을 편집하고,
       const found = newList.find(
-        (item) => item?.id === selected?.id || item?.id === defaultSelection?.id
+        (item) =>
+          item?.id === selected?.id || item?.id === defaultSelection?.id,
       );
 
       if (!found) {
@@ -49,14 +54,8 @@ export default function SelectBox({
       if (newList === _internaList) return;
       setInternalList(newList);
     },
-    [_internaList, defaultSelection, selected]
+    [_internaList, defaultSelection, selected],
   );
-
-  // useEffect(() => {
-  //   console.log(`onSelected`, selected?.name);
-  //   onSelected(selected);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [selected]);
 
   useEffect(() => {
     setHydrated(true);
@@ -87,14 +86,15 @@ export default function SelectBox({
           <div className="relative">
             <Listbox.Button
               className={classNames(
-                "relative w-full cursor-pointer rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-taling-gray-900 shadow-sm ring-1 ring-inset ring-gray-300  sm:text-sm sm:leading-6",
+                width,
+                "relative cursor-pointer rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-taling-gray-900 shadow-sm ring-1 ring-inset ring-taling-gray-300  sm:text-sm sm:leading-6",
                 enabled
                   ? "focus:outline-none focus:ring-2 focus:ring-taling-pink "
-                  : "!cursor-not-allowed !bg-taling-gray-300 !text-taling-gray-800 opacity-50 "
+                  : "!cursor-not-allowed !bg-taling-gray-300 !text-taling-gray-800 opacity-50 ",
               )}
             >
               <span className="block truncate">
-                {selected?.name ?? "선택해 주세요"}
+                {selected?.name ?? placeholder}
               </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <ChevronUpDownIcon
@@ -123,7 +123,7 @@ export default function SelectBox({
                           active || internalSelected
                             ? "bg-taling-gray-100"
                             : "text-taling-gray-900",
-                          "relative cursor-pointer select-none py-2 pl-3 pr-9"
+                          "relative cursor-pointer select-none py-2 pl-3 pr-9",
                         )
                       }
                       value={item}
@@ -135,7 +135,7 @@ export default function SelectBox({
                               selected || internalSelected
                                 ? "font-semibold"
                                 : "font-normal",
-                              "block truncate"
+                              "block truncate",
                             )}
                           >
                             {item.name}
@@ -147,7 +147,7 @@ export default function SelectBox({
                                 active || internalSelected
                                   ? "text-taling-black"
                                   : "text-taling-pink",
-                                "absolute inset-y-0 right-0 flex items-center pr-4"
+                                "absolute inset-y-0 right-0 flex items-center pr-4",
                               )}
                             >
                               <CheckIcon
