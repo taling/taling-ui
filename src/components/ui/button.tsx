@@ -12,7 +12,7 @@ const buttonVariants = cva(
         default:
           "bg-taling-pink text-taling-white shadow hover:bg-taling-pink/80 disabled:bg-taling-gray-400",
         outline:
-          "border border-taling-gray-400 bg-transparent shadow-sm hover:bg-taling-gray-100 hover:text-taling-gray-900",
+          "border border-taling-gray-300 bg-transparent shadow-sm hover:bg-taling-gray-100 hover:text-taling-gray-900",
         secondary:
           "bg-taling-gray-100 text-taling-gray-900 shadow-sm hover:bg-taling-gray-100/70",
         ghost: "hover:bg-taling-gray-100 hover:text-taling-gray-900",
