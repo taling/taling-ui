@@ -17,6 +17,9 @@ export default function SelectBox({
   isToday,
   placeholder = "선택해 주세요",
   width = "w-full",
+  optionHight = "max-h-60",
+  optionWidth = "w-full",
+  optionAlign,
 }: {
   list: ISelectBoxItem[];
   enabled: boolean;
@@ -25,6 +28,9 @@ export default function SelectBox({
   isToday?: boolean;
   placeholder?: string;
   width?: string;
+  optionHight?: string;
+  optionWidth?: string;
+  optionAlign?: string;
 }) {
   const [_internaList, setInternalList] = useState<ISelectBoxItem[]>();
   const [selected, setSelected] = useState<ISelectBoxItem | null>(null);
@@ -83,7 +89,7 @@ export default function SelectBox({
     >
       {({ open }) => (
         <>
-          <div className="relative">
+          <div className={classNames("relative", width)}>
             <Listbox.Button
               className={classNames(
                 width,
@@ -110,7 +116,13 @@ export default function SelectBox({
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="no-scrollbar absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+              <Listbox.Options
+                className={classNames(
+                  "no-scrollbar absolute z-10 mt-1 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm",
+                  optionHight,
+                  optionWidth,
+                )}
+              >
                 {list.map((item) => {
                   const internalSelected = selected?.id === item.id;
                   const excludeToday = isToday && !item.display;
@@ -124,6 +136,7 @@ export default function SelectBox({
                             ? "bg-taling-gray-100"
                             : "text-taling-gray-900",
                           "relative cursor-pointer select-none py-2 pl-3 pr-9",
+                          optionAlign,
                         )
                       }
                       value={item}
