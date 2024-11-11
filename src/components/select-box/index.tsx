@@ -15,12 +15,22 @@ export default function SelectBox({
   onSelected,
   defaultSelection,
   isToday,
+  placeholder = "선택해 주세요",
+  width = "w-full",
+  optionHight = "max-h-60",
+  optionWidth = "w-full",
+  optionAlign,
 }: {
   list: ISelectBoxItem[];
   enabled: boolean;
   onSelected: (item: ISelectBoxItem | null) => void;
   defaultSelection: ISelectBoxItem | null;
   isToday?: boolean;
+  placeholder?: string;
+  width?: string;
+  optionHight?: string;
+  optionWidth?: string;
+  optionAlign?: string;
 }) {
   const [_internaList, setInternalList] = useState<ISelectBoxItem[]>();
   const [selected, setSelected] = useState<ISelectBoxItem | null>(null);
@@ -53,12 +63,6 @@ export default function SelectBox({
     [_internaList, defaultSelection, selected],
   );
 
-  // useEffect(() => {
-  //   console.log(`onSelected`, selected?.name);
-  //   onSelected(selected);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [selected]);
-
   useEffect(() => {
     setHydrated(true);
     onListChanged(list);
@@ -72,8 +76,8 @@ export default function SelectBox({
     setSelected(defaultSelection);
   }, [defaultSelection]);
 
-  if (list.length === 0 && defaultSelection === null) return;
-  if (!_hydrated) return;
+  if (list.length === 0 && defaultSelection === null) return <></>;
+  if (!_hydrated) return <></>;
 
   return (
     <Listbox
@@ -85,21 +89,22 @@ export default function SelectBox({
     >
       {({ open }) => (
         <>
-          <div className="relative">
+          <div className={classNames("relative", width)}>
             <Listbox.Button
               className={classNames(
-                "relative w-full cursor-pointer rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-taling-gray-900 shadow-sm ring-1 ring-inset ring-gray-300  sm:text-sm sm:leading-6",
+                width,
+                "relative cursor-pointer rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-taling-gray-900 shadow-sm ring-1 ring-inset ring-taling-gray-300  sm:text-sm sm:leading-6",
                 enabled
                   ? "focus:outline-none focus:ring-2 focus:ring-taling-pink "
-                  : "!bg-taling-gray-300 !cursor-not-allowed !text-taling-gray-800 opacity-50 ",
+                  : "!cursor-not-allowed !bg-taling-gray-300 !text-taling-gray-800 opacity-50 ",
               )}
             >
               <span className="block truncate">
-                {selected?.name ?? "선택해 주세요"}
+                {selected?.name ?? placeholder}
               </span>
-              <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+              <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <ChevronUpDownIcon
-                  className="w-5 h-5 text-taling-gray-400"
+                  className="h-5 w-5 text-taling-gray-400"
                   aria-hidden="true"
                 />
               </span>
@@ -111,7 +116,13 @@ export default function SelectBox({
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute z-10 w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg no-scrollbar max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+              <Listbox.Options
+                className={classNames(
+                  "no-scrollbar absolute z-10 mt-1 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm",
+                  optionHight,
+                  optionWidth,
+                )}
+              >
                 {list.map((item) => {
                   const internalSelected = selected?.id === item.id;
                   const excludeToday = isToday && !item.display;
@@ -125,6 +136,7 @@ export default function SelectBox({
                             ? "bg-taling-gray-100"
                             : "text-taling-gray-900",
                           "relative cursor-pointer select-none py-2 pl-3 pr-9",
+                          optionAlign,
                         )
                       }
                       value={item}
@@ -152,7 +164,7 @@ export default function SelectBox({
                               )}
                             >
                               <CheckIcon
-                                className="w-5 h-5"
+                                className="h-5 w-5"
                                 aria-hidden="true"
                               />
                             </span>
