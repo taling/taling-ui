@@ -167,6 +167,252 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontSize: {
+        "display1-bold": [
+          "2.5rem",
+          {
+            lineHeight: "3.25rem",
+            fontWeight: 700,
+          },
+        ],
+        "display1-regular": [
+          "2.5rem",
+          {
+            lineHeight: "3.25rem",
+            fontWeight: 400,
+          },
+        ],
+        "display2-bold": [
+          "2.25rem",
+          {
+            lineHeight: "3rem",
+            fontWeight: 700,
+          },
+        ],
+        "display2-regular": [
+          "2.25rem",
+          {
+            lineHeight: "3rem",
+            fontWeight: 400,
+          },
+        ],
+        "display3-bold": [
+          "1.75rem",
+          {
+            lineHeight: "2.375rem",
+            fontWeight: 700,
+          },
+        ],
+        "display3-regular": [
+          "1.75rem",
+          {
+            lineHeight: "2.375rem",
+            fontWeight: 400,
+          },
+        ],
+        "heading1-bold": [
+          "1.5rem",
+          {
+            lineHeight: "2.125rem",
+            fontWeight: 700,
+          },
+        ],
+        "heading1-regular": [
+          "1.5rem",
+          {
+            lineHeight: "2.125rem",
+            fontWeight: 400,
+          },
+        ],
+        "heading2-semibold": [
+          "1.375rem",
+          {
+            lineHeight: "1.875rem",
+            fontWeight: 600,
+          },
+        ],
+        "heading2-regular": [
+          "1.375rem",
+          {
+            lineHeight: "1.875rem",
+            fontWeight: 400,
+          },
+        ],
+        "heading3-semibold": [
+          "1.25rem",
+          {
+            lineHeight: "1.75rem",
+            fontWeight: 600,
+          },
+        ],
+        "heading3-regular": [
+          "1.25rem",
+          {
+            lineHeight: "1.75rem",
+            fontWeight: 400,
+          },
+        ],
+        "headline1-bold": [
+          "1.125rem",
+          {
+            lineHeight: "1.625rem",
+            fontWeight: 700,
+          },
+        ],
+        "headline1-regular": [
+          "1.125rem",
+          {
+            lineHeight: "1.625rem",
+            fontWeight: 400,
+          },
+        ],
+        "headline2-semibold": [
+          "1.063rem",
+          {
+            lineHeight: "1.5rem",
+            fontWeight: 600,
+          },
+        ],
+        "headline2-regular": [
+          "1.063rem",
+          {
+            lineHeight: "1.5rem",
+            fontWeight: 400,
+          },
+        ],
+        "body1normal-regular": [
+          "1rem",
+          {
+            lineHeight: "1.25rem",
+            fontWeight: 400,
+          },
+        ],
+        "body1normal-bold": [
+          "1rem",
+          {
+            lineHeight: "1.25rem",
+            fontWeight: 700,
+          },
+        ],
+        "body1reading-regular": [
+          "1rem",
+          {
+            lineHeight: "1.625rem",
+            fontWeight: 400,
+          },
+        ],
+        "body1reading-semibold": [
+          "1rem",
+          {
+            lineHeight: "1.625rem",
+            fontWeight: 600,
+          },
+        ],
+        "body2normal-regular": [
+          "0.9375rem",
+          {
+            lineHeight: "1.375rem",
+            fontWeight: 400,
+          },
+        ],
+        "body2normal-semibold": [
+          "0.9375rem",
+          {
+            lineHeight: "1.375rem",
+            fontWeight: 600,
+          },
+        ],
+        "body2reading-regular": [
+          "0.9375rem",
+          {
+            lineHeight: "1.5rem",
+            fontWeight: 400,
+          },
+        ],
+        "body2reading-semibold": [
+          "0.9375rem",
+          {
+            lineHeight: "1.5rem",
+            fontWeight: 600,
+          },
+        ],
+        "label1normal-semibold": [
+          "0.875rem",
+          {
+            lineHeight: "1.125rem",
+            fontWeight: 600,
+          },
+        ],
+        "label1normal-regular": [
+          "0.875rem",
+          {
+            lineHeight: "1.125rem",
+            fontWeight: 400,
+          },
+        ],
+        "label1normal-bold": [
+          "0.875rem",
+          {
+            lineHeight: "1.125rem",
+            fontWeight: 700,
+          },
+        ],
+        "label1reading-regular": [
+          "0.875rem",
+          {
+            lineHeight: "1.25rem",
+            fontWeight: 400,
+          },
+        ],
+        "label1reading-semibold": [
+          "0.875rem",
+          {
+            lineHeight: "1.25rem",
+            fontWeight: 600,
+          },
+        ],
+        "label2-regular": [
+          "0.8125rem",
+          {
+            lineHeight: "1.125rem",
+            fontWeight: 400,
+          },
+        ],
+        "label2-semibold": [
+          "0.8125rem",
+          {
+            lineHeight: "1.125rem",
+            fontWeight: 600,
+          },
+        ],
+        "caption1-regular": [
+          "0.75rem",
+          {
+            lineHeight: "1rem",
+            fontWeight: 400,
+          },
+        ],
+        "caption1-semibold": [
+          "0.75rem",
+          {
+            lineHeight: "1rem",
+            fontWeight: 600,
+          },
+        ],
+        "caption2-regular": [
+          "0.6875rem",
+          {
+            lineHeight: "0.875rem",
+            fontWeight: 400,
+          },
+        ],
+        "caption2-semibold": [
+          "0.6875rem",
+          {
+            lineHeight: "0.875rem",
+            fontWeight: 600,
+          },
+        ],
+        // deprecated - 위의 토큰을 사용하세요. 아래 토큰들은 삭제될 예정입니다.
         "headline-1": [
           "2.5rem",
           {
