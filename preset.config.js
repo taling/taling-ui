@@ -12,6 +12,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        // 레퍼런스 토큰
         "taling-pink": {
           DEFAULT: "rgb(var(--taling-pink-500) / <alpha-value>)",
           50: "rgb(var(--taling-pink-50) / <alpha-value>)",
@@ -111,46 +112,46 @@ module.exports = {
           800: "rgb(var(--taling-purple-800) / <alpha-value>)",
           900: "rgb(var(--taling-purple-900) / <alpha-value>)",
         },
-        // border: "#CCCCCC",
-        // input: "#CCCCCC",
-        // ring: "hsl(var(--ring))",
-        // background: "white",
-        // foreground: "#111111",
-        // pink: {
-        //   DEFAULT: "#FF1058",
-        //   foreground: "white",
-        // },
-        // secondary: {
-        //   DEFAULT: "#EEF0F4",
-        //   foreground: "#111111",
-        // },
-        // destructive: {
-        //   DEFAULT: "hsl(var(--destructive))",
-        //   foreground: "hsl(var(--destructive-foreground))",
-        // },
-        // muted: {
-        //   DEFAULT: "#666666",
-        //   foreground: "hsl(var(--muted-foreground))",
-        // },
-        // accent: {
-        //   DEFAULT: "#F2F2F2",
-        //   foreground: "#111111",
-        // },
-        // popover: {
-        //   DEFAULT: "hsl(var(--popover))",
-        //   foreground: "hsl(var(--popover-foreground))",
-        // },
-        // card: {
-        //   DEFAULT: "hsl(var(--card))",
-        //   foreground: "hsl(var(--card-foreground))",
-        // },
+        // 시스템 토큰
+        primary: "rgb(var(--taling-pink-500) / <alpha-value>)",
+        success: "rgb(var(--taling-green-400) / <alpha-value>)",
+        caution: "rgb(var(--taling-orange-800) / <alpha-value>)",
+        danger: "rgb(var(--taling-red-500) / <alpha-value>)",
+        "ui-normal": "rgb(var(--taling-gray-200) / <alpha-value>)",
+        "ui-strong": "rgb(var(--taling-gray-300) / <alpha-value>)",
+        "ui-low": "rgb(var(--taling-gray-100) / <alpha-value>)",
+        "line-normal": "rgb(var(--taling-gray-400) / 0.2)",
+        "line-low": "rgb(var(--taling-gray-400) / 0.08)",
+        "interaction-inactive": "rgb(var(--taling-gray-500) / <alpha-value>)",
+        "interaction-disabled": "rgb(var(--taling-gray-50) / <alpha-value>)",
       },
       textColor: {
+        strong: "rgb(var(--taling-black) / <alpha-value>)",
+        normal: "rgb(var(--taling-gray-900) / <alpha-value>)",
+        "high-emphasis": "rgb(var(--taling-gray-600) / <alpha-value>)",
+        "low-emphasis": "rgb(var(--taling-gray-400) / <alpha-value>)",
+        disabled: "rgb(var(--taling-gray-400) / 0.4)",
+
+        // deprecated - 위의 토큰을 사용하세요. 아래 토큰들은 삭제될 예정입니다.
         "taling-strong": "rgb(var(--taling-black) / <alpha-value>)",
         "taling-normal": "rgb(var(--taling-gray-900) / <alpha-value>)",
         "taling-neutral": "rgb(var(--taling-gray-800) / <alpha-value>)",
         "taling-high-emphasis": "rgb(var(--taling-gray-600) / <alpha-value>)",
         "taling-low-emphasis": "rgb(var(--taling-gray-400) / <alpha-value>)",
+      },
+      backgroundColor: {
+        normal: "rgb(var(--taling-white) / <alpha-value>)",
+        alternative: "rgb(var(--taling-gray-50) / <alpha-value>)",
+      },
+      boxShadow: {
+        normal:
+          "0px 1px 2px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.08), 0px 0px 1px 0px rgba(0, 0, 0, 0.08)",
+        emphasize:
+          "0px 2px 8px 0px rgba(0, 0, 0, 0.12), 0px 1px 4px 0px rgba(0, 0, 0, 0.08), 0px 0px 1px 0px rgba(0, 0, 0, 0.08)",
+        strong:
+          " 0px 6px 12px 0px rgba(0, 0, 0, 0.12), 0px 4px 8px 0px rgba(0, 0, 0, 0.08), 0px 0px 4px 0px rgba(0, 0, 0, 0.08)",
+        heavy:
+          "0px 16px 20px 0px rgba(0, 0, 0, 0.12), 0px 8px 16px 0px rgba(0, 0, 0, 0.08), 0px 0px 8px 0px rgba(0, 0, 0, 0.08)",
       },
       keyframes: {
         "accordion-down": {
