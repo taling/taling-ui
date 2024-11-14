@@ -141,7 +141,7 @@ module.exports = {
       },
       backgroundColor: {
         normal: "rgb(var(--taling-white) / <alpha-value>)",
-        alternative: "rgb(var(--taling-gray-500) / <alpha-value>)",
+        alternative: "rgb(var(--taling-gray-50) / <alpha-value>)",
       },
       boxShadow: {
         normal:
