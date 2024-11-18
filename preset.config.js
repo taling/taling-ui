@@ -12,6 +12,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        // 레퍼런스 토큰
         "taling-pink": {
           DEFAULT: "rgb(var(--taling-pink-500) / <alpha-value>)",
           50: "rgb(var(--taling-pink-50) / <alpha-value>)",
@@ -111,46 +112,46 @@ module.exports = {
           800: "rgb(var(--taling-purple-800) / <alpha-value>)",
           900: "rgb(var(--taling-purple-900) / <alpha-value>)",
         },
-        // border: "#CCCCCC",
-        // input: "#CCCCCC",
-        // ring: "hsl(var(--ring))",
-        // background: "white",
-        // foreground: "#111111",
-        // pink: {
-        //   DEFAULT: "#FF1058",
-        //   foreground: "white",
-        // },
-        // secondary: {
-        //   DEFAULT: "#EEF0F4",
-        //   foreground: "#111111",
-        // },
-        // destructive: {
-        //   DEFAULT: "hsl(var(--destructive))",
-        //   foreground: "hsl(var(--destructive-foreground))",
-        // },
-        // muted: {
-        //   DEFAULT: "#666666",
-        //   foreground: "hsl(var(--muted-foreground))",
-        // },
-        // accent: {
-        //   DEFAULT: "#F2F2F2",
-        //   foreground: "#111111",
-        // },
-        // popover: {
-        //   DEFAULT: "hsl(var(--popover))",
-        //   foreground: "hsl(var(--popover-foreground))",
-        // },
-        // card: {
-        //   DEFAULT: "hsl(var(--card))",
-        //   foreground: "hsl(var(--card-foreground))",
-        // },
+        // 시스템 토큰
+        primary: "rgb(var(--taling-pink-500) / <alpha-value>)",
+        success: "rgb(var(--taling-green-400) / <alpha-value>)",
+        caution: "rgb(var(--taling-orange-800) / <alpha-value>)",
+        danger: "rgb(var(--taling-red-500) / <alpha-value>)",
+        "ui-normal": "rgb(var(--taling-gray-200) / <alpha-value>)",
+        "ui-strong": "rgb(var(--taling-gray-300) / <alpha-value>)",
+        "ui-low": "rgb(var(--taling-gray-100) / <alpha-value>)",
+        "line-normal": "rgb(var(--taling-gray-400) / 0.2)",
+        "line-low": "rgb(var(--taling-gray-400) / 0.08)",
+        "interaction-inactive": "rgb(var(--taling-gray-500) / <alpha-value>)",
+        "interaction-disabled": "rgb(var(--taling-gray-50) / <alpha-value>)",
       },
       textColor: {
+        strong: "rgb(var(--taling-black) / <alpha-value>)",
+        normal: "rgb(var(--taling-gray-900) / <alpha-value>)",
+        "high-emphasis": "rgb(var(--taling-gray-600) / <alpha-value>)",
+        "low-emphasis": "rgb(var(--taling-gray-400) / <alpha-value>)",
+        disabled: "rgb(var(--taling-gray-400) / 0.4)",
+
+        // deprecated - 위의 토큰을 사용하세요. 아래 토큰들은 삭제될 예정입니다.
         "taling-strong": "rgb(var(--taling-black) / <alpha-value>)",
         "taling-normal": "rgb(var(--taling-gray-900) / <alpha-value>)",
         "taling-neutral": "rgb(var(--taling-gray-800) / <alpha-value>)",
         "taling-high-emphasis": "rgb(var(--taling-gray-600) / <alpha-value>)",
         "taling-low-emphasis": "rgb(var(--taling-gray-400) / <alpha-value>)",
+      },
+      backgroundColor: {
+        normal: "rgb(var(--taling-white) / <alpha-value>)",
+        alternative: "rgb(var(--taling-gray-50) / <alpha-value>)",
+      },
+      boxShadow: {
+        normal:
+          "0px 1px 2px 0px rgba(0, 0, 0, 0.12), 0px 0px 1px 0px rgba(0, 0, 0, 0.08), 0px 0px 1px 0px rgba(0, 0, 0, 0.08)",
+        emphasize:
+          "0px 2px 8px 0px rgba(0, 0, 0, 0.12), 0px 1px 4px 0px rgba(0, 0, 0, 0.08), 0px 0px 1px 0px rgba(0, 0, 0, 0.08)",
+        strong:
+          " 0px 6px 12px 0px rgba(0, 0, 0, 0.12), 0px 4px 8px 0px rgba(0, 0, 0, 0.08), 0px 0px 4px 0px rgba(0, 0, 0, 0.08)",
+        heavy:
+          "0px 16px 20px 0px rgba(0, 0, 0, 0.12), 0px 8px 16px 0px rgba(0, 0, 0, 0.08), 0px 0px 8px 0px rgba(0, 0, 0, 0.08)",
       },
       keyframes: {
         "accordion-down": {
@@ -167,6 +168,252 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontSize: {
+        "display1-bold": [
+          "2.5rem",
+          {
+            lineHeight: "3.25rem",
+            fontWeight: 700,
+          },
+        ],
+        "display1-regular": [
+          "2.5rem",
+          {
+            lineHeight: "3.25rem",
+            fontWeight: 400,
+          },
+        ],
+        "display2-bold": [
+          "2.25rem",
+          {
+            lineHeight: "3rem",
+            fontWeight: 700,
+          },
+        ],
+        "display2-regular": [
+          "2.25rem",
+          {
+            lineHeight: "3rem",
+            fontWeight: 400,
+          },
+        ],
+        "display3-bold": [
+          "1.75rem",
+          {
+            lineHeight: "2.375rem",
+            fontWeight: 700,
+          },
+        ],
+        "display3-regular": [
+          "1.75rem",
+          {
+            lineHeight: "2.375rem",
+            fontWeight: 400,
+          },
+        ],
+        "heading1-bold": [
+          "1.5rem",
+          {
+            lineHeight: "2.125rem",
+            fontWeight: 700,
+          },
+        ],
+        "heading1-regular": [
+          "1.5rem",
+          {
+            lineHeight: "2.125rem",
+            fontWeight: 400,
+          },
+        ],
+        "heading2-semibold": [
+          "1.375rem",
+          {
+            lineHeight: "1.875rem",
+            fontWeight: 600,
+          },
+        ],
+        "heading2-regular": [
+          "1.375rem",
+          {
+            lineHeight: "1.875rem",
+            fontWeight: 400,
+          },
+        ],
+        "heading3-semibold": [
+          "1.25rem",
+          {
+            lineHeight: "1.75rem",
+            fontWeight: 600,
+          },
+        ],
+        "heading3-regular": [
+          "1.25rem",
+          {
+            lineHeight: "1.75rem",
+            fontWeight: 400,
+          },
+        ],
+        "headline1-bold": [
+          "1.125rem",
+          {
+            lineHeight: "1.625rem",
+            fontWeight: 700,
+          },
+        ],
+        "headline1-regular": [
+          "1.125rem",
+          {
+            lineHeight: "1.625rem",
+            fontWeight: 400,
+          },
+        ],
+        "headline2-semibold": [
+          "1.063rem",
+          {
+            lineHeight: "1.5rem",
+            fontWeight: 600,
+          },
+        ],
+        "headline2-regular": [
+          "1.063rem",
+          {
+            lineHeight: "1.5rem",
+            fontWeight: 400,
+          },
+        ],
+        "body1normal-regular": [
+          "1rem",
+          {
+            lineHeight: "1.25rem",
+            fontWeight: 400,
+          },
+        ],
+        "body1normal-bold": [
+          "1rem",
+          {
+            lineHeight: "1.25rem",
+            fontWeight: 700,
+          },
+        ],
+        "body1reading-regular": [
+          "1rem",
+          {
+            lineHeight: "1.625rem",
+            fontWeight: 400,
+          },
+        ],
+        "body1reading-semibold": [
+          "1rem",
+          {
+            lineHeight: "1.625rem",
+            fontWeight: 600,
+          },
+        ],
+        "body2normal-regular": [
+          "0.9375rem",
+          {
+            lineHeight: "1.375rem",
+            fontWeight: 400,
+          },
+        ],
+        "body2normal-semibold": [
+          "0.9375rem",
+          {
+            lineHeight: "1.375rem",
+            fontWeight: 600,
+          },
+        ],
+        "body2reading-regular": [
+          "0.9375rem",
+          {
+            lineHeight: "1.5rem",
+            fontWeight: 400,
+          },
+        ],
+        "body2reading-semibold": [
+          "0.9375rem",
+          {
+            lineHeight: "1.5rem",
+            fontWeight: 600,
+          },
+        ],
+        "label1normal-semibold": [
+          "0.875rem",
+          {
+            lineHeight: "1.125rem",
+            fontWeight: 600,
+          },
+        ],
+        "label1normal-regular": [
+          "0.875rem",
+          {
+            lineHeight: "1.125rem",
+            fontWeight: 400,
+          },
+        ],
+        "label1normal-bold": [
+          "0.875rem",
+          {
+            lineHeight: "1.125rem",
+            fontWeight: 700,
+          },
+        ],
+        "label1reading-regular": [
+          "0.875rem",
+          {
+            lineHeight: "1.25rem",
+            fontWeight: 400,
+          },
+        ],
+        "label1reading-semibold": [
+          "0.875rem",
+          {
+            lineHeight: "1.25rem",
+            fontWeight: 600,
+          },
+        ],
+        "label2-regular": [
+          "0.8125rem",
+          {
+            lineHeight: "1.125rem",
+            fontWeight: 400,
+          },
+        ],
+        "label2-semibold": [
+          "0.8125rem",
+          {
+            lineHeight: "1.125rem",
+            fontWeight: 600,
+          },
+        ],
+        "caption1-regular": [
+          "0.75rem",
+          {
+            lineHeight: "1rem",
+            fontWeight: 400,
+          },
+        ],
+        "caption1-semibold": [
+          "0.75rem",
+          {
+            lineHeight: "1rem",
+            fontWeight: 600,
+          },
+        ],
+        "caption2-regular": [
+          "0.6875rem",
+          {
+            lineHeight: "0.875rem",
+            fontWeight: 400,
+          },
+        ],
+        "caption2-semibold": [
+          "0.6875rem",
+          {
+            lineHeight: "0.875rem",
+            fontWeight: 600,
+          },
+        ],
+        // deprecated - 위의 토큰을 사용하세요. 아래 토큰들은 삭제될 예정입니다.
         "headline-1": [
           "2.5rem",
           {
