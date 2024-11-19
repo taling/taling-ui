@@ -99,7 +99,12 @@ export default function SelectBox({
                   : "!cursor-not-allowed !bg-taling-gray-300 !text-taling-gray-800 opacity-50 ",
               )}
             >
-              <span className="block truncate">
+              <span
+                className={classNames(
+                  "block truncate",
+                  selected ? "" : "text-low-emphasis",
+                )}
+              >
                 {selected?.name ?? placeholder}
               </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
