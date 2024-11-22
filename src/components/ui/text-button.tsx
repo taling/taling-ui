@@ -46,10 +46,10 @@ const textButtonVariants = cva(
         ],
       },
       size: {
-        xs: "h-[1.25rem] min-w-[4.9375rem] rounded-lg px-2.5 py-1.5 text-caption1-semibold",
-        sm: "h-[1.5rem] min-w-[5.25rem] rounded-lg px-1 text-label2-semibold",
-        md: "h-[1.5rem] min-w-[5.875rem] rounded-lg px-1 py-1 text-body2normal-semibold",
-        lg: "h-[1.75rem] min-w-[6.0625rem] rounded-lg px-1 py-1.5 text-body2normal-regular",
+        xs: "h-6 min-w-[2.5rem] rounded-lg px-1 py-1 text-caption1-semibold",
+        sm: "h-7 min-w-[2.5rem] rounded-lg px-1 py-1 text-label1normal-semibold",
+        md: "h-8 min-w-[2.5rem] rounded-lg px-1 py-1 text-body2normal-semibold",
+        lg: "h-8 min-w-[2.5rem] rounded-lg px-1 py-1 text-body2normal-regular",
       },
     },
     defaultVariants: {
