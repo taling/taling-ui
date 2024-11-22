@@ -163,6 +163,14 @@ module.exports = {
           to: { height: 0 },
         },
       },
+      opacity: {
+        15: "0.15",
+        35: "0.35",
+        45: "0.45",
+        55: "0.55",
+        65: "0.65",
+        85: "0.85",
+      },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
