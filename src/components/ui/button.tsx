@@ -16,14 +16,13 @@ const iconContainerVariants = cva("inline-flex items-center justify-center", {
     },
   },
   defaultVariants: {
-    size: "md",
+    size: "lg",
   },
 });
 
 const buttonVariants = cva(
   [
     "inline-flex items-center justify-center gap-1 rounded-lg transition-colors",
-    "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
     "disabled:pointer-events-none",
   ],
   {
