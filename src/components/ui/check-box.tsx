@@ -17,8 +17,9 @@ export default function CheckBox({ size = "normal" }: CheckBoxProps) {
         sizeMap[size],
         "rounded-md border-1 border-taling-gray-400 text-primary",
         "hover:ring-2 hover:ring-offset-0 hover:ring-primary/10",
-        "focus-visible:ring-2 focus-visible:ring-offset-0 focus-visible:ring-primary/15",
-        "focus:ring-2 focus:ring-offset-0 focus:ring-primary/20",
+        "active:ring-2 active:ring-offset-0 active:ring-primary/15",
+        "focus:ring-0 focus:ring-offset-0 focus:outline-none",
+        "focus-visible:ring-0 focus-visible:ring-offset-0",
         "checked:focus:ring-0 checked:focus:ring-offset-0",
         "appearance-none",
       )}
