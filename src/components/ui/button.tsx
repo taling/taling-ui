@@ -22,7 +22,7 @@ const iconContainerVariants = cva("inline-flex items-center justify-center", {
 
 const buttonVariants = cva(
   [
-    "inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-lg transition-colors",
+    "inline-flex items-center justify-center gap-1 rounded-lg transition-colors",
     "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
     "disabled:pointer-events-none",
   ],
@@ -35,9 +35,24 @@ const buttonVariants = cva(
           "hover:bg-taling-pink-600",
           "active:bg-taling-pink-700",
         ],
-        solidSecondary: "",
-        oulinedPrimary: "",
-        outlinedSecondary: "",
+        solidSecondary: [
+          "bg-taling-gray-100 text-strong [&]:text-strong",
+          "disabled:bg-taling-gray-400 disabled:text-interaction-disabled/50",
+          "hover:bg-taling-gray-200",
+          "active:bg-taling-gray-300",
+        ],
+        oulinedPrimary: [
+          "bg-taling-white border border-primary text-primary [&]:text-primary",
+          "disabled:border-interaction-inactive disabled:text-disabled/80",
+          "hover:bg-taling-red-50/25",
+          "active:bg-taling-red-50",
+        ],
+        outlinedSecondary: [
+          "bg-taling-white border border-taling-gray-300 text-normal [&]:text-normal",
+          "disabled:border-interaction-inactive disabled:text-disabled/80",
+          "hover:bg-taling-gray-50",
+          "active:bg-taling-gray-100",
+        ],
         // deprecated - 추후 사라질 속성
         default:
           "bg-taling-pink text-taling-white shadow hover:bg-taling-pink/80 disabled:bg-taling-gray-400",
