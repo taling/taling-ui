@@ -43,8 +43,8 @@ const buttonVariants = cva(
         oulinedPrimary: [
           "bg-taling-white border border-primary text-primary [&]:text-primary",
           "disabled:border-interaction-inactive disabled:text-disabled/80",
-          "hover:bg-taling-red-50/25",
-          "active:bg-taling-red-50",
+          "hover:bg-primary/5",
+          "active:bg-primary/15",
         ],
         outlinedSecondary: [
           "bg-taling-white border border-taling-gray-300 text-normal [&]:text-normal",
