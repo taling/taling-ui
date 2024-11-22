@@ -10,15 +10,18 @@ interface CheckBoxProps {
   size?: sizeMapType;
   isChecked?: boolean;
   onChange?: (isChecked: boolean) => void;
+  disabled?: boolean;
 }
 
 export default function CheckBox({
   size = "normal",
   isChecked,
   onChange,
+  disabled = false,
 }: CheckBoxProps) {
   return (
     <input
+      disabled={disabled}
       checked={isChecked}
       onChange={(e) => {
         if (!onChange) return;
@@ -27,7 +30,8 @@ export default function CheckBox({
       className={classNames(
         sizeMap[size],
         "border-1 border-taling-gray-400 text-primary cursor-pointer",
-        "active:ring-1 active:ring-offset-1 active:ring-primary",
+        "disabled:opacity-30",
+        "active:ring-2 active:ring-offset-1 active:ring-primary",
         "focus:ring-0 focus:ring-offset-0 focus:outline-none",
         "focus-visible:ring-0 focus-visible:ring-offset-0",
         "checked:focus:ring-0 checked:focus:ring-offset-0",
