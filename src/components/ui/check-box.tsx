@@ -1,8 +1,8 @@
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
 
 const sizeMap = {
-  normal: "w-5 h-5",
-  small: "w-4 h-4",
+  normal: "w-5 h-5 rounded-md",
+  small: "w-4 h-4 rounded",
 };
 type sizeMapType = keyof typeof sizeMap;
 
@@ -26,7 +26,7 @@ export default function CheckBox({
       }}
       className={classNames(
         sizeMap[size],
-        "rounded-md border-1 border-taling-gray-400 text-primary cursor-pointer",
+        "border-1 border-taling-gray-400 text-primary cursor-pointer",
         "active:ring-1 active:ring-offset-1 active:ring-primary",
         "focus:ring-0 focus:ring-offset-0 focus:outline-none",
         "focus-visible:ring-0 focus-visible:ring-offset-0",
