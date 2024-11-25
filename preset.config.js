@@ -128,6 +128,7 @@ module.exports = {
       textColor: {
         strong: "rgb(var(--taling-black) / <alpha-value>)",
         normal: "rgb(var(--taling-gray-900) / <alpha-value>)",
+        neutral: "rgb(var(--taling-gray-800) / <alpha-value>)",
         "high-emphasis": "rgb(var(--taling-gray-600) / <alpha-value>)",
         "low-emphasis": "rgb(var(--taling-gray-400) / <alpha-value>)",
         disabled: "rgb(var(--taling-gray-400) / 0.4)",
