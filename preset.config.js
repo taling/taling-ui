@@ -128,6 +128,7 @@ module.exports = {
       textColor: {
         strong: "rgb(var(--taling-black) / <alpha-value>)",
         normal: "rgb(var(--taling-gray-900) / <alpha-value>)",
+        neutral: "rgb(var(--taling-gray-800) / <alpha-value>)",
         "high-emphasis": "rgb(var(--taling-gray-600) / <alpha-value>)",
         "low-emphasis": "rgb(var(--taling-gray-400) / <alpha-value>)",
         disabled: "rgb(var(--taling-gray-400) / 0.4)",
@@ -162,6 +163,14 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+      },
+      opacity: {
+        15: "0.15",
+        35: "0.35",
+        45: "0.45",
+        55: "0.55",
+        65: "0.65",
+        85: "0.85",
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
