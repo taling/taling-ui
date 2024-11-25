@@ -8,34 +8,34 @@ type sizeMapType = keyof typeof sizeMap;
 
 interface CheckBoxProps {
   size?: sizeMapType;
-  isChecked?: boolean;
-  onChange?: (isChecked: boolean) => void;
   disabled?: boolean;
+  className?: string;
+  checked?: boolean;
+  onChange?: (isChecked: boolean) => void;
 }
 
 export default function CheckBox({
   size = "normal",
-  isChecked,
-  onChange,
   disabled = false,
+  className,
+  checked,
+  onChange,
 }: CheckBoxProps) {
   return (
     <input
+      checked={checked}
+      onChange={(e) => onChange?.(e.target.checked)}
       disabled={disabled}
-      checked={isChecked}
-      onChange={(e) => {
-        if (!onChange) return;
-        onChange(e.target.checked);
-      }}
       className={classNames(
         sizeMap[size],
-        "border-1 border-taling-gray-400 text-primary cursor-pointer",
-        "disabled:opacity-30",
+        "border-1 border-taling-gray-300 text-primary cursor-pointer",
+        "disabled:opacity-60 disabled:cursor-default disabled:ring-0 disabled:ring-offset-0",
         "active:ring-2 active:ring-offset-1 active:ring-primary",
         "focus:ring-0 focus:ring-offset-0 focus:outline-none",
         "focus-visible:ring-0 focus-visible:ring-offset-0",
         "checked:focus:ring-0 checked:focus:ring-offset-0",
         "appearance-none",
+        className,
       )}
       type="checkbox"
     />
