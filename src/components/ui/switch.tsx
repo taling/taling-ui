@@ -49,7 +49,8 @@ export default function Switch({
       disabled={disabled}
       onClick={handleToggle}
       className={classNames(
-        "relative rounded-full transition-colors duration-200 ease-in-out",
+        "relative rounded-full",
+        "transition-colors duration-200 ease-in-out",
         isActive ? "bg-primary" : "bg-taling-gray-400",
         sizeMap[size].wrapper,
         "disabled:opacity-40",
@@ -58,7 +59,8 @@ export default function Switch({
     >
       <div
         className={classNames(
-          "absolute bg-white rounded-full shadow-md transition-transform duration-200 ease-in-out",
+          "absolute bg-white rounded-full shadow-normal",
+          "transition-transform duration-200 ease-in-out",
           sizeMap[size].thumb.size,
           sizeMap[size].thumb.spacing,
           isActive ? sizeMap[size].thumb.translation : "translate-x-0",
