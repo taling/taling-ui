@@ -68,7 +68,6 @@ export default function Dialog({
   );
 }
 
-// DialogButtons.tsx
 interface DialogButtonsProps {
   cancelLabel: string;
   confirmLabel: string;
