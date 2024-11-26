@@ -1,13 +1,19 @@
-// toast.ts
+"use client";
+
 import {
   CheckCircleIcon,
   ExclamationTriangleIcon,
   XCircleIcon,
 } from "@heroicons/react/20/solid";
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
-import { toast as sonnerToast } from "sonner";
+import {
+  toast as hotToast,
+  Toaster as HotToaster,
+  Toast as HotToastType,
+} from "react-hot-toast";
 
-// 토스트 스타일 설정
+export const Toaster = () => <HotToaster />;
+
 const toastStyles = {
   default: {
     icon: "w-6 h-6 text-success",
@@ -26,11 +32,10 @@ const toastIcons = {
   error: XCircleIcon,
 };
 
-// 모바일 브레이크포인트 설정
 const MOBILE_BREAKPOINT = 768;
 
-// 토스트 옵션 타입
 type ToastType = keyof typeof toastStyles;
+
 interface ToastOptions {
   title?: string;
   description?: string;
@@ -46,7 +51,57 @@ interface ToastOptions {
 }
 
 const getDefaultPosition = () => {
-  return window.innerWidth < MOBILE_BREAKPOINT ? "bottom-center" : "top-right";
+  if (typeof window !== "undefined") {
+    return window.innerWidth < MOBILE_BREAKPOINT
+      ? "bottom-center"
+      : "top-right";
+  }
+  return "top-right";
+};
+
+interface CustomToastProps {
+  type?: ToastType;
+  description?: string;
+  t: HotToastType;
+  position?: ToastOptions["position"];
+}
+
+const CustomToast = ({
+  type = "default",
+  description,
+  t,
+  position,
+}: CustomToastProps) => {
+  const Icon = toastIcons[type];
+  const isBottom = position?.includes("bottom");
+  const isLeft = position?.includes("left");
+  const isRight = position?.includes("right");
+
+  const getAnimationClass = () => {
+    if (isBottom) return "animate-slide-in-bottom";
+    if (isLeft) return "animate-slide-in-left";
+    if (isRight) return "animate-slide-in-right";
+    return "animate-slide-in-right";
+  };
+
+  const handleClick = () => {
+    hotToast.remove(t.id);
+  };
+
+  return (
+    <div
+      className={classNames(
+        "inline-flex gap-2 justify-center items-center pl-4 pr-10 py-3 min-h-[3rem] min-w-[10rem] max-w-[90vw] rounded-[0.625rem] bg-taling-gray-900 bg-opacity-80 text-taling-white shadow-emphasize backdrop-blur-md hover:bg-opacity-85 cursor-pointer",
+        t.visible ? getAnimationClass() : "",
+      )}
+      onClick={handleClick}
+    >
+      <Icon className={toastStyles[type].icon} />
+      {description && (
+        <div className="text-body2normal-regular text-white">{description}</div>
+      )}
+    </div>
+  );
 };
 
 export const toast = {
@@ -56,32 +111,29 @@ export const toast = {
     position,
     type = "default",
   }: ToastOptions) => {
-    const Icon = toastIcons[type];
     const toastPosition = position || getDefaultPosition();
 
-    sonnerToast(
-      <div
-        className={classNames(
-          "inline-flex gap-2 justify-center items-center pl-4 pr-10 py-3 min-h-[3.375rem] min-w-[12rem] max-w-[90vw] rounded-[0.625rem] bg-taling-gray-900 bg-opacity-80 text-taling-white shadow-emphasize backdrop-blur-2xl hover:bg-opacity-85",
-        )}
-        onClick={() => sonnerToast.dismiss()}
-      >
-        <Icon className={toastStyles[type].icon} />
-        {description && (
-          <div className={"text-body2normal-regular"}>{description}</div>
-        )}
-      </div>,
+    return hotToast.custom(
+      (t) => (
+        <CustomToast
+          type={type}
+          description={description}
+          t={t}
+          position={toastPosition}
+        />
+      ),
       {
         duration,
         position: toastPosition,
-        className: "cursor-pointer",
       },
     );
   },
+
   warning: (options: Omit<ToastOptions, "type">) => {
-    toast.show({ ...options, type: "warning" });
+    return toast.show({ ...options, type: "warning" });
   },
+
   error: (options: Omit<ToastOptions, "type">) => {
-    toast.show({ ...options, type: "error" });
+    return toast.show({ ...options, type: "error" });
   },
 };
