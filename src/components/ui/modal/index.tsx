@@ -1,11 +1,12 @@
 import {
-  DialogPanel,
-  DialogTitle,
-  Dialog as HeadlessUiDialog,
+  Dialog as HeadlessUiModal,
+  DialogPanel as ModalPanel,
+  DialogTitle as ModalTitle,
 } from "@headlessui/react";
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
-import DialogButtons from "./dialog-buttons";
-interface DialogProps {
+import ModalButtons from "./modal-buttons";
+
+interface ModalProps {
   title?: string;
   subTitle?: string;
   children?: React.ReactNode;
@@ -13,6 +14,7 @@ interface DialogProps {
   confirmLabel?: string;
   isBackDropClickable?: boolean;
   isOpen?: boolean;
+  modalType?: ModalType;
   onCancel?: (arg?: any) => void;
   onConfirm?: (arg?: any) => void;
   onPromiseCancel?: (arg?: any) => Promise<boolean>;
@@ -20,7 +22,14 @@ interface DialogProps {
   setIsOpen?: (arg: boolean) => void;
 }
 
-export default function Dialog({
+const modalType = {
+  twoButton: "twoButton",
+  oneButton: "oneButton",
+  secondary: "secondary",
+};
+export type ModalType = keyof typeof modalType;
+
+export default function Modal({
   title,
   subTitle,
   children,
@@ -28,14 +37,15 @@ export default function Dialog({
   confirmLabel = "확인",
   isBackDropClickable = true,
   isOpen,
+  modalType = "twoButton",
   onPromiseCancel,
   onPromiseConfirm,
   onCancel,
   onConfirm,
   setIsOpen,
-}: DialogProps) {
+}: ModalProps) {
   return (
-    <HeadlessUiDialog
+    <HeadlessUiModal
       open={isOpen}
       onClose={() => {
         isBackDropClickable && setIsOpen?.(false);
@@ -47,26 +57,25 @@ export default function Dialog({
         "data-[closed]:opacity-0",
       )}
     >
-      <DialogPanel className="flex flex-col gap-6 w-[18.4375rem] bg-taling-white p-5 rounded-xl shadow-strong">
-        <div className="flex flex-col gap-5">
-          <DialogTitle className="flex flex-col gap-1.5">
-            <span className="text-body1normal-bold text-strong">{title}</span>
-            <span className="text-label1reading-regular text-neutral">
-              {subTitle}
-            </span>
-          </DialogTitle>
-          <section>{children}</section>
-        </div>
-        <DialogButtons
+      <ModalPanel className="flex flex-col gap-5 min-w-[18.4375rem] bg-taling-white px-8 py-7 rounded-2xl shadow-strong">
+        <ModalTitle className="flex flex-col gap-1">
+          <span className="text-heading3-semibold text-neutral">{title}</span>
+          <span className="text-label1reading-regular text-neutral">
+            {subTitle}
+          </span>
+        </ModalTitle>
+        <section>{children}</section>
+        <ModalButtons
           cancelLabel={cancelLabel}
           confirmLabel={confirmLabel}
+          modalType={modalType}
           onCancel={onCancel}
           onConfirm={onConfirm}
           onPromiseCancel={onPromiseCancel}
           onPromiseConfirm={onPromiseConfirm}
           setIsOpen={setIsOpen}
         />
-      </DialogPanel>
-    </HeadlessUiDialog>
+      </ModalPanel>
+    </HeadlessUiModal>
   );
 }
