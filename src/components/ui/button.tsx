@@ -12,6 +12,7 @@ const iconContainerVariants = cva("inline-flex items-center justify-center", {
       md: "h-6 w-6",
       lg: "h-6 w-6",
       // deprecated - default는 추후 사라질 예정.
+      xl: "h-6 w-6",
       default: "h-6 w-6",
     },
   },
@@ -40,7 +41,7 @@ const buttonVariants = cva(
           "hover:bg-taling-gray-200",
           "active:bg-taling-gray-300",
         ],
-        oulinedPrimary: [
+        outlinedPrimary: [
           "bg-taling-white border border-primary text-primary [&]:text-primary",
           "disabled:border-interaction-inactive disabled:text-disabled/80",
           "hover:bg-primary/5",
@@ -68,6 +69,7 @@ const buttonVariants = cva(
         md: "h-10 min-w-[4.25rem] rounded-lg px-3.5 py-2 text-body2normal-semibold",
         lg: "h-12 min-w-[5.25rem] rounded-lg px-4 py-3 text-body2normal-semibold",
         // deprecated - default는 추후 사라질 예정.
+        xl: "h-12 rounded-md px-8",
         default: "h-9 px-4 py-2",
       },
     },
