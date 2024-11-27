@@ -15,6 +15,8 @@ interface ModalProps {
   isBackDropClickable?: boolean;
   isOpen?: boolean;
   modalType?: ModalType;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
   onCancel?: (arg?: any) => void;
   onConfirm?: (arg?: any) => void;
   onPromiseCancel?: (arg?: any) => Promise<boolean>;
@@ -35,6 +37,8 @@ export default function Modal({
   children,
   cancelLabel = "취소",
   confirmLabel = "확인",
+  leftIcon,
+  rightIcon,
   isBackDropClickable = true,
   isOpen,
   modalType = "twoButton",
@@ -64,11 +68,13 @@ export default function Modal({
             {subTitle}
           </span>
         </ModalTitle>
-        <section>{children}</section>
+        {children && <section>{children}</section>}
         <ModalButtons
           cancelLabel={cancelLabel}
           confirmLabel={confirmLabel}
           modalType={modalType}
+          leftIcon={leftIcon}
+          rightIcon={rightIcon}
           onCancel={onCancel}
           onConfirm={onConfirm}
           onPromiseCancel={onPromiseCancel}

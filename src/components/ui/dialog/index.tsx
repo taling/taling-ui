@@ -55,7 +55,7 @@ export default function Dialog({
               {subTitle}
             </span>
           </DialogTitle>
-          <section>{children}</section>
+          {children && <section>{children}</section>}
         </div>
         <DialogButtons
           cancelLabel={cancelLabel}
