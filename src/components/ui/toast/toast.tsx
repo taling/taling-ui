@@ -85,8 +85,8 @@ const CustomToast = ({
   return (
     <div
       className={classNames(
-        "inline-flex gap-2 justify-center items-center pl-4 pr-10 py-3 rounded-[0.625rem] bg-taling-gray-900 bg-opacity-80 text-taling-white shadow-emphasize backdrop-blur-md cursor-pointer",
-        "min-h-[3rem] min-w-[10rem] max-w-[90vw] md:max-w-[25rem]",
+        "inline-flex gap-2 justify-center items-center min-h-[3rem] pl-4 pr-10 py-3 rounded-[0.625rem] bg-taling-gray-900 bg-opacity-80 text-taling-white shadow-emphasize backdrop-blur-md cursor-pointer",
+        "min-w-[10rem] max-w-[90vw] md:max-w-[25rem]",
         "hover:bg-opacity-85",
         t.visible ? getAnimationClass() : "",
       )}
