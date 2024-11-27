@@ -92,7 +92,12 @@ export default function ModalButtons({
           <WaitingButton
             render={{
               normal: (
-                <TextButton size={"lg"} variant={"secondary"}>
+                <TextButton
+                  size={"lg"}
+                  variant={"secondary"}
+                  leftIcon={leftIcon}
+                  rightIcon={rightIcon}
+                >
                   {cancelLabel}
                 </TextButton>
               ),
