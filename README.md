@@ -46,3 +46,33 @@ content: [
   "./taling-ui/src/**/*.{js,ts,jsx,tsx}"
 ],
 ```
+
+
+### 4. global.css
+taling-ui submodule을 사용하는 프로젝트의 global.css에 taling-ui의 global.css를 import 합니다.
+
+ex)
+`taling-web-frontend/src/app/global.css` 에서
+```
+@import "../../taling-ui/css/global.css";
+```
+추가
+
+
+### 5. toast 및 snackbar 세팅
+taling-ui submodule을 사용하는 프로젝트의 rootLayout에 Toaster 컴포넌트를 추가합니다.
+
+ex)
+`taling-web-frontend/src/app/layout.tsx` 에서
+```
+import { Toaster as CustomToaster } from "@taling-ui/ui/toast/toaster";
+
+function RootLayout() {
+...
+
+return  (
+...
+<CustomToaster/>
+)
+}
+```
