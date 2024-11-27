@@ -6,7 +6,7 @@ const sizeMap = {
 };
 type sizeMapType = keyof typeof sizeMap;
 
-interface CheckBoxProps {
+interface CheckboxProps {
   size?: sizeMapType;
   disabled?: boolean;
   className?: string;
@@ -14,13 +14,13 @@ interface CheckBoxProps {
   onChange?: (isChecked: boolean) => void;
 }
 
-export default function CheckBox({
+export default function Checkbox({
   size = "normal",
   disabled = false,
   className,
   checked,
   onChange,
-}: CheckBoxProps) {
+}: CheckboxProps) {
   return (
     <input
       checked={checked}

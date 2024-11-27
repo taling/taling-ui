@@ -130,7 +130,7 @@ module.exports = {
         normal: "rgb(var(--taling-gray-900) / <alpha-value>)",
         neutral: "rgb(var(--taling-gray-800) / <alpha-value>)",
         "high-emphasis": "rgb(var(--taling-gray-600) / <alpha-value>)",
-        "low-emphasis": "rgb(var(--taling-gray-400) / <alpha-value>)",
+        "low-emphasis": "rgb(var(--taling-gray-500) / <alpha-value>)",
         disabled: "rgb(var(--taling-gray-400) / 0.4)",
 
         // deprecated - 위의 토큰을 사용하세요. 아래 토큰들은 삭제될 예정입니다.
@@ -163,6 +163,30 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+        "slide-in-right": {
+          "0%": { transform: "translateX(100%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        "slide-out-right": {
+          "0%": { transform: "translateX(0)", opacity: "1" },
+          "100%": { transform: "translateX(100%)", opacity: "0" },
+        },
+        "slide-in-left": {
+          "0%": { transform: "translateX(-100%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        "slide-out-left": {
+          "0%": { transform: "translateX(0)", opacity: "1" },
+          "100%": { transform: "translateX(-100%)", opacity: "0" },
+        },
+        "slide-in-bottom": {
+          "0%": { transform: "translateY(100%)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        "slide-out-bottom": {
+          "0%": { transform: "translateY(0)", opacity: "1" },
+          "100%": { transform: "translateY(100%)", opacity: "0" },
+        },
       },
       opacity: {
         15: "0.15",
@@ -175,6 +199,13 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "slide-in-right": "slide-in-right 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+        "slide-out-right": "slide-out-right 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+        "slide-in-left": "slide-in-left 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+        "slide-out-left": "slide-out-left 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+        "slide-in-bottom": "slide-in-bottom 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+        "slide-out-bottom":
+          "slide-out-bottom 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
       },
       fontSize: {
         "display1-bold": [
