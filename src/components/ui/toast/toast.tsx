@@ -6,13 +6,7 @@ import {
   XCircleIcon,
 } from "@heroicons/react/20/solid";
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
-import {
-  toast as hotToast,
-  Toaster as HotToaster,
-  Toast as HotToastType,
-} from "react-hot-toast";
-
-export const Toaster = () => <HotToaster />;
+import { toast as hotToast, Toast as HotToastType } from "react-hot-toast";
 
 const toastStyles = {
   default: {
@@ -91,7 +85,9 @@ const CustomToast = ({
   return (
     <div
       className={classNames(
-        "inline-flex gap-2 justify-center items-center pl-4 pr-10 py-3 min-h-[3rem] min-w-[10rem] max-w-[90vw] rounded-[0.625rem] bg-taling-gray-900 bg-opacity-80 text-taling-white shadow-emphasize backdrop-blur-md hover:bg-opacity-85 cursor-pointer",
+        "inline-flex gap-2 justify-center items-center pl-4 pr-10 py-3 rounded-[0.625rem] bg-taling-gray-900 bg-opacity-80 text-taling-white shadow-emphasize backdrop-blur-md cursor-pointer",
+        "min-h-[3rem] min-w-[10rem] max-w-[90vw] md:max-w-[25rem]",
+        "hover:bg-opacity-85",
         t.visible ? getAnimationClass() : "",
       )}
       onClick={handleClick}
