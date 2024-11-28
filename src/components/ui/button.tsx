@@ -55,13 +55,15 @@ const buttonVariants = cva(
         ],
         // deprecated - 추후 사라질 속성
         default:
-          "bg-taling-pink text-taling-white shadow hover:bg-taling-pink/80 disabled:bg-taling-gray-400",
+          "bg-taling-pink text-taling-white [&]:text-taling-white shadow hover:bg-taling-pink/80 disabled:bg-taling-gray-400 disabled:opacity-50 whitespace-nowrap",
         outline:
-          "border border-taling-gray-300 bg-transparent shadow-sm hover:bg-taling-gray-100 hover:text-taling-gray-900",
+          "border border-taling-gray-300 bg-transparent shadow-sm hover:bg-taling-gray-100 hover:text-taling-gray-900 disabled:opacity-50 whitespace-nowrap",
         secondary:
-          "bg-taling-gray-100 text-taling-gray-900 shadow-sm hover:bg-taling-gray-100/70",
-        ghost: "hover:bg-taling-gray-100 hover:text-taling-gray-900",
-        underline: "underline hover:text-taling-gray-900 text-taling-gray-600 ",
+          "bg-taling-gray-100 text-taling-gray-900 shadow-sm hover:bg-taling-gray-100/70 disabled:opacity-50 whitespace-nowrap",
+        ghost:
+          "hover:bg-taling-gray-100 hover:text-taling-gray-900 disabled:opacity-50 whitespace-nowrap",
+        underline:
+          "underline hover:text-taling-gray-900 text-taling-gray-600 disabled:opacity-50 whitespace-nowrap",
       },
       size: {
         xs: "h-7 min-w-[3rem] rounded-lg px-2.5 py-1.5 text-caption1-semibold",
@@ -69,8 +71,8 @@ const buttonVariants = cva(
         md: "h-10 min-w-[4.25rem] rounded-lg px-3.5 py-2 text-body2normal-semibold",
         lg: "h-12 min-w-[5.25rem] rounded-lg px-4 py-3 text-body2normal-semibold",
         // deprecated - default는 추후 사라질 예정.
-        xl: "h-12 rounded-md px-8",
-        default: "h-9 px-4 py-2",
+        xl: "h-12 rounded-md px-8 text-sm font-medium",
+        default: "h-9 px-4 py-2 text-sm font-medium",
       },
     },
     defaultVariants: {
