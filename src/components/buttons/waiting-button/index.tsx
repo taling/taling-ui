@@ -1,3 +1,4 @@
+import { classNames } from "@taling-ui/util/tailwind-util/class-names"; // classNames 유틸 사용 가정
 import { cloneElement, useCallback, useEffect, useState } from "react";
 
 export default function WaitingButton({
@@ -37,8 +38,10 @@ export default function WaitingButton({
     updateNormalButton();
   }, [normal, updateNormalButton]);
 
-  return cloneElement(currentRender as React.ReactElement, {
+  const element = currentRender as React.ReactElement;
+
+  return cloneElement(element, {
     onClick: _internalOnClick,
-    className,
+    className: classNames(element.props.className || "", className || ""),
   });
 }
