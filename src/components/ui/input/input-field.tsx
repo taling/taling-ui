@@ -34,7 +34,7 @@ export default function InputField({
   const lengthInfo = maxLength ? `(${filteredLength}/${maxLength})` : undefined;
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="inline-flex w-fit flex-col gap-1">
       <InputLabel label={label} option={labelOption} />
       <Input
         type={type}
