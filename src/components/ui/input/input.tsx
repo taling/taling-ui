@@ -1,7 +1,7 @@
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
 
 interface InputProps {
-  value?: string;
+  value?: string | number;
   valueType?: "string" | "int" | "float";
   placeholder?: string;
   minLength?: number;
@@ -23,42 +23,38 @@ export default function Input({
   className,
   onChange,
 }: InputProps) {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let newValue = e.target.value;
-
-    // 숫자 타입에서 0으로 시작하는 입력값 처리
-    if (
-      (valueType === "int" || valueType === "float") &&
-      newValue.startsWith("0")
-    ) {
-      if (newValue.length > 1) {
-        newValue = newValue.slice(1);
-        e.target.value = newValue;
-      }
+  const getInputType = () => {
+    if (valueType === "string") {
+      return type;
     }
-
-    // 숫자 타입 유효성 검사
-    if (valueType === "int") {
-      if (!/^-?\d*$/.test(newValue)) {
-        return;
-      }
-    } else if (valueType === "float") {
-      if (!/^-?\d*\.?\d*$/.test(newValue)) {
-        return;
-      }
+    if (valueType === "int" || valueType === "float") {
+      return "number";
     }
-
-    onChange?.(e);
+    return type;
   };
 
-  const displayValue =
-    (valueType === "int" || valueType === "float") && (!value || value === "")
-      ? "0"
-      : value;
+  const inputType = getInputType();
+
+  const step = valueType === "float" ? "any" : "1";
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (valueType === "int" || valueType === "float") {
+      if (["e", "E", "+", "-"].includes(e.key)) {
+        e.preventDefault();
+      }
+    }
+
+    if (valueType === "int" && e.key === ".") {
+      e.preventDefault();
+    }
+  };
 
   return (
     <input
-      type={type}
+      type={inputType}
+      step={step}
+      onKeyDown={handleKeyDown}
+      pattern={valueType === "int" ? "[0-9]*" : undefined}
       className={classNames(
         `h-10 min-w-[16.5rem] appearance-none rounded-md border border-taling-gray-300
         bg-taling-white px-3 py-2.5 text-label1normal-regular text-strong
@@ -67,12 +63,12 @@ export default function Input({
         disabled:bg-taling-gray-200 disabled:text-disabled`,
         className,
       )}
-      value={displayValue}
+      value={value}
       placeholder={placeholder}
       minLength={minLength}
       maxLength={maxLength}
       disabled={disabled}
-      onChange={handleChange}
+      onChange={onChange}
     />
   );
 }
