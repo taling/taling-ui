@@ -1,5 +1,5 @@
-import { Button } from "@taling-ui/ui/button";
-import { useCallback, useEffect, useState } from "react";
+import { classNames } from "@taling-ui/util/tailwind-util/class-names"; // classNames 유틸 사용 가정
+import { cloneElement, useCallback, useEffect, useState } from "react";
 
 export default function WaitingButton({
   render: { normal, waiting, failed },
@@ -36,12 +36,12 @@ export default function WaitingButton({
 
   useEffect(() => {
     updateNormalButton();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [normal]);
+  }, [normal, updateNormalButton]);
 
-  return (
-    <div className={className} onClick={_internalOnClick}>
-      {currentRender}
-    </div>
-  );
+  const element = currentRender as React.ReactElement;
+
+  return cloneElement(element, {
+    onClick: _internalOnClick,
+    className: classNames(element.props.className || "", className || ""),
+  });
 }

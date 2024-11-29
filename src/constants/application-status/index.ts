@@ -1,6 +1,8 @@
 export enum ApplicationStatus {
   REQUESTED = 0,
   PAYMENT_COMPLETED = 1,
+  BOOKING_SUCCESS = 2,
+  BOOKING_CANCELED = 3,
   EXPIRED = 5,
   REFUND = 6,
   REFUND_1HOUR = 7,

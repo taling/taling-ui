@@ -1,7 +1,7 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
-import { Fragment, useCallback, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 export interface ISelectBoxItem {
   id: number;
@@ -15,65 +15,45 @@ export default function SelectBox({
   onSelected,
   defaultSelection,
   isToday,
+  placeholder = "선택해 주세요",
+  width = "w-full",
+  optionHight = "max-h-60",
+  optionWidth = "w-full",
+  optionAlign,
 }: {
   list: ISelectBoxItem[];
   enabled: boolean;
   onSelected: (item: ISelectBoxItem | null) => void;
   defaultSelection: ISelectBoxItem | null;
   isToday?: boolean;
+  placeholder?: string;
+  width?: string;
+  optionHight?: string;
+  optionWidth?: string;
+  optionAlign?: string;
 }) {
-  const [_internaList, setInternalList] = useState<ISelectBoxItem[]>();
   const [selected, setSelected] = useState<ISelectBoxItem | null>(null);
   const [_hydrated, setHydrated] = useState<boolean>(false); // glitch 제거
 
-  /**
-   * 리스트가 업데이트 되고, 이미 선택된 값이 리스트에 없으면 선택을 초기화 합니다.
-   */
-  const onListChanged = useCallback(
-    (newList: ISelectBoxItem[]) => {
-      // 먼저 선택상황을 편집하고,
-      const found = newList.find(
-        (item) =>
-          item?.id === selected?.id || item?.id === defaultSelection?.id,
-      );
-
-      if (!found) {
-        setSelected(null);
-        return;
-      }
-
-      if (!selected) {
-        setSelected(defaultSelection);
-      }
-
-      // 리스트를 초기화
-      if (newList === _internaList) return;
-      setInternalList(newList);
-    },
-    [_internaList, defaultSelection, selected],
-  );
-
-  // useEffect(() => {
-  //   console.log(`onSelected`, selected?.name);
-  //   onSelected(selected);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [selected]);
-
   useEffect(() => {
     setHydrated(true);
-    onListChanged(list);
+
+    const found = list.find(
+      (item) => item?.id === selected?.id || item?.id === defaultSelection?.id
+    );
+    if (!found) {
+      setSelected(defaultSelection);
+    } else {
+      setSelected(found);
+    }
+
     return () => {
       setHydrated(false);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [defaultSelection, list]);
+  }, [defaultSelection, list, selected]);
 
-  useEffect(() => {
-    setSelected(defaultSelection);
-  }, [defaultSelection]);
-
-  if (list.length === 0 && defaultSelection === null) return;
-  if (!_hydrated) return;
+  if (list.length === 0 && defaultSelection === null) return <></>;
+  if (!_hydrated) return <></>;
 
   return (
     <Listbox
@@ -85,17 +65,23 @@ export default function SelectBox({
     >
       {({ open }) => (
         <>
-          <div className="relative">
+          <div className={classNames("relative", width)}>
             <Listbox.Button
               className={classNames(
-                "relative w-full cursor-pointer rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-taling-gray-900 shadow-sm ring-1 ring-inset ring-gray-300  sm:text-sm sm:leading-6",
+                width,
+                "relative cursor-pointer rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-taling-gray-900 shadow-sm ring-1 ring-inset ring-taling-gray-300  sm:text-sm sm:leading-6",
                 enabled
                   ? "focus:outline-none focus:ring-2 focus:ring-taling-pink "
-                  : "!bg-taling-gray-300 !cursor-not-allowed !text-taling-gray-800 opacity-50 ",
+                  : "!cursor-not-allowed !bg-taling-gray-300 !text-taling-gray-800 opacity-50 ",
               )}
             >
-              <span className="block truncate">
-                {selected?.name ?? "선택해 주세요"}
+              <span
+                className={classNames(
+                  "block truncate",
+                  selected ? "" : "text-low-emphasis",
+                )}
+              >
+                {selected?.name ?? placeholder}
               </span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                 <ChevronUpDownIcon
@@ -111,7 +97,13 @@ export default function SelectBox({
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute z-10 w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg no-scrollbar max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+              <Listbox.Options
+                className={classNames(
+                  "no-scrollbar absolute z-10 mt-1 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm",
+                  optionHight,
+                  optionWidth,
+                )}
+              >
                 {list.map((item) => {
                   const internalSelected = selected?.id === item.id;
                   const excludeToday = isToday && !item.display;
@@ -125,6 +117,7 @@ export default function SelectBox({
                             ? "bg-taling-gray-100"
                             : "text-taling-gray-900",
                           "relative cursor-pointer select-none py-2 pl-3 pr-9",
+                          optionAlign,
                         )
                       }
                       value={item}
