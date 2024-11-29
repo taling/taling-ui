@@ -1,4 +1,5 @@
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
+import { useState } from "react";
 import InputDescription from "./description";
 import InputErrorMessage from "./error-message";
 import InputLabel from "./label";
@@ -15,7 +16,6 @@ interface TextareaFieldProps {
   disabled?: boolean;
   description?: string;
   errorMessage?: string;
-  isError?: boolean;
   className?: string;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
@@ -30,10 +30,13 @@ export default function TextareaField({
   disabled,
   description,
   errorMessage,
-  isError,
   className,
   onChange,
 }: TextareaFieldProps) {
+  const [filteredLength, setFilteredLength] = useState(0);
+
+  const lengthInfo = maxLength ? `(${filteredLength}/${maxLength})` : undefined;
+
   return (
     <div className={classNames("flex flex-col gap-1", className)}>
       <InputLabel label={label} option={labelOption} />
@@ -44,10 +47,13 @@ export default function TextareaField({
         maxLength={maxLength}
         disabled={disabled}
         onChange={onChange}
+        onValueLength={setFilteredLength}
       />
-      {description && <InputDescription description={description} />}
-      {isError && errorMessage && (
-        <InputErrorMessage errorMessage={errorMessage} />
+      {!errorMessage && description && (
+        <InputDescription description={description} option={lengthInfo} />
+      )}
+      {errorMessage && (
+        <InputErrorMessage errorMessage={errorMessage} option={lengthInfo} />
       )}
     </div>
   );

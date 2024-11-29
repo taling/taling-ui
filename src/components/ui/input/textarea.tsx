@@ -7,7 +7,9 @@ interface TextareaProps {
   maxLength?: number;
   disabled?: boolean;
   className?: string;
+  charFilter?: string | RegExp | ((value: string) => string);
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onValueLength?: (length: number) => void;
 }
 
 export default function Textarea({
@@ -16,9 +18,33 @@ export default function Textarea({
   minLength,
   maxLength,
   disabled,
-  onChange,
   className,
+  charFilter,
+  onChange,
+  onValueLength,
 }: TextareaProps) {
+  const filterValue = (value: string) => {
+    if (!charFilter) return value;
+
+    if (typeof charFilter === "function") {
+      return charFilter(value);
+    }
+
+    if (charFilter instanceof RegExp) {
+      return value.replace(charFilter, "");
+    }
+
+    return value.replace(new RegExp(charFilter, "g"), "");
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    let newValue = e.target.value;
+
+    newValue = filterValue(newValue);
+    onValueLength?.(newValue.length);
+    onChange?.({ ...e, target: { ...e.target, value: newValue } });
+  };
+
   return (
     <textarea
       className={classNames(
@@ -34,7 +60,7 @@ export default function Textarea({
       minLength={minLength}
       maxLength={maxLength}
       disabled={disabled}
-      onChange={onChange}
+      onChange={handleChange}
     />
   );
 }
