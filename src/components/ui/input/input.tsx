@@ -1,4 +1,5 @@
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
+import { useEffect, useState } from "react";
 
 interface InputProps {
   value?: string | number;
@@ -9,6 +10,11 @@ interface InputProps {
   disabled?: boolean;
   type?: string;
   className?: string;
+  displayModifier?: {
+    wrap: (value: string) => string;
+    unwrap: (value: string) => string;
+  };
+  charFilter?: string | RegExp | ((value: string) => string);
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -21,9 +27,19 @@ export default function Input({
   disabled,
   type = "text",
   className,
+  displayModifier,
+  charFilter,
   onChange,
 }: InputProps) {
+  const [displayValue, setDisplayValue] = useState<string>(
+    value?.toString() || "",
+  );
+
   const getInputType = () => {
+    if (displayModifier) {
+      return "text";
+    }
+
     if (valueType === "string") {
       return type;
     }
@@ -34,7 +50,6 @@ export default function Input({
   };
 
   const inputType = getInputType();
-
   const step = valueType === "float" ? "any" : "1";
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -48,6 +63,58 @@ export default function Input({
       e.preventDefault();
     }
   };
+
+  const filterValue = (value: string) => {
+    if (!charFilter) return value;
+
+    if (typeof charFilter === "function") {
+      return charFilter(value);
+    }
+
+    if (charFilter instanceof RegExp) {
+      return value.replace(charFilter, "");
+    }
+
+    return value.replace(new RegExp(charFilter, "g"), "");
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let newValue = e.target.value;
+
+    newValue = filterValue(newValue);
+
+    if (displayModifier) {
+      const unwrappedValue = displayModifier.unwrap(newValue);
+      setDisplayValue(displayModifier.wrap(unwrappedValue));
+
+      const modifiedEvent = {
+        ...e,
+        target: {
+          ...e.target,
+          value: unwrappedValue,
+        },
+      } as React.ChangeEvent<HTMLInputElement>;
+
+      onChange?.(modifiedEvent);
+    } else {
+      setDisplayValue(newValue);
+      onChange?.({
+        ...e,
+        target: {
+          ...e.target,
+          value: newValue,
+        },
+      } as React.ChangeEvent<HTMLInputElement>);
+    }
+  };
+
+  useEffect(() => {
+    if (displayModifier) {
+      setDisplayValue(displayModifier.wrap(value?.toString() || ""));
+      return;
+    }
+    setDisplayValue(value?.toString() || "");
+  }, [value, displayModifier]);
 
   return (
     <input
@@ -63,12 +130,12 @@ export default function Input({
         disabled:bg-taling-gray-200 disabled:text-disabled`,
         className,
       )}
-      value={value}
+      value={displayValue}
       placeholder={placeholder}
       minLength={minLength}
       maxLength={maxLength}
       disabled={disabled}
-      onChange={onChange}
+      onChange={handleChange}
     />
   );
 }

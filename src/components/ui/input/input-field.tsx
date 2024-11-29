@@ -17,6 +17,11 @@ interface InputFieldProps {
   description?: string;
   errorMessage?: string;
   isError?: boolean;
+  displayModifier?: {
+    wrap: (value: string) => string;
+    unwrap: (value: string) => string;
+  };
+  charFilter?: string | RegExp | ((value: string) => string);
   className?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -34,7 +39,9 @@ export default function InputField({
   description,
   errorMessage,
   isError,
+  displayModifier,
   className,
+  charFilter,
   onChange,
 }: InputFieldProps) {
   return (
@@ -48,6 +55,8 @@ export default function InputField({
         minLength={minLength}
         maxLength={maxLength}
         disabled={disabled}
+        displayModifier={displayModifier}
+        charFilter={charFilter}
         onChange={onChange}
       />
       {description && <InputDescription description={description} />}
