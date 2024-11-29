@@ -96,3 +96,8 @@
     --taling-purple-50: 247 228 255; /* #F7E4FF */
   }
 }
+
+input:focus {
+  outline: 2px solid transparent !important;
+  outline-offset: 2px !important;
+}
