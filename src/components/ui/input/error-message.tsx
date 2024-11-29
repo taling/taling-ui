@@ -18,7 +18,7 @@ export default function InputErrorMessage({
         className,
       )}
     >
-      {option && <span>{option}</span>}
+      {option && <span className="inline-block">{option}</span>}
       <span className="inline-block">{errorMessage}</span>
     </div>
   );
