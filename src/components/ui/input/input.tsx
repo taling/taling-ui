@@ -16,6 +16,7 @@ interface InputProps {
   };
   charFilter?: string | RegExp | ((value: string) => string);
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onValueLength?: (length: number) => void;
 }
 
 export default function Input({
@@ -30,6 +31,7 @@ export default function Input({
   displayModifier,
   charFilter,
   onChange,
+  onValueLength,
 }: InputProps) {
   const [displayValue, setDisplayValue] = useState<string>(
     value?.toString() || "",
@@ -82,6 +84,7 @@ export default function Input({
     let newValue = e.target.value;
 
     newValue = filterValue(newValue);
+    onValueLength?.(newValue.length);
 
     if (displayModifier) {
       const unwrappedValue = displayModifier.unwrap(newValue);

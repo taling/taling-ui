@@ -1,4 +1,5 @@
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
+import { useState } from "react";
 import InputDescription from "./description";
 import InputErrorMessage from "./error-message";
 import Input from "./input";
@@ -44,6 +45,10 @@ export default function InputField({
   charFilter,
   onChange,
 }: InputFieldProps) {
+  const [filteredLength, setFilteredLength] = useState(0);
+
+  const lengthInfo = maxLength ? `(${filteredLength}/${maxLength})` : undefined;
+
   return (
     <div className={classNames("flex flex-col gap-1", className)}>
       <InputLabel label={label} option={labelOption} />
@@ -58,10 +63,13 @@ export default function InputField({
         displayModifier={displayModifier}
         charFilter={charFilter}
         onChange={onChange}
+        onValueLength={setFilteredLength}
       />
-      {description && <InputDescription description={description} />}
+      {!isError && description && (
+        <InputDescription description={description} option={lengthInfo} />
+      )}
       {isError && errorMessage && (
-        <InputErrorMessage errorMessage={errorMessage} />
+        <InputErrorMessage errorMessage={errorMessage} option={lengthInfo} />
       )}
     </div>
   );
