@@ -14,7 +14,6 @@ interface ModalButtonsProps {
   onConfirm?: (arg?: any) => void;
   onPromiseCancel?: (arg?: any) => Promise<boolean>;
   onPromiseConfirm?: (arg?: any) => Promise<boolean>;
-  setIsOpen?: (arg: boolean) => void;
 }
 
 export default function ModalButtons({
@@ -27,7 +26,6 @@ export default function ModalButtons({
   onConfirm,
   onPromiseCancel,
   onPromiseConfirm,
-  setIsOpen,
 }: ModalButtonsProps) {
   if (modalType === "oneButton") {
     return (
@@ -39,7 +37,6 @@ export default function ModalButtons({
             className="w-full"
             onClick={() => {
               onConfirm?.();
-              setIsOpen?.(false);
             }}
           >
             {confirmLabel}
@@ -62,7 +59,6 @@ export default function ModalButtons({
             }}
             onClick={async () => {
               await onPromiseConfirm();
-              setIsOpen?.(false);
               return false;
             }}
           />
@@ -82,7 +78,6 @@ export default function ModalButtons({
             rightIcon={rightIcon}
             onClick={() => {
               onCancel?.();
-              setIsOpen?.(false);
             }}
           >
             {cancelLabel}
@@ -109,7 +104,6 @@ export default function ModalButtons({
             }}
             onClick={async () => {
               await onPromiseCancel();
-              setIsOpen?.(false);
               return false;
             }}
           />
@@ -120,7 +114,6 @@ export default function ModalButtons({
             variant={"solidPrimary"}
             onClick={() => {
               onConfirm?.();
-              setIsOpen?.(false);
             }}
           >
             {confirmLabel}
@@ -142,7 +135,6 @@ export default function ModalButtons({
             }}
             onClick={async () => {
               await onPromiseConfirm();
-              setIsOpen?.(false);
               return false;
             }}
           />
@@ -160,7 +152,6 @@ export default function ModalButtons({
           className="w-full"
           onClick={() => {
             onCancel?.();
-            setIsOpen?.(false);
           }}
         >
           {cancelLabel}
@@ -191,7 +182,6 @@ export default function ModalButtons({
           }}
           onClick={async () => {
             await onPromiseCancel();
-            setIsOpen?.(false);
             return false;
           }}
         />
@@ -203,7 +193,6 @@ export default function ModalButtons({
           className="w-full"
           onClick={() => {
             onConfirm?.();
-            setIsOpen?.(false);
           }}
         >
           {confirmLabel}
@@ -226,7 +215,6 @@ export default function ModalButtons({
           }}
           onClick={async () => {
             await onPromiseConfirm();
-            setIsOpen?.(false);
             return false;
           }}
         />
