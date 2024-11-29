@@ -6,9 +6,11 @@ import Textarea, { TextareaProps } from "./textarea";
 
 interface TextareaFieldProps
   extends Omit<TextareaProps, "onValueLength">,
-    Pick<InputLabelProps, "label">,
-    Pick<InputDescriptionProps, "description">,
-    Pick<InputErrorMessageProps, "errorMessage"> {
+    Partial<
+      Pick<InputLabelProps, "label"> &
+        Pick<InputDescriptionProps, "description"> &
+        Pick<InputErrorMessageProps, "errorMessage">
+    > {
   labelOption?: InputLabelProps["option"];
 }
 
