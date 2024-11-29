@@ -1,6 +1,6 @@
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
 
-interface TextareaProps {
+export interface TextareaProps {
   value?: string;
   placeholder?: string;
   minLength?: number;

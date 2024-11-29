@@ -1,29 +1,15 @@
-import { classNames } from "@taling-ui/util/tailwind-util/class-names";
 import { useState } from "react";
-import InputDescription from "./description";
-import InputErrorMessage from "./error-message";
-import Input from "./input";
-import InputLabel from "./label";
+import InputDescription, { InputDescriptionProps } from "./description";
+import InputErrorMessage, { InputErrorMessageProps } from "./error-message";
+import Input, { InputProps } from "./input";
+import InputLabel, { InputLabelProps } from "./label";
 
-interface InputFieldProps {
-  label?: string;
-  labelOption?: string;
-  type?: string;
-  value?: string;
-  valueType?: "int" | "float" | "string";
-  placeholder?: string;
-  minLength?: number;
-  maxLength?: number;
-  disabled?: boolean;
-  description?: string;
-  errorMessage?: string;
-  displayModifier?: {
-    wrap: (value: string) => string;
-    unwrap: (value: string) => string;
-  };
-  charFilter?: string | RegExp | ((value: string) => string);
-  className?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+interface InputFieldProps
+  extends Omit<InputProps, "onValueLength">,
+    Pick<InputLabelProps, "label">,
+    Pick<InputDescriptionProps, "description">,
+    Pick<InputErrorMessageProps, "errorMessage"> {
+  labelOption?: InputLabelProps["option"];
 }
 
 export default function InputField({
@@ -48,7 +34,7 @@ export default function InputField({
   const lengthInfo = maxLength ? `(${filteredLength}/${maxLength})` : undefined;
 
   return (
-    <div className={classNames("flex flex-col gap-1", className)}>
+    <div className="flex flex-col gap-1">
       <InputLabel label={label} option={labelOption} />
       <Input
         type={type}
@@ -62,6 +48,7 @@ export default function InputField({
         charFilter={charFilter}
         onChange={onChange}
         onValueLength={setFilteredLength}
+        className={className}
       />
       {!errorMessage && description && (
         <InputDescription description={description} option={lengthInfo} />

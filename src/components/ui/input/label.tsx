@@ -1,8 +1,8 @@
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
 
-interface InputLabelProps {
+export interface InputLabelProps {
   label?: string;
-  option?: string;
+  option?: "필수" | "선택";
   className?: string;
 }
 
@@ -17,7 +17,12 @@ export default function InputLabel({
         {label}
       </span>
       {option && (
-        <span className="inline-block text-caption1-regular text-danger">
+        <span
+          className={classNames(
+            "inline-block text-caption1-regular",
+            option === "선택" ? "text-high-emphasis" : "text-danger",
+          )}
+        >
           {`(${option})`}
         </span>
       )}

@@ -1,6 +1,6 @@
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
 
-interface InputDescriptionProps {
+export interface InputDescriptionProps {
   description?: string;
   option?: string;
   className?: string;

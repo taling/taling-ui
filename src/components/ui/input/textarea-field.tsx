@@ -1,23 +1,14 @@
-import { classNames } from "@taling-ui/util/tailwind-util/class-names";
 import { useState } from "react";
-import InputDescription from "./description";
-import InputErrorMessage from "./error-message";
-import InputLabel from "./label";
-import Textarea from "./textarea";
-
-interface TextareaFieldProps {
-  label?: string;
-  labelOption?: string;
-  type?: string;
-  value?: string;
-  placeholder?: string;
-  minLength?: number;
-  maxLength?: number;
-  disabled?: boolean;
-  description?: string;
-  errorMessage?: string;
-  className?: string;
-  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+import InputDescription, { InputDescriptionProps } from "./description";
+import InputErrorMessage, { InputErrorMessageProps } from "./error-message";
+import InputLabel, { InputLabelProps } from "./label";
+import Textarea, { TextareaProps } from "./textarea";
+interface TextareaFieldProps
+  extends Omit<TextareaProps, "onValueLength">,
+    Pick<InputLabelProps, "label">,
+    Pick<InputDescriptionProps, "description">,
+    Pick<InputErrorMessageProps, "errorMessage"> {
+  labelOption?: InputLabelProps["option"];
 }
 
 export default function TextareaField({
@@ -38,7 +29,7 @@ export default function TextareaField({
   const lengthInfo = maxLength ? `(${filteredLength}/${maxLength})` : undefined;
 
   return (
-    <div className={classNames("flex flex-col gap-1", className)}>
+    <div className="flex flex-col gap-1">
       <InputLabel label={label} option={labelOption} />
       <Textarea
         value={value}
@@ -48,6 +39,7 @@ export default function TextareaField({
         disabled={disabled}
         onChange={onChange}
         onValueLength={setFilteredLength}
+        className={className}
       />
       {!errorMessage && description && (
         <InputDescription description={description} option={lengthInfo} />

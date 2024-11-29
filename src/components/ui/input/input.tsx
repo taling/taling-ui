@@ -1,7 +1,7 @@
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
 import { useEffect, useState } from "react";
 
-interface InputProps {
+export interface InputProps {
   value?: string | number;
   valueType?: "string" | "int" | "float";
   placeholder?: string;

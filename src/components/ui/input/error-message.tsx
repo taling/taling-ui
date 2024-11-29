@@ -1,6 +1,6 @@
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
 
-interface InputErrorMessageProps {
+export interface InputErrorMessageProps {
   errorMessage?: string;
   option?: string;
   className?: string;
