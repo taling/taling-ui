@@ -17,7 +17,6 @@ interface InputFieldProps {
   disabled?: boolean;
   description?: string;
   errorMessage?: string;
-  isError?: boolean;
   displayModifier?: {
     wrap: (value: string) => string;
     unwrap: (value: string) => string;
@@ -39,7 +38,6 @@ export default function InputField({
   disabled,
   description,
   errorMessage,
-  isError,
   displayModifier,
   className,
   charFilter,
@@ -65,10 +63,10 @@ export default function InputField({
         onChange={onChange}
         onValueLength={setFilteredLength}
       />
-      {!isError && description && (
+      {!errorMessage && description && (
         <InputDescription description={description} option={lengthInfo} />
       )}
-      {isError && errorMessage && (
+      {errorMessage && (
         <InputErrorMessage errorMessage={errorMessage} option={lengthInfo} />
       )}
     </div>
