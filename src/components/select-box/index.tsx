@@ -1,7 +1,7 @@
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { classNames } from "@taling-ui/util/tailwind-util/class-names";
-import { Fragment, useCallback, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 export interface ISelectBoxItem {
   id: number;
@@ -32,49 +32,25 @@ export default function SelectBox({
   optionWidth?: string;
   optionAlign?: string;
 }) {
-  const [_internaList, setInternalList] = useState<ISelectBoxItem[]>();
   const [selected, setSelected] = useState<ISelectBoxItem | null>(null);
   const [_hydrated, setHydrated] = useState<boolean>(false); // glitch 제거
 
-  /**
-   * 리스트가 업데이트 되고, 이미 선택된 값이 리스트에 없으면 선택을 초기화 합니다.
-   */
-  const onListChanged = useCallback(
-    (newList: ISelectBoxItem[]) => {
-      // 먼저 선택상황을 편집하고,
-      const found = newList.find(
-        (item) =>
-          item?.id === selected?.id || item?.id === defaultSelection?.id,
-      );
-
-      if (!found) {
-        setSelected(null);
-        return;
-      }
-
-      if (!selected) {
-        setSelected(defaultSelection);
-      }
-
-      // 리스트를 초기화
-      if (newList === _internaList) return;
-      setInternalList(newList);
-    },
-    [_internaList, defaultSelection, selected],
-  );
-
   useEffect(() => {
     setHydrated(true);
-    onListChanged(list);
+
+    const found = list.find(
+      (item) => item?.id === selected?.id || item?.id === defaultSelection?.id
+    );
+    if (!found) {
+      setSelected(defaultSelection);
+    } else {
+      setSelected(found);
+    }
+
     return () => {
       setHydrated(false);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [defaultSelection, list]);
-
-  useEffect(() => {
-    setSelected(defaultSelection);
-  }, [defaultSelection]);
+  }, [defaultSelection, list, selected]);
 
   if (list.length === 0 && defaultSelection === null) return <></>;
   if (!_hydrated) return <></>;
@@ -107,9 +83,9 @@ export default function SelectBox({
               >
                 {selected?.name ?? placeholder}
               </span>
-              <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+              <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                 <ChevronUpDownIcon
-                  className="h-5 w-5 text-taling-gray-400"
+                  className="w-5 h-5 text-taling-gray-400"
                   aria-hidden="true"
                 />
               </span>
@@ -169,7 +145,7 @@ export default function SelectBox({
                               )}
                             >
                               <CheckIcon
-                                className="h-5 w-5"
+                                className="w-5 h-5"
                                 aria-hidden="true"
                               />
                             </span>
