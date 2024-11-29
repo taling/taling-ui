@@ -79,7 +79,6 @@ export default function Modal({
           onConfirm={onConfirm}
           onPromiseCancel={onPromiseCancel}
           onPromiseConfirm={onPromiseConfirm}
-          setIsOpen={setIsOpen}
         />
       </ModalPanel>
     </HeadlessUiModal>
