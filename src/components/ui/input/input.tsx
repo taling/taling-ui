@@ -84,11 +84,11 @@ export default function Input({
     let newValue = e.target.value;
 
     newValue = filterValue(newValue);
-    onValueLength?.(newValue.length);
 
     if (displayModifier) {
       const unwrappedValue = displayModifier.unwrap(newValue);
       setDisplayValue(displayModifier.wrap(unwrappedValue));
+      onValueLength?.(unwrappedValue.length);
 
       const modifiedEvent = {
         ...e,
@@ -101,6 +101,7 @@ export default function Input({
       onChange?.(modifiedEvent);
     } else {
       setDisplayValue(newValue);
+      onValueLength?.(newValue.length);
       onChange?.({
         ...e,
         target: {
