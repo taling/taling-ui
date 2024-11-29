@@ -1,12 +1,21 @@
-interface DescriptionProps {
+import { classNames } from "@taling-ui/util/tailwind-util/class-names";
+
+interface InputDescriptionProps {
   description?: string;
+  className?: string;
 }
 
-export default function Description({
+export default function InputDescription({
   description = "description",
-}: DescriptionProps) {
+  className,
+}: InputDescriptionProps) {
   return (
-    <span className="inline-block text-caption1-regular text-neutral">
+    <span
+      className={classNames(
+        "inline-block text-caption1-regular text-neutral",
+        className,
+      )}
+    >
       {description}
     </span>
   );
