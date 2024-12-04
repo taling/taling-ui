@@ -7,16 +7,21 @@ export function ImageSkeletonComponent({
   placeholder,
 }: {
   isLoading: boolean;
-  className?: any;
+  className?: string;
   imageUrl?: string;
   imageAlt?: string;
   placeholder: any;
 }) {
   if (isLoading) {
-    return <div className={...className}>{placeholder}</div>;
+    return (
+      <div className={className}>
+        {placeholder}
+      </div>
+    );
   }
+
   return (
-    <div className={...className}>
+    <div className={className}>
       {imageUrl ? (
         <img
           className={"w-full h-full object-cover"}
