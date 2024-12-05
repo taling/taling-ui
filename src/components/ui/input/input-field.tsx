@@ -1,3 +1,4 @@
+import { classNames } from "@taling-ui/util/tailwind-util/class-names";
 import { useState } from "react";
 import InputDescription, { InputDescriptionProps } from "./description";
 import InputErrorMessage, { InputErrorMessageProps } from "./error-message";
@@ -12,6 +13,7 @@ interface InputFieldProps
         Pick<InputErrorMessageProps, "errorMessage">
     > {
   labelOption?: InputLabelProps["option"];
+  inputClassName?: string;
 }
 
 export default function InputField({
@@ -28,6 +30,7 @@ export default function InputField({
   errorMessage,
   displayModifier,
   className,
+  inputClassName,
   charFilter,
   onChange,
 }: InputFieldProps) {
@@ -36,7 +39,7 @@ export default function InputField({
   const lengthInfo = maxLength ? `(${filteredLength}/${maxLength})` : undefined;
 
   return (
-    <div className="inline-flex w-fit flex-col gap-1">
+    <div className={classNames("inline-flex flex-col gap-1", className)}>
       <InputLabel label={label} option={labelOption} />
       <Input
         type={type}
@@ -50,7 +53,7 @@ export default function InputField({
         charFilter={charFilter}
         onChange={onChange}
         onValueLength={setFilteredLength}
-        className={className}
+        className={inputClassName}
       />
       {!errorMessage && description && (
         <InputDescription description={description} option={lengthInfo} />
