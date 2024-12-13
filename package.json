@@ -2,9 +2,15 @@
   "name": "taling-ui",
   "version": "1.0.0",
   "description": "Taling UI System",
-  "main": "index.ts",
+  "main": "src/index.ts",
+  "workspaces": [
+    "example"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm run dev -w example",
+    "build": "tsup",
+    "build:css": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify"
   },
   "repository": {
     "type": "git",
@@ -65,6 +71,7 @@
     "prettier-plugin-tailwindcss": "^0.6.9",
     "react": "^18",
     "react-dom": "^18",
+    "tsup": "^8.3.5",
     "typescript": "^5"
   },
   "peerDependencies": {
