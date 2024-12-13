@@ -103,9 +103,11 @@ input:focus {
 }
 
 .custom-bullet li::before {
-  content: "• ";
+  content: "•";
+  padding-left: 1ch;
+  padding-right: 1ch;
 }
 .custom-bullet li {
-  padding-left: 1ch;
-  text-indent: -1ch;
+  padding-left: 3ch;
+  text-indent: -3ch;
 }
