@@ -7,6 +7,7 @@ export default defineConfig({
   splitting: true,
   sourcemap: true,
   clean: true,
+  target: "es2019",
   external: [
     "react",
     "react-dom",
