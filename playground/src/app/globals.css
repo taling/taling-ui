@@ -1,0 +1,105 @@
+@import "../../../css/global.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* @font-face {
+  font-family: "AegRennerBold";
+  src: url("../../public/fonts/AEG-Renner-Bold.otf");
+} */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family:
+    "Pretendard Variable",
+    Pretendard,
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    "Helvetica Neue",
+    "Segoe UI",
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    "Malgun Gothic",
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    sans-serif;
+}
+
+html,
+body {
+  max-width: 100vw;
+  background: white;
+  color: #000;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a,
+div {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none; /* Safari Touch */
+  -webkit-user-select: none; /* Webkit */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Edge*/
+  user-select: none; /* Future-proof*/
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+} */
+
+@media (max-height: 600px) {
+  .footer-hidden {
+    display: none;
+  }
+}
+
+@layer components {
+  .letter-spacing-m3 {
+    letter-spacing: -0.03em;
+  }
+
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-cols-1 {
+    flex: 0 0 100%;
+  }
+
+  .carousel-cols-1_5 {
+    flex: 0 0 75%;
+  }
+
+  .aspect-auto {
+    aspect-ratio: auto;
+  }
+
+  .overflow-anywhere {
+    overflow-wrap: anywhere;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
