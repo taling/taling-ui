@@ -1,5 +1,5 @@
 {
-  "name": "taling-ui",
+  "name": "@taling/ui",
   "version": "1.0.0",
   "description": "Taling UI System",
   "main": "src/index.ts",
