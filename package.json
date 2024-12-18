@@ -3,6 +3,16 @@
   "version": "1.0.0",
   "description": "Taling UI System",
   "main": "src/index.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./styles": "./dist/styles/global.css",
+    "./tailwind": "./dist/lib/tailwind/preset.js"
+  },
+  "files": [
+    "dist",
+    "css",
+    "lib"
+  ],
   "workspaces": [
     "example"
   ],
@@ -31,7 +41,8 @@
     "react-resizable-panels": "^2.0.22",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7",
-    "uuid": "^10.0.0"
+    "uuid": "^10.0.0",
+    "zustand": "^4.4.1"
   },
   "devDependencies": {
     "@types/node": "^22",
