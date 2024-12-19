@@ -1,6 +1,6 @@
 {
   "name": "@taling/ui",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Taling UI System",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
