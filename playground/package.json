@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "taling-ui": "link:../",
+    "taling-ui": "file:../taling-ui",
     "react": "^18",
     "react-dom": "^18",
     "next": "^14"

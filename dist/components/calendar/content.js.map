@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/components/calendar/content.tsx"],"sourcesContent":["import { createContext } from \"react\";\nimport { SelectableColorType } from \"./types\";\n\nexport const MainColorContext = createContext<SelectableColorType>(\"pink\");\n"],"mappings":";;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,mBAA8B;AAGvB,IAAM,uBAAmB,4BAAmC,MAAM;","names":[]}

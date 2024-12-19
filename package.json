@@ -1,26 +1,32 @@
 {
   "name": "@taling/ui",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Taling UI System",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.js",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
     "./styles": "./dist/styles/global.css",
-    "./tailwind": "./dist/lib/tailwind/preset.js"
+    "./preset": "./dist/lib/tailwind/preset.js"
   },
   "files": [
-    "dist",
-    "css",
-    "lib"
+    "dist"
   ],
   "workspaces": [
-    "example"
+    "playground"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npm run dev -w example",
     "build": "tsup",
-    "build:css": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify"
+    "build:preset": "tsc -p tsconfig.preset.json",
+    "copy:css": "node scripts/copy-css.js",
+    "build:all": "npm run build && npm run build:preset && npm run copy:css"
   },
   "repository": {
     "type": "git",
@@ -57,10 +63,10 @@
     "typescript": "^5"
   },
   "peerDependencies": {
-    "next": "^14",
+    "next": "^13.4.5 || ^14.0.0",
+    "@headlessui/react": "^1.7.15 || ^2.2.0",
     "@heroicons/react": "^2.0.0",
     "framer-motion": "^10.12.16",
-    "@headlessui/react": "^2.2.0",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-aspect-ratio": "^1.0.3",

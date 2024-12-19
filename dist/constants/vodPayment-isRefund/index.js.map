@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/constants/vodPayment-isRefund/index.ts"],"sourcesContent":["export enum VodPaymentIsRefund {\n  REQUESTED = 0,\n  REFUNDED = 1,\n}\n"],"mappings":";;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAO,IAAK,qBAAL,kBAAKA,wBAAL;AACL,EAAAA,wCAAA,eAAY,KAAZ;AACA,EAAAA,wCAAA,cAAW,KAAX;AAFU,SAAAA;AAAA,GAAA;","names":["VodPaymentIsRefund"]}

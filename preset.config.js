@@ -1,4 +1,4 @@
-const preset = require("./lib/tailwind/preset");
+const preset = require("./src/lib/tailwind/preset");
 
 module.exports = {
   ...preset,

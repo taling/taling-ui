@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/constants/application-tutor-status/index.ts"],"sourcesContent":["export enum ApplicationTutorStatus {\n  REQUESTED = 0,\n  APPROVED = 1,\n  REJECTED = 2,\n}\n"],"mappings":";AAAO,IAAK,yBAAL,kBAAKA,4BAAL;AACL,EAAAA,gDAAA,eAAY,KAAZ;AACA,EAAAA,gDAAA,cAAW,KAAX;AACA,EAAAA,gDAAA,cAAW,KAAX;AAHU,SAAAA;AAAA,GAAA;","names":["ApplicationTutorStatus"]}

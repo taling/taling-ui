@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/constants/application-refund-status/index.ts"],"sourcesContent":["export enum ApplicationRefundStatus {\n  REQUESTED = 0,\n  REFUNDED = 1,\n}\n"],"mappings":";AAAO,IAAK,0BAAL,kBAAKA,6BAAL;AACL,EAAAA,kDAAA,eAAY,KAAZ;AACA,EAAAA,kDAAA,cAAW,KAAX;AAFU,SAAAA;AAAA,GAAA;","names":["ApplicationRefundStatus"]}

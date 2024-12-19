@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/components/ui/toast/toaster.tsx"],"sourcesContent":["import { Toaster as HotToaster } from \"react-hot-toast\";\n\nexport const Toaster = () => <HotToaster />;\n"],"mappings":";;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,6BAAsC;AAE/B,IAAM,UAAU,MAAM,oCAAC,uBAAAA,SAAA,IAAW;","names":["HotToaster"]}

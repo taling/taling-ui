@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/constants/vodPayment-payment-type/index.ts"],"sourcesContent":["export enum VodPaymentPaymentType {\n  VIRTUAL_ACCOUNT = 0,\n  CARD = 1,\n}\n"],"mappings":";AAAO,IAAK,wBAAL,kBAAKA,2BAAL;AACL,EAAAA,8CAAA,qBAAkB,KAAlB;AACA,EAAAA,8CAAA,UAAO,KAAP;AAFU,SAAAA;AAAA,GAAA;","names":["VodPaymentPaymentType"]}
