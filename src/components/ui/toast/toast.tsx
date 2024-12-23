@@ -19,7 +19,7 @@ const toastStyles = {
     icon: "w-6 h-6 text-danger",
   },
   normal: {
-    icon: null,
+    icon: undefined,
   },
 };
 
@@ -27,6 +27,7 @@ const toastIcons = {
   success: CheckCircleIcon,
   warning: ExclamationTriangleIcon,
   error: XCircleIcon,
+  normal: null,
 };
 
 const MOBILE_BREAKPOINT = 768;
@@ -97,7 +98,7 @@ const CustomToast = ({
       )}
       onClick={handleClick}
     >
-      <Icon className={toastStyles[type].icon} />
+      {Icon && <Icon className={toastStyles[type].icon} />}
       {description && (
         <div className="text-body2normal-regular text-white">{description}</div>
       )}
