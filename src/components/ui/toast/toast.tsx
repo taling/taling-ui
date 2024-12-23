@@ -9,7 +9,7 @@ import { classNames } from "@taling-ui/util/tailwind-util/class-names";
 import { toast as hotToast, Toast as HotToastType } from "react-hot-toast";
 
 const toastStyles = {
-  default: {
+  success: {
     icon: "w-6 h-6 text-success",
   },
   warning: {
@@ -18,10 +18,13 @@ const toastStyles = {
   error: {
     icon: "w-6 h-6 text-danger",
   },
+  normal: {
+    icon: null,
+  },
 };
 
 const toastIcons = {
-  default: CheckCircleIcon,
+  success: CheckCircleIcon,
   warning: ExclamationTriangleIcon,
   error: XCircleIcon,
 };
@@ -61,7 +64,7 @@ interface CustomToastProps {
 }
 
 const CustomToast = ({
-  type = "default",
+  type = "success",
   description,
   t,
   position,
@@ -85,7 +88,9 @@ const CustomToast = ({
   return (
     <div
       className={classNames(
-        "inline-flex gap-2 justify-center items-center min-h-[3rem] pl-4 pr-10 py-3 rounded-[0.625rem] bg-taling-gray-900 bg-opacity-80 text-taling-white shadow-emphasize backdrop-blur-md cursor-pointer",
+        `bg-taling-gray-900 text-taling-white shadow-emphasize inline-flex min-h-[3rem]
+        cursor-pointer items-center justify-center gap-2 rounded-[0.625rem]
+        bg-opacity-80 py-3 pl-4 pr-10 backdrop-blur-md`,
         "min-w-[10rem] max-w-[90vw] md:max-w-[25rem]",
         "hover:bg-opacity-85",
         t.visible ? getAnimationClass() : "",
@@ -105,7 +110,7 @@ export const toast = {
     description,
     duration = 4000,
     position,
-    type = "default",
+    type = "success",
   }: ToastOptions) => {
     const toastPosition = position || getDefaultPosition();
 
