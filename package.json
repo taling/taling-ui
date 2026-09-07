@@ -54,7 +54,7 @@
     "react-resizable-panels": "^2.0.22",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7",
-    "uuid": "^10.0.0"
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@types/node": "^22",
