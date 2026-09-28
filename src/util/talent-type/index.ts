@@ -19,7 +19,6 @@ export const TalentType = {
   isP2p: (talent: any) => {
     return (
       talent?.mCategory === TalentCategory.P2P_OFFLINE ||
-      talent?.mCategory === TalentCategory.P2P_ONLINE ||
       talent?.mCategory === TalentCategory.P2P_VIDEO
     );
   },
